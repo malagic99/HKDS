@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Program · HKDS</title>
+  <meta name="description" content="HKDS program: engineering challenges, gate-funded 8-phase development roadmap, system specifications and comparison with incumbent air-defense systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="page-shell">
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="logo-lockup" aria-label="HKDS home">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <div class="logo-text">
+          <span class="eyebrow">Defensive only · Rev 1.0</span>
+          <span class="brand">HKDS</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="technology.html">Technology</a>
+        <a href="science.html">Science</a>
+        <a href="doctrine.html">Doctrine</a>
+        <a href="program.html" aria-current="page">Program</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-intro">
+    <div class="container">
+      <div class="section-eyebrow">Program</div>
+      <h1>Challenges. Roadmap. Specifications.</h1>
+      <p class="page-lead">
+        HKDS is an integration challenge, not a physics challenge. The path from concept to fielded
+        battery is gate-funded and parallel-tracked with ALTA's SmallSat qualification program — the
+        two strengthen each other's investment case.
+      </p>
+      <div class="section-index">
+        <a href="#challenges">Challenges</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#specs">System specs</a>
+        <a href="#comparison">Incumbent comparison</a>
+        <a href="#conclusion">Conclusion</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="layout">
+      <main>
+
+        <!-- CHALLENGES -->
+        <section id="challenges">
+          <div class="section-header">
+            <div class="section-eyebrow">Engineering challenges</div>
+            <h2 class="section-title">Honest about the hard parts</h2>
+            <p class="section-lead">
+              Light gas guns are established research tools. Belt-fed weapons are mature. FBG sensing
+              is space-qualified. Photonic reservoir computing has been demonstrated end-to-end by
+              Duport et al. (2012, 2016) and Wang et al. (2025). The HKDS engineering challenge is
+              integration, not invention.
+            </p>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data" aria-label="Primary engineering challenges">
+              <thead>
+                <tr><th>Challenge</th><th>Severity</th><th>Status</th><th>Primary mitigation</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Barrel erosion at sustained fire</td><td class="hot">Medium</td><td class="ok">Solvable</td><td>Modular throat inserts · Cr lining · field-replaceable barrel modules</td></tr>
+                <tr><td>Helium supply-chain dependency</td><td class="hot">Medium</td><td class="ok">Managed</td><td>Closed-loop recovery 70–80 % · neon hybrid for lower tiers</td></tr>
+                <tr><td>FLP TRL gap</td><td class="crit">High</td><td>Development path exists</td><td>ALTA program covers Years 1–10 in parallel</td></tr>
+                <tr><td>HGV aerodynamic chaos at intercept</td><td class="hot">Medium</td><td>Partially mitigated</td><td>Tungsten ablation resistance · near-miss shockwave kill radius</td></tr>
+                <tr><td>Plasma-sheath terminal tracking</td><td class="ok">Low</td><td class="ok">Advantage</td><td>FBG optical sensing immune to RF plasma effects</td></tr>
+                <tr><td>Star pattern dead zones</td><td>Low–medium</td><td class="ok">Solvable</td><td>12-arm extended config · adaptive FLP arm placement</td></tr>
+                <tr><td>Counter-targeting of fixed nodes</td><td class="hot">Medium</td><td>Partially mitigated</td><td>Hardened revetments · cross-engagement · mobile reserves</td></tr>
+                <tr><td>Atmospheric drag on projectile</td><td>Low–medium</td><td class="ok">Solvable</td><td>FLP incorporates full atmospheric model in ballistic solution</td></tr>
+                <tr><td>Autonomous lethal engagement legality</td><td class="crit">High</td><td>Requires policy</td><td>Campaign-level authorization, engagement-level autonomy (Phalanx precedent)</td></tr>
+                <tr><td>Coordinated suppression of all nodes</td><td class="hot">Medium</td><td>Mitigated by geometry</td><td>Simultaneous destruction requires attacker to pre-reveal full strike package</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout">
+            <p>
+              <strong>The FLP TRL gap is the biggest single risk.</strong> The HKDS application needs
+              TRL 7–8 with military qualification. Positive read: ALTA's spacecraft qualification
+              program is arguably <em>more</em> demanding than ground-based defense in several
+              respects (radiation hardening, launch vibration, orbital thermal cycling). The
+              development paths are parallel and mutually reinforcing, not sequential dependencies.
+              <a href="science.html" style="color: var(--color-primary);">See the published evidence base →</a>
+            </p>
+          </div>
+        </section>
+
+        <!-- ROADMAP -->
+        <section id="roadmap">
+          <div class="section-header">
+            <div class="section-eyebrow">Development path</div>
+            <h2 class="section-title">Years 0–15 — concept to production</h2>
+            <p class="section-lead">
+              HKDS shares the gate-funded development cadence of the ALTA platform. The ALTA P1 lab
+              prototype (June 2026, €375k) is the first hard gate; HKDS-specific work begins with a
+              single-barrel LGG proof in parallel.
+            </p>
+          </div>
+
+          <div class="timeline" aria-label="Development roadmap">
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 0 — Concept validation</div>
+              <div class="timeline-meta">Years 0–1 · €500K–1M</div>
+              <div class="timeline-text">Single-barrel LGG proof, FLP sensing demonstration in the lab. Concept-level integration risk identification.</div>
+              <span class="timeline-tag">Lab</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 1 — FLP lab prototype + LGG MVP</div>
+              <div class="timeline-meta">Years 1–2 · €375K (ALTA P1, Jun 2026) + €500K LGG</div>
+              <div class="timeline-text">FLP end-to-end pipeline demonstrated with 95 % anomaly detection accuracy (ALTA P1 gate). HKDS single-barrel LGG integrated to FLP fire-control demo.</div>
+              <span class="timeline-tag">Hardware-in-the-loop</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 2 — Single-node prototype</div>
+              <div class="timeline-meta">Years 2–4 · €5–15M</div>
+              <div class="timeline-text">7-barrel star turret with belt feed and FLP control. Live-fire validation of cyclic rate, pattern geometry and solution accuracy against representative aerial surrogates.</div>
+              <span class="timeline-tag">Proving ground</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 3 — CubeSat on-orbit FLP demo</div>
+              <div class="timeline-meta">2027–2028 · €2M (ALTA P2, parallel track)</div>
+              <div class="timeline-text">ALTA Phase 2: flight demonstration vs. electronic baseline. Validates FLP efficiency, mass and decision latency in LEO. Hardening data directly transferable to HKDS qualification.</div>
+              <span class="timeline-tag">Parallel · ALTA</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 4 — Node integration</div>
+              <div class="timeline-meta">Years 4–6 · €20–50M</div>
+              <div class="timeline-text">Full corner node with sensor perimeter. 4-node installation prototype on a test range. Cross-engagement exercise against mixed-threat surrogates.</div>
+              <span class="timeline-tag">Full stack</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 5 — Silicon photonics + OEM</div>
+              <div class="timeline-meta">2029 · €10M (ALTA P3, parallel track)</div>
+              <div class="timeline-text">ALTA Phase 3: shrink to wafer-scale silicon photonics. Integration with European satellite OEM platforms. Same silicon flow benefits HKDS by reducing FLP node size for mobile reserve nodes.</div>
+              <span class="timeline-tag">Parallel · ALTA</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 6 — FLP defense qualification</div>
+              <div class="timeline-meta">Years 5–7 · €5–15M</div>
+              <div class="timeline-text">MIL-STD qualified FLP fire control. MTBF validation for critical defense infrastructure (target: 10,000+ hours). EMI/EMP qualification of interface electronics.</div>
+              <span class="timeline-tag">Qualification</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 7 — Pilot installation</div>
+              <div class="timeline-meta">Years 7–10 · €50–150M</div>
+              <div class="timeline-text">First operational HKDS battery. 4-corner installation with hybrid weapon integration. Live-threat test against representative targets.</div>
+              <span class="timeline-tag">Operational</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 8 — Production &amp; constellation</div>
+              <div class="timeline-meta">2030+ · €50M+ (ALTA P4 in parallel)</div>
+              <div class="timeline-text">ALTA P4 reaches TRL 9 with operational SmallSat constellation deployment. HKDS reaches manufacturing scale, export qualification, allied-nation deployment as the terminal layer in layered air-defense stacks.</div>
+              <span class="timeline-tag">Production</span>
+            </div>
+          </div>
+
+          <div class="callout">
+            <p>
+              <strong>Critical-path dependencies.</strong> FLP PRC accuracy on dynamic trajectory
+              prediction must hit &lt; 0.5 m error at 1 km before Phase 2 funding. Belt-feed cycling
+              must reach 20 rpm before Phase 4 integration. Helium recovery efficiency must hit 70 %
+              before the Phase 7 pilot. Star-arm separation actuators must respond in &lt; 100 ms for
+              adaptive engagement geometry.
+            </p>
+          </div>
+        </section>
+
+        <!-- SPECS -->
+        <section id="specs">
+          <div class="section-header">
+            <div class="section-eyebrow">System specifications</div>
+            <h2 class="section-title">HKDS node — at a glance</h2>
+            <p class="section-lead">
+              Baseline is a 7-barrel star turret with helium closed-loop recovery and FLP fire control.
+              Extended 13- and 19-barrel variants are available for HGV-class engagements.
+            </p>
+          </div>
+
+          <div class="grid-4" style="margin-bottom: var(--space-6);">
+            <div class="metric-card">
+              <div class="metric-label">Muzzle velocity</div>
+              <div class="metric-value">3.5–7 km/s</div>
+              <div class="metric-note">Payload-dependent</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Battery cyclic rate</div>
+              <div class="metric-value">80–160 rpm</div>
+              <div class="metric-note">4-node coordinated</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Engagement range</div>
+              <div class="metric-value">200 m – 5 km</div>
+              <div class="metric-note">Velocity-dependent</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Detection range</div>
+              <div class="metric-value">10 km +</div>
+              <div class="metric-note">200 km+ w/ upper layer</div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <span class="badge"><span class="badge-dot"></span>Node specifications</span>
+              <h3>Baseline 7-barrel node</h3>
+              <div class="table-wrap" style="margin-top: var(--space-3);">
+                <table class="data" aria-label="HKDS node specifications">
+                  <tbody>
+                    <tr><td>Turret config</td><td>7-barrel baseline (13 / 19 extended)</td></tr>
+                    <tr><td>Propellant</td><td>Helium 99.9 % · closed-loop recovery</td></tr>
+                    <tr><td>Penetrator</td><td>W-Ni-Fe tungsten · L/D 10:1</td></tr>
+                    <tr><td>Masses</td><td class="num">5 / 10 / 20 / 50 g</td></tr>
+                    <tr><td>KE range</td><td class="num">25 – 220 kJ</td></tr>
+                    <tr><td>Cyclic rate (node)</td><td class="num">20–40 rpm</td></tr>
+                    <tr><td>Azimuth coverage</td><td class="num">360°</td></tr>
+                    <tr><td>Elevation</td><td class="num">−10° to +85°</td></tr>
+                    <tr><td>Slew rate (az/el)</td><td class="num">60° / 45° per second</td></tr>
+                    <tr><td>Pointing accuracy</td><td class="num">±0.05 mrad (~5 cm @ 1 km)</td></tr>
+                    <tr><td>FC latency</td><td class="num ok">&lt; 1 ms sensor-to-fire</td></tr>
+                    <tr><td>Cost per round</td><td class="num ok">$2.55 – $4.45</td></tr>
+                    <tr><td>Node cost (ex-FLP)</td><td class="num">$50,000 – $150,000</td></tr>
+                    <tr><td>4-node battery installed</td><td class="num">$1.5M – $3M</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card">
+              <span class="badge"><span class="badge-dot"></span>FLP fire-control core</span>
+              <h3>ALTA Fiber Loop Photonics</h3>
+              <div class="table-wrap" style="margin-top: var(--space-3);">
+                <table class="data" aria-label="FLP system specifications">
+                  <tbody>
+                    <tr><td>Architecture</td><td>4-stage optical pipeline</td></tr>
+                    <tr><td>Sensing</td><td>FBG arrays · <span class="trl trl-9">TRL 9</span></td></tr>
+                    <tr><td>Processing</td><td>Photonic reservoir compute · <span class="trl trl-45">TRL 4–5</span></td></tr>
+                    <tr><td>Internal comms</td><td>Fiber backbone · <span class="trl trl-67">TRL 6 · 100 Gbps</span></td></tr>
+                    <tr><td>External link</td><td>Laser terminal · <span class="trl trl-67">TRL 6–7 · 10 Gbps</span></td></tr>
+                    <tr><td>Energy scaling</td><td class="ok">O(1) vs O(N²) digital</td></tr>
+                    <tr><td>Signal chain</td><td class="ok">Zero A/D conversion</td></tr>
+                    <tr><td>EM vulnerability</td><td class="ok">None (optical)</td></tr>
+                    <tr><td>Supply chain</td><td>EU sovereign · ITAR-free</td></tr>
+                    <tr><td>Partners</td><td>Exail · LioniX · TOPTICA · Thales Alenia · ST</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMPARISON -->
+        <section id="comparison">
+          <div class="section-header">
+            <div class="section-eyebrow">Incumbent comparison</div>
+            <h2 class="section-title">HKDS vs current air-defense systems</h2>
+            <p class="section-lead">
+              HKDS does not replace existing layers — it fills the specific gap between guns and
+              missiles. The comparison highlights how that gap is currently unaddressed.
+            </p>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data" aria-label="HKDS vs incumbent comparison">
+              <thead>
+                <tr><th>Metric</th><th>HKDS</th><th>Phalanx CIWS</th><th>Iron Dome</th><th>Patriot PAC-3</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Projectile velocity</td><td class="num ok">3.5–7 km/s</td><td class="num">1.1 km/s</td><td class="num">~1 km/s</td><td class="num">~1.5 km/s</td></tr>
+                <tr><td>Cost per intercept</td><td class="num ok">$3–8</td><td class="num">$27</td><td class="num hot">$50k–100k</td><td class="num crit">$3–4M</td></tr>
+                <tr><td>FC latency</td><td class="num ok">&lt; 1 ms</td><td class="num">50–100 ms</td><td class="num">~200 ms</td><td class="num">~300 ms</td></tr>
+                <tr><td>Max threat speed</td><td class="num ok">~7 km/s</td><td class="num">~600 m/s</td><td class="num">~500 m/s</td><td class="num">~2 km/s</td></tr>
+                <tr><td>EMP vulnerability</td><td class="ok">None</td><td class="hot">Moderate</td><td class="crit">High</td><td class="crit">High</td></tr>
+                <tr><td>Plasma tracking</td><td class="ok">Unaffected</td><td>Degraded</td><td>Degraded</td><td>Degraded</td></tr>
+                <tr><td>Installed cost</td><td class="num ok">$1.5–3M</td><td class="num">$5.6M</td><td class="num">$50M+</td><td class="num">$1B+ (battery)</td></tr>
+                <tr><td>HGV engagement</td><td class="ok">Yes (probabilistic)</td><td class="crit">No</td><td class="crit">No</td><td class="hot">Marginal</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- CONCLUSION -->
+        <section id="conclusion">
+          <div class="section-header">
+            <div class="section-eyebrow">Conclusion</div>
+            <h2 class="section-title">A new category of air defense</h2>
+            <p class="section-lead">
+              HKDS represents a coherent, physically grounded proposal for a new category of air
+              defense — filling the specific gap between expensive guided missiles and inadequate
+              conventional kinetics, at a cost per engagement that reverses the economic asymmetry
+              currently favoring aerial attackers.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card card-feature">
+              <span class="badge badge-accent"><span class="badge-dot"></span>Claim 01 — Velocity</span>
+              <h3>3.5–7 km/s muzzle velocity</h3>
+              <p>The first kinetic intercept mechanism capable of engaging hypersonic glide vehicles on competitive velocity terms. No current deployed kinetic system approaches this class.</p>
+            </div>
+            <div class="card card-feature">
+              <span class="badge badge-accent"><span class="badge-dot"></span>Claim 02 — Latency</span>
+              <h3>&lt; 1 ms fire control</h3>
+              <p>FLP photonic fire control delivers sensor-to-fire latency 50–100× faster than current electronic FC. Against hypersonic threats where engagement time is in seconds, this is mission-critical.</p>
+            </div>
+            <div class="card card-feature">
+              <span class="badge badge-accent"><span class="badge-dot"></span>Claim 03 — Cost</span>
+              <h3>$3–8 per round</h3>
+              <p>HKDS inverts the attacker–defender cost asymmetry. An adversary spending $50–200M per HGV faces interception by a $5–8 round. A 29-target saturation defeated for under $1,000.</p>
+            </div>
+          </div>
+
+          <div class="defensive-panel" style="margin-top: var(--space-8);">
+            <div class="section-eyebrow">Bottom line</div>
+            <h3 class="h-lg" style="font-family: var(--font-display);">
+              The concept is technically sound, the development path exists, and the strategic need is acute.
+            </h3>
+            <p style="color: var(--color-text-muted); margin-top: var(--space-3); max-width: 64ch;">
+              Hypersonic defense is the primary unresolved capability gap in Western air defense
+              architecture. HKDS offers a credible physics-based approach to terminal hypersonic
+              defense at a cost profile that makes large-scale deployment economically viable —
+              built on a published photonic foundation and a sovereign-EU supply chain.
+            </p>
+            <p style="margin-top: var(--space-5);">
+              <a href="science.html" class="btn btn-primary">See the scientific foundation →</a>
+              <a href="mailto:hello@alta.space" class="btn btn-ghost" style="margin-left: var(--space-2);">Contact ALTA</a>
+            </p>
+          </div>
+        </section>
+
+      </main>
+
+      <aside class="toc" aria-label="On this page">
+        <div class="toc-label">On this page</div>
+        <a href="#challenges">Challenges</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#specs">Specifications</a>
+        <a href="#comparison">Comparison</a>
+        <a href="#conclusion">Conclusion</a>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo-lockup" style="margin-bottom: var(--space-4);">
+          <div class="logo-mark" aria-hidden="true"></div>
+          <div class="logo-text">
+            <span class="eyebrow">Defensive only · Rev 1.0</span>
+            <span class="brand">HKDS</span>
+          </div>
+        </div>
+        <p style="color: var(--color-text-muted); font-size: var(--text-sm); max-width: 42ch;">
+          Hypervelocity Kinetic Defense System — a defensive terminal area-denial concept built on
+          ALTA Fiber Loop Photonics.
+        </p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="science.html">Scientific foundation</a></li>
+          <li><a href="doctrine.html">Doctrine &amp; scenario</a></li>
+          <li><a href="program.html">Program &amp; specs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ALTA platform</h4>
+        <ul>
+          <li><a href="science.html">Fiber Loop Photonics</a></li>
+          <li><a href="mailto:hello@alta.space">hello@alta.space</a></li>
+          <li><span style="color: var(--color-text-faint);">Sovereign-EU · ITAR-free</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 · HKDS Technical Concept · Developed with ALTA by Venus — EIIS / Airbus Space Challenge</span>
+        <span>Built for discussion, not for field deployment.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

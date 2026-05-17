@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scientific foundation · HKDS</title>
+  <meta name="description" content="The scientific foundation of HKDS fire control: photonic reservoir computing demonstrated on radar signal forecasting (Duport 2016), all-optical implementation (Duport 2012), and O(1) energy scaling (Wang 2025)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="page-shell">
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="logo-lockup" aria-label="HKDS home">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <div class="logo-text">
+          <span class="eyebrow">Defensive only · Rev 1.0</span>
+          <span class="brand">HKDS</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Overview</a>
+        <a href="technology.html">Technology</a>
+        <a href="science.html" aria-current="page">Science</a>
+        <a href="doctrine.html">Doctrine</a>
+        <a href="program.html">Program</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-intro">
+    <div class="container">
+      <div class="section-eyebrow">Scientific foundation</div>
+      <h1>FLP fire control is built on published, peer-reviewed photonics.</h1>
+      <p class="page-lead">
+        HKDS does not require new physics. The photonic reservoir computer at the core of FLP fire
+        control has been demonstrated in fiber by independent academic groups — including, critically,
+        on the exact computational task HKDS performs: <strong style="color: var(--color-text);">predicting
+        a radar signal one to ten time steps into the future from a real backscatter dataset</strong>
+        (Duport et al., Scientific Reports, 2016).
+      </p>
+      <div class="section-index">
+        <a href="#headline">The headline result</a>
+        <a href="#duport2016">Duport 2016 · radar forecasting</a>
+        <a href="#duport2012">Duport 2012 · all-optical</a>
+        <a href="#wang2025">Wang 2025 · O(1) scaling</a>
+        <a href="#map">Why this matters for HKDS</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="layout">
+      <main>
+
+        <!-- HEADLINE -->
+        <section id="headline">
+          <div class="card card-feature">
+            <span class="badge badge-accent"><span class="badge-dot"></span>Headline result</span>
+            <h3 class="h-lg">
+              In 2016, a fiber-loop photonic reservoir computer predicted real radar backscatter signals
+              <em style="font-style:italic; color: var(--color-primary-soft);">one to ten time steps
+              ahead</em> — with no digital pre- or post-processing in the loop.
+            </h3>
+            <p style="margin-top: var(--space-4);">
+              The Duport et al. (2016) experiment used the IPIX radar dataset (sea-surface backscatter
+              from McMaster University) as the input task. The fully analogue photonic reservoir matched
+              the established literature on this task — proving the FLP-class architecture can perform
+              the central computation that HKDS fire control performs against an incoming hypersonic
+              target: take a noisy radar signal, predict its near-future evolution, and emit a continuous
+              analogue output.
+            </p>
+            <div class="callout callout-accent">
+              <p>
+                <strong>This is not a future capability.</strong> The benchmark task in the published
+                paper is structurally identical to the HKDS fire-control computation. The remaining
+                engineering effort is defense-grade packaging, vibration / EMI hardening and multi-target
+                scaling — not novel physics. The ALTA spacecraft qualification program covers the
+                hardening work in parallel.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- DUPORT 2016 -->
+        <section id="duport2016">
+          <div class="section-header">
+            <div class="section-eyebrow">Paper 01 — direct proof for HKDS</div>
+            <h2 class="section-title">Duport, Smerieri, Akrout, Haelterman, Massar (2016)</h2>
+            <p class="section-lead">
+              <em>Fully analogue photonic reservoir computer.</em> Scientific Reports 6:22381 ·
+              DOI 10.1038/srep22381 · Université Libre de Bruxelles.
+            </p>
+          </div>
+
+          <div class="grid-2-asym">
+            <div class="card">
+              <h3>What the paper demonstrates</h3>
+              <p>
+                The first reservoir computer in which <strong>both</strong> the input layer and the
+                output layer are fully analogue. Prior implementations always required digital
+                pre-processing of the input or digital post-processing of the output — limiting effective
+                throughput. The 2016 paper eliminates the A/D conversion bottleneck entirely.
+              </p>
+              <ul class="list">
+                <li class="list-item">
+                  <div class="list-bullet"></div>
+                  <div class="list-content">
+                    <h4>Analogue optical input</h4>
+                    <p>Input mask generated as a sum of two sinusoids — implementable with simple oscillators in future on-chip hardware.</p>
+                  </div>
+                </li>
+                <li class="list-item">
+                  <div class="list-bullet"></div>
+                  <div class="list-content">
+                    <h4>Analogue electrical output</h4>
+                    <p>A continuous analogue readout produces the time-series prediction directly — no ADC, no DSP pipeline.</p>
+                  </div>
+                </li>
+                <li class="list-item">
+                  <div class="list-bullet"></div>
+                  <div class="list-content">
+                    <h4>Fiber-loop optoelectronic reservoir</h4>
+                    <p>47 internal variables (N=47, k=5). Mach-Zehnder modulators with 10 GHz bandwidth. DFB telecom laser source. Off-the-shelf components.</p>
+                  </div>
+                </li>
+                <li class="list-item">
+                  <div class="list-bullet"></div>
+                  <div class="list-content">
+                    <h4>Standalone operation</h4>
+                    <p>The only role of the external computer is to compute the readout weight function w(t) once during training. Operation is autonomous.</p>
+                  </div>
+                </li>
+              </ul>
+
+              <h3 style="margin-top: var(--space-6);">The three benchmark tasks</h3>
+              <p>
+                The paper validates the architecture on three standard reservoir-computing benchmarks.
+                The third — radar signal forecasting — maps directly onto the HKDS fire-control task.
+              </p>
+              <div class="table-wrap" style="margin-top: var(--space-3);">
+                <table class="data" aria-label="Duport 2016 benchmark results">
+                  <thead>
+                    <tr><th>Task</th><th>Metric</th><th>Result (all-analogue)</th><th>Relevance to HKDS</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Nonlinear channel equalization</strong></td>
+                      <td>Symbol Error Rate @ 32 dB SNR</td>
+                      <td class="num ok">~10⁻⁴</td>
+                      <td>Noise rejection on a multi-path channel</td>
+                    </tr>
+                    <tr>
+                      <td><strong>NARMA10</strong></td>
+                      <td>NMSE</td>
+                      <td class="num">0.230 ± 0.023</td>
+                      <td>Nonlinear dynamical system emulation</td>
+                    </tr>
+                    <tr>
+                      <td class="mag"><strong>Radar signal forecasting</strong></td>
+                      <td>NMSE @ 1–10 steps ahead</td>
+                      <td class="ok">Matches all-optical baseline</td>
+                      <td class="mag"><strong>Direct analogue to HKDS fire control</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <div class="card">
+                <span class="badge"><span class="badge-dot"></span>Radar task in detail</span>
+                <h3>IPIX sea-clutter backscatter</h3>
+                <p>
+                  The radar dataset is taken from the McMaster University IPIX radar — real ocean-surface
+                  backscatter recorded at low sea state (0.8 m average wave height, max 1.3 m). The input
+                  is a two-dimensional signal: the I and Q channels of the demodulator output.
+                </p>
+                <p>
+                  The reservoir is trained over 1,000 inputs and tested over a separate 1,000 inputs.
+                  For each of t+1 through t+10 time-step predictions, the all-analogue reservoir matches
+                  the all-optical reservoir baseline of an earlier paper (with similar internal variable
+                  count) and remains close to the numerical / digital reference.
+                </p>
+                <p style="font-size: var(--text-sm); color: var(--color-text-faint);">
+                  Source: Duport et al. (2016), Fig. 8 — "Radar signal forecasting error (NMSE) with
+                  respect to the number of time steps of the prediction."
+                </p>
+              </div>
+
+              <div class="card">
+                <span class="badge"><span class="badge-dot"></span>Operating parameters</span>
+                <h3>Numbers from the experiment</h3>
+                <div class="table-wrap" style="margin-top: var(--space-3);">
+                  <table class="data" aria-label="Duport 2016 system parameters">
+                    <tbody>
+                      <tr><td>Reservoir size (N)</td><td class="num">47 nodes</td></tr>
+                      <tr><td>Loop round-trip T'</td><td class="num">7.598 μs</td></tr>
+                      <tr><td>Sample rate</td><td class="num">200 MS/s</td></tr>
+                      <tr><td>Resolution</td><td class="num">16-bit</td></tr>
+                      <tr><td>Modulator BW</td><td class="num">10 GHz</td></tr>
+                      <tr><td>Detector cut-off</td><td class="num">125 MHz</td></tr>
+                      <tr><td>Laser source</td><td>DFB telecom (Covega)</td></tr>
+                      <tr><td>Pre/post DSP</td><td class="ok">None</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <figure class="svg-fig" style="margin-top: var(--space-6);">
+            <svg viewBox="0 0 720 220" role="img" aria-label="Mapping Duport 2016 radar forecasting task to HKDS fire control">
+              <defs>
+                <linearGradient id="gflow" x1="0" x2="1">
+                  <stop offset="0" stop-color="#38bdf8" stop-opacity="0.6"/>
+                  <stop offset="1" stop-color="#22c55e" stop-opacity="0.6"/>
+                </linearGradient>
+              </defs>
+
+              <!-- TOP: Duport 2016 -->
+              <text x="20" y="32" font-family="Work Sans" font-size="11" fill="#94a3b8" letter-spacing="2">DUPORT 2016 · PUBLISHED EXPERIMENT</text>
+
+              <rect x="20" y="48" width="140" height="50" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5" rx="6"/>
+              <text x="90" y="68" text-anchor="middle" font-family="Work Sans" font-size="10" fill="#f3f4f6">IPIX radar</text>
+              <text x="90" y="84" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#94a3b8">backscatter signal</text>
+
+              <line x1="160" y1="73" x2="200" y2="73" stroke="url(#gflow)" stroke-width="2"/>
+              <polygon points="200,69 210,73 200,77" fill="#22c55e"/>
+
+              <rect x="210" y="48" width="160" height="50" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5" rx="6"/>
+              <text x="290" y="68" text-anchor="middle" font-family="Work Sans" font-size="10" fill="#f3f4f6">Fiber-loop PRC</text>
+              <text x="290" y="84" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#94a3b8">N=47 · fully analogue</text>
+
+              <line x1="370" y1="73" x2="410" y2="73" stroke="url(#gflow)" stroke-width="2"/>
+              <polygon points="410,69 420,73 410,77" fill="#22c55e"/>
+
+              <rect x="420" y="48" width="180" height="50" fill="#0a0f17" stroke="#22c55e" stroke-width="1.5" rx="6"/>
+              <text x="510" y="68" text-anchor="middle" font-family="Work Sans" font-size="10" fill="#f3f4f6">Predict t+1 → t+10</text>
+              <text x="510" y="84" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#22c55e">analogue output</text>
+
+              <!-- divider -->
+              <line x1="20" y1="115" x2="700" y2="115" stroke="#1f2a38" stroke-width="1" stroke-dasharray="3 4"/>
+
+              <!-- BOTTOM: HKDS fire control -->
+              <text x="20" y="140" font-family="Work Sans" font-size="11" fill="#22c55e" letter-spacing="2">HKDS FIRE CONTROL · SAME COMPUTATION</text>
+
+              <rect x="20" y="156" width="140" height="50" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5" rx="6"/>
+              <text x="90" y="176" text-anchor="middle" font-family="Work Sans" font-size="10" fill="#f3f4f6">Perimeter sensors</text>
+              <text x="90" y="192" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#94a3b8">radar · FBG · acoustic</text>
+
+              <line x1="160" y1="181" x2="200" y2="181" stroke="url(#gflow)" stroke-width="2"/>
+              <polygon points="200,177 210,181 200,185" fill="#22c55e"/>
+
+              <rect x="210" y="156" width="160" height="50" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5" rx="6"/>
+              <text x="290" y="176" text-anchor="middle" font-family="Work Sans" font-size="10" fill="#f3f4f6">FLP photonic PRC</text>
+              <text x="290" y="192" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#94a3b8">defense-grade FLP node</text>
+
+              <line x1="370" y1="181" x2="410" y2="181" stroke="url(#gflow)" stroke-width="2"/>
+              <polygon points="410,177 420,181 410,185" fill="#22c55e"/>
+
+              <rect x="420" y="156" width="180" height="50" fill="#0a0f17" stroke="#22c55e" stroke-width="1.5" rx="6"/>
+              <text x="510" y="176" text-anchor="middle" font-family="Work Sans" font-size="10" fill="#f3f4f6">Predict intercept</text>
+              <text x="510" y="192" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#22c55e">analogue fire command</text>
+
+              <!-- Right label -->
+              <text x="620" y="73" font-family="Work Sans" font-size="9" fill="#64748b">published</text>
+              <text x="620" y="86" font-family="Work Sans" font-size="9" fill="#64748b">2016</text>
+              <text x="620" y="181" font-family="Work Sans" font-size="9" fill="#22c55e">structurally</text>
+              <text x="620" y="194" font-family="Work Sans" font-size="9" fill="#22c55e">identical</text>
+            </svg>
+            <figcaption>Duport 2016 radar forecasting → HKDS fire control · same computational pattern</figcaption>
+          </figure>
+        </section>
+
+        <!-- DUPORT 2012 -->
+        <section id="duport2012">
+          <div class="section-header">
+            <div class="section-eyebrow">Paper 02 — feasibility</div>
+            <h2 class="section-title">Duport, Schneider, Smerieri, Haelterman, Massar (2012)</h2>
+            <p class="section-lead">
+              <em>All-optical reservoir computing.</em> Optics Express 20(20):22783 · The first
+              practical demonstration of all-optical reservoir computing using off-the-shelf fiber
+              telecom components.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3>What this proved</h3>
+              <p>
+                Parity with state-of-the-art digital reservoir-computing implementations using nothing
+                more than standard telecom-grade fiber components: SOAs, modulators, fiber loops. No
+                exotic materials, no bespoke fabrication, no laboratory-only ingredients.
+              </p>
+              <p>
+                This established that <strong>photonic reservoir computing is a manufacturable
+                technology</strong>, not a physics curiosity — the supply chain already exists.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Why HKDS cares</h3>
+              <p>
+                Defense-grade qualification is dramatically easier when the underlying components are
+                already qualified to telecom and aerospace standards. Every component class used in the
+                FLP fire-control chain — FBGs, DFB lasers, MZ modulators, balanced photodiodes — has a
+                space-qualified or telecom-qualified pedigree.
+              </p>
+              <p>
+                The ALTA EU supply chain (Exail, LioniX, TOPTICA, Thales Alenia Space, ST) covers every
+                component class in this stack — sovereign, ITAR-free, and exportable to U.S. defense
+                primes subject only to EU dual-use controls.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- WANG 2025 -->
+        <section id="wang2025">
+          <div class="section-header">
+            <div class="section-eyebrow">Paper 03 — scaling</div>
+            <h2 class="section-title">Wang et al. (2025)</h2>
+            <p class="section-lead">
+              <em>Optical next-generation reservoir computing.</em> Nature Photonics ·
+              Demonstrates O(1) energy scaling and high-accuracy chaotic time-series forecasting.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <span class="badge"><span class="badge-dot"></span>Energy scaling</span>
+              <h3>O(1) vs O(N²) digital</h3>
+              <p>
+                The energy cost of a photonic reservoir computation is essentially independent of
+                reservoir size, while digital systems scale as O(N²) with the number of internal
+                states. For a saturated multi-target engagement, this is the difference between a
+                tractable on-prem compute budget and a server-room thermal problem.
+              </p>
+            </div>
+            <div class="card">
+              <span class="badge"><span class="badge-dot"></span>Accuracy</span>
+              <h3>NRMSE 0.0971</h3>
+              <p>
+                On chaotic time-series forecasting — a harder benchmark than NARMA10 — the photonic
+                reservoir achieves NRMSE of 0.0971 with 10× less training data than digital
+                counterparts. The architecture is not a "lossy approximation" of digital; it is
+                competitive.
+              </p>
+            </div>
+            <div class="card">
+              <span class="badge"><span class="badge-dot"></span>Throughput</span>
+              <h3>&gt; 100 TOPS/mm²</h3>
+              <p>
+                Integrated photonic accelerators have exceeded 100 TOPS per square millimetre at tens of
+                gigabaud. Against that backdrop, HKDS's &lt; 1 ms fire-control budget is conservative,
+                not optimistic — the compute density is already there.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- MAP -->
+        <section id="map">
+          <div class="section-header">
+            <div class="section-eyebrow">Why this matters</div>
+            <h2 class="section-title">From publication to defense capability</h2>
+            <p class="section-lead">
+              Each of HKDS's three fire-control claims maps to a peer-reviewed result.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <span class="badge badge-accent"><span class="badge-dot"></span>HKDS claim</span>
+              <h3>Photonic FC works end-to-end</h3>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted);">
+                Sensor in, fire command out, no digital intermediary.
+              </p>
+              <div class="callout">
+                <p><strong>Proof.</strong> Duport 2016 — first fully analogue reservoir computer, demonstrated standalone on three benchmark tasks.</p>
+              </div>
+            </div>
+            <div class="card">
+              <span class="badge badge-accent"><span class="badge-dot"></span>HKDS claim</span>
+              <h3>Trajectory prediction is in-scope</h3>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted);">
+                The reservoir can predict near-future evolution of a noisy radar signal.
+              </p>
+              <div class="callout">
+                <p><strong>Proof.</strong> Duport 2016 radar-forecasting benchmark on real IPIX backscatter data, 1–10 step predictions, matched all-optical baselines.</p>
+              </div>
+            </div>
+            <div class="card">
+              <span class="badge badge-accent"><span class="badge-dot"></span>HKDS claim</span>
+              <h3>Scales for saturation engagement</h3>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted);">
+                Multi-target parallel tracking inside a sustainable energy budget.
+              </p>
+              <div class="callout">
+                <p><strong>Proof.</strong> Wang 2025 — O(1) energy scaling; integrated photonics exceeding 100 TOPS/mm² at gigabaud rates.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="defensive-panel" style="margin-top: var(--space-8);">
+            <div class="section-eyebrow">Bottom line</div>
+            <h3 class="h-lg" style="font-family: var(--font-display);">HKDS fire control is an integration program — not a physics program.</h3>
+            <p style="color: var(--color-text-muted); margin-top: var(--space-3);">
+              The Duport 2016 paper is the single most consequential piece of evidence for HKDS's
+              feasibility. It demonstrates that the exact computational pattern at the heart of fire
+              control — predicting a noisy radar signal's near future — can be performed end-to-end
+              in a fiber-optic photonic medium with no digital pipeline. The remaining work is
+              defense-grade qualification, which the parallel ALTA spacecraft program addresses
+              directly.
+            </p>
+            <div class="section-index">
+              <a href="technology.html#flp">FLP architecture</a>
+              <a href="doctrine.html#scenario">Saturation scenario</a>
+              <a href="program.html#challenges">Engineering challenges</a>
+              <a href="program.html#roadmap">Development roadmap</a>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <aside class="toc" aria-label="On this page">
+        <div class="toc-label">On this page</div>
+        <a href="#headline">Headline result</a>
+        <a href="#duport2016">Duport 2016 · radar</a>
+        <a href="#duport2012">Duport 2012 · all-optical</a>
+        <a href="#wang2025">Wang 2025 · scaling</a>
+        <a href="#map">Mapping to HKDS</a>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo-lockup" style="margin-bottom: var(--space-4);">
+          <div class="logo-mark" aria-hidden="true"></div>
+          <div class="logo-text">
+            <span class="eyebrow">Defensive only · Rev 1.0</span>
+            <span class="brand">HKDS</span>
+          </div>
+        </div>
+        <p style="color: var(--color-text-muted); font-size: var(--text-sm); max-width: 42ch;">
+          Citations: Duport et al. <em>Opt. Express</em> 20:22783 (2012) · Duport et al.
+          <em>Sci. Rep.</em> 6:22381 (2016) · Wang et al. <em>Nat. Photonics</em> (2025).
+        </p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="science.html">Scientific foundation</a></li>
+          <li><a href="doctrine.html">Doctrine &amp; scenario</a></li>
+          <li><a href="program.html">Program &amp; specs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ALTA platform</h4>
+        <ul>
+          <li><a href="science.html">Fiber Loop Photonics</a></li>
+          <li><a href="mailto:hello@alta.space">hello@alta.space</a></li>
+          <li><span style="color: var(--color-text-faint);">Sovereign-EU · ITAR-free</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 · HKDS Technical Concept · Developed with ALTA by Venus — EIIS / Airbus Space Challenge</span>
+        <span>Built for discussion, not for field deployment.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
