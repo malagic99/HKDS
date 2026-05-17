@@ -1,1750 +1,555 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HKDS — Hypervelocity Kinetic Defense System</title>
-  <meta name="description" content="HKDS is a defensive hypervelocity kinetic air-defense battery with photonic fire control, designed to stop threats from FPV drones to hypersonic glide vehicles." />
-
+  <meta name="description" content="HKDS is a defensive hypervelocity kinetic air-defense battery with photonic fire control, designed to stop threats from FPV drones to hypersonic glide vehicles. Powered by ALTA Fiber Loop Photonics." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root, [data-theme="light"] {
-      --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
-      --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
-      --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
-      --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
-      --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
-      --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw, 3.5rem);
-
-      --space-1:  0.25rem;  --space-2: 0.5rem;  --space-3: 0.75rem;
-      --space-4:  1rem;     --space-5: 1.25rem; --space-6: 1.5rem;
-      --space-8:  2rem;     --space-10: 2.5rem; --space-12: 3rem;
-      --space-16: 4rem;     --space-20: 5rem;   --space-24: 6rem;
-
-      --color-bg:             #05070b;
-      --color-surface:        #0b111a;
-      --color-surface-2:      #111923;
-      --color-surface-offset: #151f2b;
-      --color-surface-offset-2:#1a2533;
-      --color-divider:        #1f2a38;
-      --color-border:         #223042;
-
-      --color-text:           #f3f4f6;
-      --color-text-muted:     #9ca3af;
-      --color-text-faint:     #6b7280;
-      --color-text-inverse:   #05070b;
-
-      --color-primary:        #38bdf8;
-      --color-primary-hover:  #0ea5e9;
-      --color-primary-active: #0284c7;
-      --color-accent:         #22c55e;
-      --color-warn:           #f59e0b;
-      --color-danger:         #ef4444;
-
-      --radius-sm: 0.375rem;
-      --radius-md: 0.5rem;
-      --radius-lg: 0.75rem;
-      --radius-full: 9999px;
-
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-      --shadow-md: 0 6px 20px rgba(0,0,0,0.35);
-      --shadow-lg: 0 18px 45px rgba(0,0,0,0.5);
-
-      --content-narrow: 640px;
-      --content-default: 960px;
-      --content-wide: 1200px;
-
-      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-
-      --font-body: 'Work Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-display: 'Instrument Serif', 'Georgia', serif;
-      --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--space-16);
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      line-height: 1.6;
-      color: var(--color-text);
-      background: radial-gradient(circle at top left, #1f2933 0, #05070b 55%);
-    }
-
-    img, picture, svg { display: block; max-width: 100%; height: auto; }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: color var(--transition-interactive),
-                  background var(--transition-interactive),
-                  border-color var(--transition-interactive),
-                  box-shadow var(--transition-interactive);
-    }
-    a:hover { color: var(--color-primary); }
-
-    h1, h2, h3, h4 {
-      font-family: var(--font-display);
-      line-height: 1.15;
-      text-wrap: balance;
-    }
-
-    p { text-wrap: pretty; max-width: 75ch; }
-
-    .page-shell { min-height: 100vh; display: flex; flex-direction: column; }
-
-    .container {
-      width: 100%;
-      max-width: var(--content-wide);
-      margin: 0 auto;
-      padding-inline: var(--space-4);
-    }
-
-    header {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(5,7,11,0.96), rgba(5,7,11,0.85));
-      border-bottom: 1px solid var(--color-divider);
-    }
-
-    .nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-block: var(--space-3); gap: var(--space-4);
-    }
-
-    .logo-lockup { display: flex; align-items: center; gap: var(--space-3); }
-
-    .logo-mark {
-      width: 36px; height: 36px;
-      border-radius: 30% 70% 60% 40% / 40% 45% 55% 60%;
-      background: radial-gradient(circle at 30% 20%, #e5f9ff 0, #38bdf8 32%, #0f172a 75%);
-      box-shadow: 0 0 30px rgba(56,189,248,0.45);
-      position: relative; overflow: hidden;
-    }
-    .logo-mark::after {
-      content: ""; position: absolute; inset: 25%; border-radius: inherit;
-      border: 1px solid rgba(15,23,42,0.6);
-      box-shadow: 0 0 18px rgba(15,23,42,0.8) inset;
-    }
-
-    .logo-text { display: flex; flex-direction: column; gap: 2px; }
-    .logo-text span:first-child {
-      font-size: var(--text-sm); letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--color-text-muted);
-    }
-    .logo-text span:last-child {
-      font-size: var(--text-lg); font-family: var(--font-display);
-    }
-
-    .nav-links {
-      display: flex; align-items: center; gap: var(--space-4);
-      font-size: var(--text-sm); flex-wrap: wrap; justify-content: flex-end;
-    }
-    .nav-links a { color: var(--color-text-muted); }
-    .nav-links a:hover, .nav-links a:focus-visible { color: var(--color-primary); }
-
-    .pill {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(148,163,184,0.4);
-      padding: 0.18rem 0.7rem;
-      font-size: var(--text-xs);
-      text-transform: uppercase; letter-spacing: 0.18em;
-      color: var(--color-text-muted);
-    }
-    .pill-dot {
-      width: 7px; height: 7px; border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #bbf7d0 0, #22c55e 35%, #052e16 90%);
-      box-shadow: 0 0 10px rgba(34,197,94,0.8);
-    }
-
-    .hero { padding-block: var(--space-12); }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: var(--space-10); align-items: center;
-    }
-
-    .hero-kicker { margin-bottom: var(--space-4); }
-    .hero-title { font-size: var(--text-2xl); margin-bottom: var(--space-4); }
-    .hero-title span { display: block; }
-    .hero-subtitle { color: var(--color-text-muted); margin-bottom: var(--space-6); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 0.75rem 1.25rem;
-      border-radius: var(--radius-full);
-      background: linear-gradient(to right, #0ea5e9, #22c55e);
-      color: var(--color-text-inverse);
-      border: none; font-size: var(--text-sm); font-weight: 600;
-      box-shadow: var(--shadow-md);
-    }
-    .btn-primary:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
-
-    .btn-ghost {
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-full);
-      border: 1px solid var(--color-border);
-      background: rgba(15,23,42,0.7);
-      font-size: var(--text-sm); color: var(--color-text-muted);
-    }
-    .btn-ghost:hover { border-color: var(--color-primary); color: var(--color-primary); }
-
-    .hero-aside {
-      background: radial-gradient(circle at top, rgba(15,118,210,0.25), transparent 55%),
-                  radial-gradient(circle at bottom, rgba(22,163,74,0.2), transparent 60%),
-                  var(--color-surface);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(30,64,175,0.5);
-      box-shadow: var(--shadow-lg);
-      padding: var(--space-5);
-      position: relative; overflow: hidden;
-    }
-    .hero-aside::before {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(circle at 10% 0, rgba(148,163,184,0.12), transparent 60%);
-      mix-blend-mode: screen; pointer-events: none;
-    }
-    .hero-aside h2 { font-size: var(--text-lg); margin-bottom: var(--space-3); }
-
-    .hero-metric-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-4); margin-top: var(--space-3);
-    }
-
-    .metric-card {
-      padding: var(--space-3);
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(148,163,184,0.45);
-      background: radial-gradient(circle at top left, rgba(15,23,42,0.8), rgba(15,23,42,0.95));
-    }
-    .metric-label {
-      font-size: var(--text-xs);
-      text-transform: uppercase; letter-spacing: 0.16em;
-      color: var(--color-text-muted); margin-bottom: 0.3rem;
-    }
-    .metric-value { font-size: var(--text-lg); font-weight: 600; }
-    .metric-note { font-size: var(--text-xs); color: var(--color-text-faint); margin-top: 0.2rem; }
-
-    main { flex: 1 0 auto; }
-
-    section {
-      padding-block: var(--space-12);
-      border-top: 1px solid rgba(15,23,42,0.9);
-      background: radial-gradient(circle at top left, rgba(15,23,42,0.3), transparent 60%);
-    }
-    section:nth-of-type(even) {
-      background: radial-gradient(circle at top right, rgba(15,23,42,0.4), transparent 60%);
-    }
-
-    .section-header { margin-bottom: var(--space-6); max-width: 80ch; }
-    .section-eyebrow {
-      font-size: var(--text-xs);
-      text-transform: uppercase; letter-spacing: 0.16em;
-      color: var(--color-text-muted); margin-bottom: var(--space-2);
-    }
-    .section-title { font-size: var(--text-xl); margin-bottom: var(--space-3); }
-    .section-lead { color: var(--color-text-muted); }
-
-    .three-col {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-6);
-    }
-
-    .four-col {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: var(--space-4);
-    }
-
-    .card {
-      padding: var(--space-5);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(31,41,55,0.9);
-      background: linear-gradient(to bottom right, rgba(15,23,42,0.95), rgba(15,23,42,0.8));
-      box-shadow: var(--shadow-md);
-    }
-    .card h3 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
-    .card p { color: var(--color-text-muted); font-size: var(--text-sm); }
-    .card + .card { margin-top: var(--space-6); }
-
-    .badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: var(--radius-full);
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(56,189,248,0.4);
-      font-size: var(--text-xs); color: var(--color-text-muted);
-      text-transform: uppercase; letter-spacing: 0.18em;
-      margin-bottom: var(--space-2);
-    }
-    .badge-dot {
-      width: 7px; height: 7px; border-radius: 999px;
-      background: #38bdf8;
-      box-shadow: 0 0 8px rgba(56,189,248,0.8);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: var(--space-6); align-items: flex-start;
-    }
-    .grid-2-asym {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: var(--space-6); align-items: flex-start;
-    }
-
-    .list { list-style: none; display: grid; gap: var(--space-3); margin-top: var(--space-3); }
-    .list-item { display: flex; gap: var(--space-3); align-items: flex-start; }
-    .list-bullet {
-      width: 10px; height: 10px; border-radius: 999px;
-      background: var(--color-accent);
-      box-shadow: 0 0 10px rgba(34,197,94,0.6);
-      margin-top: 8px; flex-shrink: 0;
-    }
-    .list-content h4 {
-      font-size: var(--text-sm); font-family: var(--font-body);
-      font-weight: 600; margin-bottom: 0.2rem;
-    }
-    .list-content p { font-size: var(--text-sm); color: var(--color-text-muted); }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-3); margin-top: var(--space-4);
-    }
-    .stat {
-      padding: var(--space-3);
-      background: rgba(15,23,42,0.6);
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(31,41,55,0.9);
-    }
-    .stat-label {
-      font-size: var(--text-xs); color: var(--color-text-muted);
-      text-transform: uppercase; letter-spacing: 0.14em;
-    }
-    .stat-value {
-      font-size: var(--text-base); font-weight: 600;
-      margin-top: 0.2rem; color: var(--color-primary);
-    }
-    .stat-desc { font-size: var(--text-xs); color: var(--color-text-faint); margin-top: 0.25rem; }
-
-    /* Tables */
-    .table-wrap {
-      overflow-x: auto;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--color-divider);
-      background: rgba(11,17,26,0.7);
-    }
-    table.data {
-      width: 100%; border-collapse: collapse;
-      font-size: var(--text-sm); min-width: 600px;
-    }
-    table.data th, table.data td {
-      padding: 0.6rem 0.85rem;
-      border-bottom: 1px solid rgba(31,41,55,0.7);
-      text-align: left; vertical-align: top;
-    }
-    table.data thead th {
-      background: rgba(15,23,42,0.9);
-      color: var(--color-primary);
-      font-weight: 600; font-size: var(--text-xs);
-      text-transform: uppercase; letter-spacing: 0.12em;
-      border-bottom: 1px solid var(--color-divider);
-    }
-    table.data tbody tr:hover { background: rgba(56,189,248,0.05); }
-    table.data tbody td { color: var(--color-text-muted); }
-    table.data tbody td strong { color: var(--color-text); font-weight: 500; }
-    table.data .num { font-variant-numeric: tabular-nums; font-family: var(--font-mono); font-size: 0.85em; }
-    table.data .hot { color: var(--color-warn); }
-    table.data .crit { color: var(--color-danger); }
-    table.data .ok { color: var(--color-accent); }
-
-    /* ASCII / monospace diagrams */
-    .diagram {
-      font-family: var(--font-mono);
-      font-size: 0.78rem; line-height: 1.45;
-      color: var(--color-text-muted);
-      background: rgba(5,7,11,0.7);
-      border: 1px solid var(--color-divider);
-      border-radius: var(--radius-md);
-      padding: var(--space-4);
-      overflow-x: auto;
-      white-space: pre;
-    }
-    .diagram .em { color: var(--color-primary); }
-    .diagram .ac { color: var(--color-accent); }
-    .diagram .wn { color: var(--color-warn); }
-
-    .callout {
-      padding: var(--space-4);
-      border-left: 3px solid var(--color-primary);
-      background: rgba(56,189,248,0.06);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      margin-top: var(--space-4);
-    }
-    .callout p { color: var(--color-text-muted); font-size: var(--text-sm); }
-    .callout strong { color: var(--color-text); }
-
-    .defensive-panel {
-      padding: var(--space-6);
-      border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, rgba(34,197,94,0.08), rgba(15,23,42,0.6));
-      border: 1px solid rgba(34,197,94,0.35);
-    }
-
-    /* Roadmap */
-    .timeline {
-      display: grid; gap: var(--space-4); margin-top: var(--space-4);
-    }
-    .timeline-item {
-      padding: var(--space-4);
-      border-left: 2px solid var(--color-primary);
-      background: rgba(15,23,42,0.6);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    }
-    .timeline-title { font-family: var(--font-display); font-size: var(--text-lg); }
-    .timeline-meta {
-      font-size: var(--text-xs); color: var(--color-text-muted);
-      text-transform: uppercase; letter-spacing: 0.14em;
-      margin-top: 0.1rem;
-    }
-    .timeline-text { color: var(--color-text-muted); font-size: var(--text-sm); margin-top: var(--space-2); }
-    .timeline-tag {
-      display: inline-block; margin-top: 0.4rem; padding: 0.1rem 0.5rem;
-      font-size: var(--text-xs); border-radius: var(--radius-full);
-      background: rgba(56,189,248,0.12); color: var(--color-primary);
-      border: 1px solid rgba(56,189,248,0.3);
-    }
-
-    /* Scenario timeline */
-    .scenario {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      display: grid; grid-template-columns: auto 1fr; gap: 0 var(--space-4);
-      background: rgba(5,7,11,0.6);
-      border: 1px solid var(--color-divider);
-      border-radius: var(--radius-md);
-      padding: var(--space-4);
-    }
-    .scenario .t {
-      color: var(--color-primary); font-weight: 500;
-      padding: 0.25rem 0; white-space: nowrap;
-    }
-    .scenario .e {
-      color: var(--color-text-muted); padding: 0.25rem 0;
-      border-bottom: 1px dashed rgba(31,41,55,0.7);
-    }
-    .scenario .t:last-of-type, .scenario .e:last-of-type { border-bottom: none; }
-
-    /* Footer */
-    footer {
-      margin-top: var(--space-12);
-      padding-block: var(--space-6);
-      border-top: 1px solid var(--color-divider);
-      background: rgba(5,7,11,0.85);
-    }
-    .footer-inner {
-      display: flex; justify-content: space-between; gap: var(--space-4);
-      flex-wrap: wrap; font-size: var(--text-xs); color: var(--color-text-faint);
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid, .grid-2, .grid-2-asym { grid-template-columns: 1fr; }
-      .three-col { grid-template-columns: 1fr; }
-      .four-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .stat-grid { grid-template-columns: 1fr; }
-      .hero { padding-block: var(--space-10); }
-    }
-
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .hero-title { font-size: var(--text-xl); }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .hero-aside { margin-top: var(--space-4); }
-      .four-col { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <div class="page-shell">
-    <header>
-      <div class="container nav">
-        <div class="logo-lockup">
-          <div class="logo-mark" aria-hidden="true"></div>
-          <div class="logo-text">
-            <span>Defensive only</span>
-            <span>HKDS</span>
+<div class="page-shell">
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="logo-lockup" aria-label="HKDS home">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <div class="logo-text">
+          <span class="eyebrow">Defensive only · Rev 1.0</span>
+          <span class="brand">HKDS</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html" aria-current="page">Overview</a>
+        <a href="technology.html">Technology</a>
+        <a href="science.html">Science</a>
+        <a href="doctrine.html">Doctrine</a>
+        <a href="program.html">Program</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-kicker">
+            <span class="pill">
+              <span class="pill-dot" aria-hidden="true"></span>
+              <span>Terminal hypersonic defense</span>
+            </span>
+          </div>
+          <h1 class="hero-title">
+            Stop hypersonic threats <em>at single-digit dollars</em> per shot.
+          </h1>
+          <p class="hero-sub">
+            HKDS is a fixed, defensive area-denial battery that uses helium light-gas hypervelocity
+            rounds and photonic fire control to engage threats from FPV drones to maneuvering hypersonic
+            glide vehicles — without relying on multi-million-dollar missile interceptors.
+          </p>
+          <p class="hero-sub" style="font-size: var(--text-sm);">
+            Three pillars: <strong style="color:var(--color-text);">light-gas-gun kinetics</strong> for velocity,
+            <strong style="color:var(--color-text);">star-configuration multi-barrel turrets</strong> for
+            geometric coverage, and <strong style="color:var(--color-text);">ALTA Fiber Loop Photonics</strong>
+            for fire-control latency under one millisecond.
+          </p>
+          <div class="hero-actions">
+            <a href="technology.html" class="btn btn-primary">Explore the technology →</a>
+            <a href="doctrine.html#scenario" class="btn btn-ghost">Saturation-attack scenario</a>
           </div>
         </div>
-        <nav class="nav-links" aria-label="Primary">
-          <a href="#concept">Concept</a>
-          <a href="#threat">Threats</a>
-          <a href="#lgg">Light gas gun</a>
-          <a href="#star">Star turret</a>
-          <a href="#flp">FLP fire control</a>
-          <a href="#battery">Battery</a>
-          <a href="#scenario">Scenario</a>
-          <a href="#roadmap">Roadmap</a>
-          <a href="#specs">Specs</a>
-        </nav>
+
+        <aside class="hero-aside" aria-label="HKDS performance snapshot">
+          <h2>Three hard constraints, met simultaneously</h2>
+          <p>
+            Velocity to meet hypersonic threats, latency to decide in milliseconds, and a cost per
+            engagement low enough to survive saturation attacks.
+          </p>
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-label">Projectile velocity</div>
+              <div class="metric-value">4–8 km/s</div>
+              <div class="metric-note">5–8× conventional guns</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Fire-control latency</div>
+              <div class="metric-value">&lt; 1 ms</div>
+              <div class="metric-note">Photonic, in-domain</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Cost per shot</div>
+              <div class="metric-value">$3–8</div>
+              <div class="metric-note">No seeker. No warhead.</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Threat coverage</div>
+              <div class="metric-value">FPV → HGV</div>
+              <div class="metric-note">Drones to reentry vehicles</div>
+            </div>
+          </div>
+        </aside>
       </div>
-    </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero" id="top">
-        <div class="container hero-grid">
-          <div>
-            <div class="hero-kicker">
-              <div class="pill">
-                <span class="pill-dot" aria-hidden="true"></span>
-                <span>Terminal hypersonic defense — Revision 1.0</span>
-              </div>
-            </div>
-            <h1 class="hero-title">
-              <span>Hypervelocity Kinetic Defense System</span>
-              <span style="font-size: var(--text-lg); font-weight: 400; color: var(--color-text-muted); margin-top: 0.5rem;">
-                Sub-millisecond photonic fire control. Single-digit dollars per shot.
-              </span>
-            </h1>
-            <p class="hero-subtitle">
-              HKDS is a fixed, defensive area-denial battery that uses helium light-gas hypervelocity rounds
-              and photonic fire control to stop threats from low-cost FPV drones to hypersonic glide vehicles —
-              without relying on multi-million-dollar missile interceptors.
-            </p>
-            <p class="hero-subtitle" style="font-size: var(--text-sm);">
-              Three pillars: <strong style="color:var(--color-text);">light gas gun kinetics</strong> for velocity,
-              <strong style="color:var(--color-text);">star-configuration multi-barrel turrets</strong> for geometric
-              coverage, and <strong style="color:var(--color-text);">ALTA Fiber Loop Photonics</strong> for fire-control
-              latency under one millisecond.
-            </p>
-            <div class="hero-actions">
-              <a href="#concept" class="btn-primary">Explore the system</a>
-              <a href="#scenario" class="btn-ghost">Saturation-attack scenario</a>
-            </div>
-          </div>
-
-          <aside class="hero-aside" aria-label="HKDS performance snapshot">
-            <h2>Three hard constraints, met simultaneously</h2>
-            <p style="color: var(--color-text-muted); font-size: var(--text-sm);">
-              Velocity to meet hypersonic threats, latency to decide in seconds, and a cost per engagement
-              low enough to survive saturation attacks.
-            </p>
-            <div class="hero-metric-grid">
-              <div class="metric-card">
-                <div class="metric-label">Projectile velocity</div>
-                <div class="metric-value">4–8 km/s</div>
-                <div class="metric-note">5–8× conventional guns; competitive with hypersonic terminal speeds.</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-label">Fire-control latency</div>
-                <div class="metric-value">&lt; 1 ms</div>
-                <div class="metric-note">Photonic FLP reservoir computing in the optical domain.</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-label">Cost per shot</div>
-                <div class="metric-value">$3–8</div>
-                <div class="metric-note">Helium capsule + sabot + tungsten penetrator. No seeker. No warhead.</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-label">Threat coverage</div>
-                <div class="metric-value">FPV → HGV</div>
-                <div class="metric-note">From cheap drones to maneuvering reentry vehicles.</div>
-              </div>
-            </div>
-          </aside>
+      <div class="container">
+        <div class="logo-strip" aria-label="Supply chain partners">
+          <span>Exail</span>
+          <span>LioniX International</span>
+          <span>TOPTICA Photonics</span>
+          <span>Thales Alenia Space</span>
+          <span>STMicroelectronics</span>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- CONCEPT -->
-      <section id="concept">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Concept</div>
-            <h2 class="section-title">A third path between guns and missiles</h2>
-            <p class="section-lead">
-              Current air defense doctrine relies on expensive guided interceptors
-              (Patriot PAC-3 at $4M per round, Iron Dome at $50–100k per intercept) or conventional kinetic
-              systems (Phalanx CIWS, ZU-23-2) whose velocity and fire-control latency are inadequate against
-              modern hypersonic threats. HKDS proposes a third category — hypervelocity kinetic rounds at $3–8
-              per shot, guided by sub-millisecond photonic fire control.
-            </p>
-          </div>
-
-          <div class="grid-2">
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>System overview</span></div>
-              <h3>Distributed, autonomous, defensive battery</h3>
-              <p>
-                HKDS surrounds a defended site with corner-mounted turret nodes and a 10+ km layered sensor
-                perimeter. A central Fiber Loop Photonics (FLP) node ingests radar, optical, acoustic, and
-                fiber-Bragg sensor data, computes lead solutions and maneuver envelopes via photonic reservoir
-                computing, and pushes firing commands to the turrets in under a millisecond.
-              </p>
-              <ul class="list">
-                <li class="list-item">
-                  <div class="list-bullet" aria-hidden="true"></div>
-                  <div class="list-content">
-                    <h4>Fixed-site only</h4>
-                    <p>Installed as a permanent or semi-permanent area-denial shield around bases and critical assets.</p>
-                  </div>
-                </li>
-                <li class="list-item">
-                  <div class="list-bullet" aria-hidden="true"></div>
-                  <div class="list-content">
-                    <h4>Multi-threat coverage</h4>
-                    <p>From FPV drones and loitering munitions through cruise missiles, HGVs and terminal ballistic reentry.</p>
-                  </div>
-                </li>
-                <li class="list-item">
-                  <div class="list-bullet" aria-hidden="true"></div>
-                  <div class="list-content">
-                    <h4>Photonic intelligence core</h4>
-                    <p>FLP-based fire control continuously processes time-series sensor data and issues firing decisions in the optical domain.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Design drivers</span></div>
-              <h3>Three constraints that shape every design choice</h3>
-              <p>
-                The HKDS architecture is driven by the intersection of three demands that no current system meets simultaneously.
-              </p>
-              <div class="stat-grid">
-                <div class="stat">
-                  <div class="stat-label">Velocity</div>
-                  <div class="stat-value">Match the threat</div>
-                  <div class="stat-desc">Projectile speed must be competitive with hypersonic terminal velocities to keep lead distances manageable.</div>
-                </div>
-                <div class="stat">
-                  <div class="stat-label">Latency</div>
-                  <div class="stat-value">Decide in ms</div>
-                  <div class="stat-desc">Fire control must compute valid solutions within seconds of warning, not tens of seconds.</div>
-                </div>
-                <div class="stat">
-                  <div class="stat-label">Cost</div>
-                  <div class="stat-value">Fight saturation</div>
-                  <div class="stat-desc">Cost per engagement must stay low enough to withstand mixed-salvo and saturation attacks.</div>
-                </div>
-              </div>
-
-              <div class="callout">
-                <p>
-                  <strong>Lead distance = v_target × (range / v_projectile).</strong>
-                  At 5,000 m/s the HKDS round is 5–7× more forgiving on lead than a Phalanx CIWS round.
-                  Combined with sub-millisecond fire control, lead error effectively disappears as a miss
-                  contributor at close range.
-                </p>
-              </div>
-            </div>
-          </div>
+    <!-- CONCEPT -->
+    <section id="concept">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">The Concept</div>
+          <h2 class="section-title">A third path between guns and missiles</h2>
+          <p class="section-lead">
+            Current air defense doctrine relies on expensive guided interceptors
+            (Patriot PAC-3 at $4M per round, Iron Dome at $50–100k per intercept) or conventional kinetic
+            systems whose velocity and fire-control latency are inadequate against modern hypersonic
+            threats. HKDS proposes a third category — hypervelocity kinetic rounds at $3–8 per shot,
+            guided by sub-millisecond photonic fire control.
+          </p>
         </div>
-      </section>
 
-      <!-- THREAT -->
-      <section id="threat">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Threat spectrum</div>
-            <h2 class="section-title">From hobby drones to hypersonic glide vehicles</h2>
-            <p class="section-lead">
-              Design requirements are driven by the hardest cases — hypersonic glide vehicles and maneuvering
-              reentry vehicles — while the system must remain economically viable against the softest cases.
-            </p>
-          </div>
-
-          <div class="table-wrap" style="margin-bottom: var(--space-6);">
-            <table class="data" aria-label="Threat classification matrix">
-              <thead>
-                <tr>
-                  <th>Threat class</th>
-                  <th>Speed</th>
-                  <th>Altitude</th>
-                  <th>Maneuverability</th>
-                  <th>Time to base @ 10 km</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td><strong>FPV drone</strong></td><td class="num">30–80 m/s</td><td class="num">0–500 m</td><td>High, slow</td><td class="num ok">125–333 s</td></tr>
-                <tr><td><strong>Loitering munition</strong> (Shahed-136)</td><td class="num">160–200 m/s</td><td class="num">500–3,000 m</td><td>Low</td><td class="num ok">50–62 s</td></tr>
-                <tr><td><strong>Subsonic cruise missile</strong></td><td class="num">250–350 m/s</td><td class="num">50–3,000 m</td><td>Low–medium</td><td class="num ok">28–40 s</td></tr>
-                <tr><td><strong>Supersonic cruise missile</strong></td><td class="num">700–1,000 m/s</td><td class="num">100–15,000 m</td><td>Medium</td><td class="num hot">10–14 s</td></tr>
-                <tr><td><strong>Hypersonic cruise missile</strong></td><td class="num">1,000–2,000 m/s</td><td class="num">20–30,000 m</td><td>Medium</td><td class="num hot">5–10 s</td></tr>
-                <tr><td><strong>Hypersonic glide vehicle (HGV)</strong></td><td class="num">1,500–6,000 m/s</td><td class="num">20–60,000 m</td><td>High</td><td class="num crit">1.7–6.7 s</td></tr>
-                <tr><td><strong>Ballistic terminal phase</strong></td><td class="num">2,000–4,000 m/s</td><td class="num">10–80,000 m</td><td>Low (no maneuver)</td><td class="num crit">2.5–5 s</td></tr>
-                <tr><td><strong>ICBM terminal reentry</strong></td><td class="num">3,000–7,000 m/s</td><td class="num">20–120,000 m</td><td>Low</td><td class="num crit">1.4–3.3 s</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="grid-2-asym">
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Lead calculation</span></div>
-              <h3>Hypervelocity collapses the lead-error problem</h3>
-              <p>
-                Lead distance scales linearly with target speed and inversely with projectile speed. A faster
-                round means less lead, and less sensitivity to whatever the target does between fire command
-                and intercept.
-              </p>
-              <div class="table-wrap" style="margin-top: var(--space-4);">
-                <table class="data" aria-label="Lead distance comparison at 300 m engagement range">
-                  <thead>
-                    <tr><th>System</th><th>Projectile</th><th>Lead @ 30 m/s</th><th>Lead @ 300 m/s</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>M2 .50 BMG</td><td class="num">930 m/s</td><td class="num">9.7 m</td><td class="num">96.8 m</td></tr>
-                    <tr><td>Phalanx CIWS 20 mm</td><td class="num">1,100 m/s</td><td class="num">8.2 m</td><td class="num">81.8 m</td></tr>
-                    <tr><td><strong>HKDS LGG</strong></td><td class="num">5,000 m/s</td><td class="num ok">1.8 m</td><td class="num ok">18.0 m</td></tr>
-                    <tr><td><strong>HKDS LGG</strong></td><td class="num">7,000 m/s</td><td class="num ok">1.3 m</td><td class="num ok">12.9 m</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Operational regimes</span></div>
-              <h3>Three regimes, one system</h3>
-              <ul class="list">
-                <li class="list-item">
-                  <div class="list-bullet" aria-hidden="true"></div>
-                  <div class="list-content">
-                    <h4>Lower-tier (FPV, loitering munitions)</h4>
-                    <p>Tens to hundreds of seconds of warning time. Engaged primarily by conventional weapons routed through FLP, preserving hypervelocity capacity for harder targets.</p>
-                  </div>
-                </li>
-                <li class="list-item">
-                  <div class="list-bullet" aria-hidden="true"></div>
-                  <div class="list-content">
-                    <h4>Cruise missiles</h4>
-                    <p>Warning compresses to 10–40 s. Conventional CIWS struggle with lead error; HKDS combines hypervelocity rounds with photonic lead calculation to keep intercept windows open.</p>
-                  </div>
-                </li>
-                <li class="list-item">
-                  <div class="list-bullet" aria-hidden="true"></div>
-                  <div class="list-content">
-                    <h4>Hypersonic & ballistic terminal</h4>
-                    <p>1.4–6.7 s windows. HKDS hypervelocity kinetics cut required lead distance; FLP fire control delivers thousands of decision cycles inside the terminal trajectory.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- LGG -->
-      <section id="lgg">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Pillar 1 — Light gas gun</div>
-            <h2 class="section-title">Helium acoustic velocity sets the ceiling</h2>
-            <p class="section-lead">
-              A light gas gun (LGG) breaks past the chemical-propellant velocity ceiling by using a low
-              molecular-weight gas as the accelerant. The fundamental velocity ceiling of any gun is the
-              acoustic velocity of the propellant gas — a projectile cannot outrun the pressure wave driving it.
-            </p>
-          </div>
-
-          <div class="grid-2-asym">
-            <div>
-              <div class="card">
-                <div class="badge"><span class="badge-dot"></span><span>Two-stage architecture</span></div>
-                <h3>Electrically-driven piston compresses helium</h3>
-                <p>
-                  In the HKDS belt-fed configuration the piston is driven electrically rather than by a powder
-                  charge. An electromagnetic piston driver compresses the pre-loaded helium capsule into the
-                  launch tube at a controlled rate — repeatable muzzle velocity within ±0.5 % per shot, with
-                  the piston resettable between rounds for cyclic fire.
-                </p>
-
-                <div class="diagram" aria-label="Two-stage LGG diagram" style="margin-top: var(--space-4);">                <span class="em">STAGE 1</span>                      <span class="em">STAGE 2</span>
-  ┌─────────────────────┐     ┌────────────────────────────────┐
-  │ PUMP TUBE           │     │ LAUNCH TUBE                    │
-  │ <span class="ac">[PISTON ════════&gt;]</span> │     │ <span class="ac">[SABOT + PENETRATOR ═════&gt;]</span>   │
-  │ Helium compressed   │ →→→ │ Helium drives projectile       │
-  │ to 500–1000 MPa     │     │ down 3–6 m barrel              │
-  └─────────────────────┘     └────────────────────────────────┘
-     Wide bore ~80–120 mm           Narrow bore 10–25 mm
-     Piston mass: 0.5–2 kg          Projectile mass: 5–50 g
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="badge"><span class="badge-dot"></span><span>Performance envelope</span></div>
-                <h3>3.5–7 km/s muzzle velocity, payload-dependent</h3>
-                <div class="table-wrap" style="margin-top: var(--space-3);">
-                  <table class="data" aria-label="LGG performance envelope">
-                    <thead>
-                      <tr><th>Parameter</th><th>Specification</th><th>Notes</th></tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>Propellant</td><td>Helium (He)</td><td>99.9 % purity, recovered post-firing</td></tr>
-                      <tr><td>Peak chamber pressure</td><td class="num">500–700 MPa</td><td>During piston compression stage</td></tr>
-                      <tr><td>Muzzle velocity (5 g penetrator)</td><td class="num">4,500–5,500 m/s</td><td>Varies with barrel length</td></tr>
-                      <tr><td>Muzzle velocity (20 g penetrator)</td><td class="num">3,500–4,500 m/s</td><td>Standard combat load</td></tr>
-                      <tr><td>Muzzle velocity (50 g penetrator)</td><td class="num">2,500–3,500 m/s</td><td>High-value target load</td></tr>
-                      <tr><td>Barrel length (stage 2)</td><td class="num">3–6 m</td><td>Configurable per installation</td></tr>
-                      <tr><td>Piston reset time</td><td class="num">1.5–3 s</td><td>Drives maximum cyclic rate</td></tr>
-                      <tr><td>Cyclic rate (single barrel)</td><td class="num">20–40 rpm</td><td>Piston reset dependent</td></tr>
-                      <tr><td>Muzzle KE (5 g @ 5,000 m/s)</td><td class="num">62,500 J</td><td>~10× .50 BMG, ~1.25× Hellfire</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div class="card">
-                <div class="badge"><span class="badge-dot"></span><span>Propellant selection</span></div>
-                <h3>Helium: safe, inert, fast enough</h3>
-                <p>
-                  Acoustic velocity sets the ceiling on what a gas-driven projectile can do. Helium offers
-                  enough acoustic velocity (970 m/s) to reach the 4–6 km/s regime, while remaining inert,
-                  non-flammable, non-embrittling, and well understood in high-pressure systems.
-                </p>
-
-                <div class="table-wrap" style="margin-top: var(--space-3);">
-                  <table class="data" aria-label="Propellant gas comparison">
-                    <thead>
-                      <tr><th>Medium</th><th>Acoustic velocity</th><th>Practical v_max</th></tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>Air / N₂</td><td class="num">340 m/s</td><td class="num">~1,500 m/s</td></tr>
-                      <tr><td>Smokeless powder</td><td class="num">~1,700 m/s</td><td class="num">~1,800 m/s</td></tr>
-                      <tr><td>Neon</td><td class="num">435 m/s</td><td class="num">~2,000 m/s</td></tr>
-                      <tr><td><strong>Helium</strong> (HKDS)</td><td class="num">970 m/s</td><td class="num ok">~5,000–6,000 m/s</td></tr>
-                      <tr><td>Hydrogen</td><td class="num">1,270 m/s</td><td class="num">~7,000–8,000 m/s (unsafe)</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div class="callout">
-                  <p>
-                    <strong>Barrel service life.</strong> Chromium bore lining and stellite throat inserts
-                    keep barrel erosion to ~0.05–0.1 mm per 100 shots. With throat insert replacement every
-                    500 shots, sustained 40 rpm fire gives roughly 12 minutes of continuous firing before
-                    maintenance — well beyond any single engagement.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ROUNDS -->
-      <section id="rounds">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Ammunition</div>
-            <h2 class="section-title">Belt-fed rounds with on-board helium charge</h2>
-            <p class="section-lead">
-              Each HKDS round is a self-contained unit: a pre-pressurized helium capsule, a sacrificial polymer
-              sabot, and a dense tungsten penetrator. No explosives, no electronics in the firing chain — a
-              passive mechanical inertial trigger releases the helium charge only when chambered.
-            </p>
-          </div>
-
-          <div class="grid-2-asym">
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Round cross-section</span></div>
-              <h3>Capsule → sabot → penetrator</h3>
-              <div class="diagram" aria-label="HKDS round cross-section">  HKDS ROUND — CROSS SECTION (direction of travel: right)
-
-  ┌────────────────────┬──────────────┬──────────────────────┐
-  │  <span class="ac">HELIUM CAPSULE</span>    │POLYMER SABOT │ <span class="em">TUNGSTEN PENETRATOR</span>  │
-  │  Pre-charged       │Discards at   │Continues at full     │
-  │  15–25 MPa         │barrel exit   │velocity to target    │
-  │  Thin-wall Al/St   │4-petal design│L/D ratio 10:1        │
-  │  Burst disk fwd    │~2 g, ablative│~5–50 g tungsten      │
-  └────────────────────┴──────────────┴──────────────────────┘
-   ←—— 150–250 mm ——→ ←— 40–80 mm —→ ←——— 80–200 mm ———→
-              </div>
-
-              <p style="margin-top: var(--space-3);">
-                The burst disk is scored to fail at a specific differential pressure. During transport and
-                belt feeding, the capsule sees uniform pressure on both faces and the disk holds. The moment
-                the chambering pin pierces the facing side, the differential drives rupture and helium
-                releases into the pump stage — a purely mechanical, passive firing chain.
-              </p>
-            </div>
-
-            <div>
-              <div class="card">
-                <div class="badge"><span class="badge-dot"></span><span>Kinetic energy</span></div>
-                <h3>No warhead, no seeker — just kinetic energy</h3>
-                <p>
-                  At hypervelocity, kinetic energy alone guarantees destruction. A 5 g tungsten rod at
-                  5,000 m/s delivers more energy than a Hellfire warhead. Near-miss within 0.3–0.5 m
-                  generates a shockwave sufficient to defeat control surfaces, sensors, and propulsion on
-                  any current threat platform.
-                </p>
-                <div class="table-wrap" style="margin-top: var(--space-3);">
-                  <table class="data" aria-label="Kinetic energy comparison">
-                    <thead>
-                      <tr><th>Penetrator</th><th>Velocity</th><th>KE</th><th>vs. Hellfire</th></tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>5 g W</td><td class="num">5,000 m/s</td><td class="num">62.5 kJ</td><td class="ok">~1.25×</td></tr>
-                      <tr><td>10 g W</td><td class="num">5,000 m/s</td><td class="num">125 kJ</td><td class="ok">~2.5×</td></tr>
-                      <tr><td>20 g W</td><td class="num">4,000 m/s</td><td class="num">160 kJ</td><td class="ok">~3.2×</td></tr>
-                      <tr><td>50 g W</td><td class="num">3,000 m/s</td><td class="num">225 kJ</td><td class="ok">~4.5×</td></tr>
-                      <tr><td>.50 BMG ref.</td><td class="num">930 m/s</td><td class="num">~18 kJ</td><td>baseline</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="badge"><span class="badge-dot"></span><span>Per-round cost</span></div>
-                <h3>$2.55–$4.45 per round at scale</h3>
-                <div class="table-wrap" style="margin-top: var(--space-3);">
-                  <table class="data" aria-label="Round bill of materials">
-                    <thead><tr><th>Component</th><th>Unit cost</th></tr></thead>
-                    <tbody>
-                      <tr><td>Tungsten penetrator (20 g, W-Ni-Fe rod)</td><td class="num">$1.50–2.50</td></tr>
-                      <tr><td>Polymer sabot (HDPE injection moulded)</td><td class="num">$0.20–0.40</td></tr>
-                      <tr><td>Helium capsule body (6061 Al tube)</td><td class="num">$0.30–0.60</td></tr>
-                      <tr><td>Burst disk assembly</td><td class="num">$0.10–0.20</td></tr>
-                      <tr><td>Belt link (stamped steel)</td><td class="num">$0.10–0.15</td></tr>
-                      <tr><td>Helium charge (industrial fill)</td><td class="num">$0.05–0.10</td></tr>
-                      <tr><td>Assembly &amp; QC (automated line)</td><td class="num">$0.30–0.50</td></tr>
-                      <tr><td><strong>Total per round</strong></td><td class="num ok"><strong>$2.55–4.45</strong></td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- STAR TURRET -->
-      <section id="star">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Pillar 2 — Star turret</div>
-            <h2 class="section-title">Replace precision with geometric coverage</h2>
-            <p class="section-lead">
-              Against an HGV maneuvering at 5 g lateral acceleration, the target can move up to 70 m from its
-              predicted position during a 1.5 s flight time. No fire-control system, regardless of latency,
-              can predict maneuvers that have not yet occurred. The star configuration solves this by firing
-              into the entire maneuver envelope at once — physics requires the target to be somewhere inside it.
-            </p>
-          </div>
-
-          <div class="grid-2">
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Star geometry</span></div>
-              <h3>7-barrel baseline, adaptive spread</h3>
-              <div class="diagram" aria-label="Star turret barrel arrangement">  STAR TURRET — BARREL ARRANGEMENT (from muzzle)
-
-                          <span class="em">ARM 2</span> (el +)
-                              ↑
-              <span class="em">ARM 3</span>  ↖ │ ↗  <span class="em">ARM 1</span>
-  (az −)   ← — <span class="ac">CENTER</span> — →  (az +)
-              <span class="em">ARM 4</span>  ↙ │ ↘  <span class="em">ARM 6</span>
-                              ↓
-                          <span class="em">ARM 5</span> (el −)
-
-  Arm separation angle: set by FLP per engagement
-  Nominal separation: 1.5–3.0°
-  At 1 km: each arm covers 26–52 m from center
-              </div>
-              <p style="margin-top: var(--space-3);">
-                Arm separation is not fixed at manufacture. Mechanical actuators on each arm let FLP
-                dynamically reshape the spread per engagement: narrow for an FPV drone at short range,
-                wide for an HGV maneuvering at 5 g.
-              </p>
-            </div>
-
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Maneuver envelope</span></div>
-              <h3>Coverage scales with target capability</h3>
-              <p>
-                For an HGV at velocity v, maximum lateral acceleration a_max, and round flight time t_flight,
-                the maneuver radius is R = ½ × a_max × t_flight². FLP computes the full 3D envelope as an
-                ellipsoid from track data and optimizes arm placement against it.
-              </p>
-              <div class="table-wrap" style="margin-top: var(--space-3);">
-                <table class="data" aria-label="Maneuver radius examples">
-                  <thead>
-                    <tr><th>Target</th><th>Speed</th><th>Max accel.</th><th>Maneuver radius</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>FPV drone</td><td class="num">60 m/s</td><td class="num">~50 m/s²</td><td class="num">25 m</td></tr>
-                    <tr><td>Cruise missile</td><td class="num">800 m/s</td><td class="num">~30 m/s²</td><td class="num">15 m</td></tr>
-                    <tr><td>Hypersonic cruise</td><td class="num">1,500 m/s</td><td class="num">~40 m/s²</td><td class="num">20 m</td></tr>
-                    <tr><td>HGV (conservative)</td><td class="num">3,000 m/s</td><td class="num">~50 m/s²</td><td class="num">25 m</td></tr>
-                    <tr><td>HGV (aggressive)</td><td class="num">5,000 m/s</td><td class="num">~80 m/s²</td><td class="num">19.6 m</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="margin-top: var(--space-6);">
-            <div class="badge"><span class="badge-dot"></span><span>Extended star configurations</span></div>
-            <h3>Add arms to eliminate gap exploitation</h3>
+        <div class="grid-2">
+          <div class="card card-feature">
+            <span class="badge"><span class="badge-dot"></span>System overview</span>
+            <h3>Distributed, autonomous, defensive battery</h3>
             <p>
-              In the 7-barrel baseline, the angular gap between adjacent arms is roughly 60°. For HGV-class
-              targets, extended configurations close the gap to below the maneuver radius across all computed
-              threat classes.
+              HKDS surrounds a defended site with corner-mounted turret nodes and a 10+ km layered sensor
+              perimeter. A central Fiber Loop Photonics (FLP) node ingests radar, optical, acoustic and
+              fiber-Bragg sensor data, computes lead solutions and maneuver envelopes via photonic
+              reservoir computing, and pushes firing commands to the turrets in under a millisecond.
             </p>
-            <div class="table-wrap" style="margin-top: var(--space-3);">
-              <table class="data" aria-label="Star configuration options">
+            <ul class="list">
+              <li class="list-item">
+                <div class="list-bullet" aria-hidden="true"></div>
+                <div class="list-content">
+                  <h4>Fixed-site only</h4>
+                  <p>Installed as a permanent or semi-permanent area-denial shield around bases and critical assets.</p>
+                </div>
+              </li>
+              <li class="list-item">
+                <div class="list-bullet" aria-hidden="true"></div>
+                <div class="list-content">
+                  <h4>Multi-threat coverage</h4>
+                  <p>FPV drones, loitering munitions, cruise missiles, hypersonic glide vehicles, terminal ballistic reentry.</p>
+                </div>
+              </li>
+              <li class="list-item">
+                <div class="list-bullet" aria-hidden="true"></div>
+                <div class="list-content">
+                  <h4>Photonic intelligence core</h4>
+                  <p>FLP fire control processes time-series sensor data and issues firing decisions entirely in the optical domain.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="badge"><span class="badge-dot"></span>Design drivers</span>
+            <h3>Three constraints that shape every design choice</h3>
+            <p>
+              HKDS is driven by the intersection of three demands no current system meets simultaneously.
+              Each pillar of the architecture is the answer to one of them.
+            </p>
+            <div class="stat-grid">
+              <div class="stat">
+                <div class="stat-label">Velocity</div>
+                <div class="stat-value">Match the threat</div>
+                <div class="stat-desc">Projectile speed must be competitive with hypersonic terminal velocities to keep lead distances manageable.</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Latency</div>
+                <div class="stat-value">Decide in ms</div>
+                <div class="stat-desc">Fire control must compute valid solutions within seconds of warning, not tens of seconds.</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Cost</div>
+                <div class="stat-value">Fight saturation</div>
+                <div class="stat-desc">Cost per engagement must stay low enough to withstand mixed-salvo attacks.</div>
+              </div>
+            </div>
+            <div class="callout">
+              <p>
+                <strong>Lead distance = v_target × (range / v_projectile).</strong>
+                At 5,000 m/s, the HKDS round is 5–7× more forgiving on lead than a Phalanx CIWS round.
+                Combined with sub-millisecond fire control, lead error effectively disappears as a miss
+                contributor at close range.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section id="pillars">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Three technology pillars</div>
+          <h2 class="section-title">Velocity. Coverage. Latency.</h2>
+          <p class="section-lead">
+            Each HKDS pillar individually exists in adjacent fields. Light gas guns are established
+            research tools; belt-fed weapons are mature; FBG sensing is space-qualified; photonic
+            reservoir computing has been demonstrated end-to-end by Duport et al. (2012, 2016) and
+            Wang et al. (2025). The HKDS engineering challenge is integration, not invention.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <span class="badge badge-accent"><span class="badge-dot"></span>Pillar 01 — Velocity</span>
+            <h3 class="h-lg">Light gas gun</h3>
+            <p>
+              Helium acoustic velocity of 970 m/s lifts the gun-physics ceiling from ~1.8 km/s
+              (smokeless powder) to ~5–6 km/s. Electrically-driven piston compresses pre-loaded helium
+              capsules, removing the chemical propellant chain entirely.
+            </p>
+            <div class="stat-grid" style="grid-template-columns:1fr 1fr;">
+              <div class="stat">
+                <div class="stat-label">Muzzle velocity</div>
+                <div class="stat-value">4–8 km/s</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Cyclic rate</div>
+                <div class="stat-value">20–40 rpm</div>
+              </div>
+            </div>
+            <p style="margin-top: var(--space-4);">
+              <a href="technology.html#lgg" class="btn btn-ghost" style="padding:0.5rem 1rem;">Details →</a>
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="badge badge-accent"><span class="badge-dot"></span>Pillar 02 — Coverage</span>
+            <h3 class="h-lg">Star turret</h3>
+            <p>
+              Replace precision with geometric coverage. The 7-barrel star fires simultaneously across
+              the target's full maneuver envelope. FLP dynamically reshapes the spread per engagement:
+              narrow for an FPV drone, wide for an HGV at 5 g.
+            </p>
+            <div class="stat-grid" style="grid-template-columns:1fr 1fr;">
+              <div class="stat">
+                <div class="stat-label">Baseline barrels</div>
+                <div class="stat-value">7 (6+1)</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Extended</div>
+                <div class="stat-value">13 / 19</div>
+              </div>
+            </div>
+            <p style="margin-top: var(--space-4);">
+              <a href="technology.html#star" class="btn btn-ghost" style="padding:0.5rem 1rem;">Details →</a>
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="badge badge-accent"><span class="badge-dot"></span>Pillar 03 — Latency</span>
+            <h3 class="h-lg">FLP photonic fire control</h3>
+            <p>
+              ALTA Fiber Loop Photonics: FBG sensors feed a photonic reservoir computer over an optical
+              bus. Computation is interference in the photonic medium — no clock cycles, no ADC, no
+              pipeline. End-to-end analogue per Duport (2016).
+            </p>
+            <div class="stat-grid" style="grid-template-columns:1fr 1fr;">
+              <div class="stat">
+                <div class="stat-label">Sensor → fire</div>
+                <div class="stat-value">&lt; 1 ms</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Energy scaling</div>
+                <div class="stat-value">O(1)</div>
+              </div>
+            </div>
+            <p style="margin-top: var(--space-4);">
+              <a href="technology.html#flp" class="btn btn-ghost" style="padding:0.5rem 1rem;">Details →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THREAT -->
+    <section id="threat">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Threat spectrum</div>
+          <h2 class="section-title">From hobby drones to hypersonic glide vehicles</h2>
+          <p class="section-lead">
+            Design requirements are driven by the hardest cases — hypersonic glide vehicles and
+            maneuvering reentry vehicles — while the system must remain economically viable against
+            the softest cases.
+          </p>
+        </div>
+
+        <div class="table-wrap" style="margin-bottom: var(--space-6);">
+          <table class="data" aria-label="Threat classification matrix">
+            <thead>
+              <tr>
+                <th>Threat class</th>
+                <th>Speed</th>
+                <th>Altitude</th>
+                <th>Maneuverability</th>
+                <th>Warning @ 10&nbsp;km</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>FPV drone</strong></td><td class="num">30–80 m/s</td><td class="num">0–500 m</td><td>High, slow</td><td class="num ok">125–333 s</td></tr>
+              <tr><td><strong>Loitering munition</strong> (Shahed-136)</td><td class="num">160–200 m/s</td><td class="num">500–3,000 m</td><td>Low</td><td class="num ok">50–62 s</td></tr>
+              <tr><td><strong>Subsonic cruise missile</strong></td><td class="num">250–350 m/s</td><td class="num">50–3,000 m</td><td>Low–med</td><td class="num ok">28–40 s</td></tr>
+              <tr><td><strong>Supersonic cruise missile</strong></td><td class="num">700–1,000 m/s</td><td class="num">100–15,000 m</td><td>Medium</td><td class="num hot">10–14 s</td></tr>
+              <tr><td><strong>Hypersonic cruise missile</strong></td><td class="num">1,000–2,000 m/s</td><td class="num">20–30,000 m</td><td>Medium</td><td class="num hot">5–10 s</td></tr>
+              <tr><td><strong>Hypersonic glide vehicle</strong></td><td class="num">1,500–6,000 m/s</td><td class="num">20–60,000 m</td><td>High</td><td class="num crit">1.7–6.7 s</td></tr>
+              <tr><td><strong>Ballistic terminal phase</strong></td><td class="num">2,000–4,000 m/s</td><td class="num">10–80,000 m</td><td>Low (no maneuver)</td><td class="num crit">2.5–5 s</td></tr>
+              <tr><td><strong>ICBM terminal reentry</strong></td><td class="num">3,000–7,000 m/s</td><td class="num">20–120,000 m</td><td>Low</td><td class="num crit">1.4–3.3 s</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid-2-asym">
+          <div class="card">
+            <span class="badge"><span class="badge-dot"></span>Lead calculation</span>
+            <h3>Hypervelocity collapses lead error</h3>
+            <p>
+              Lead distance scales linearly with target speed and inversely with projectile speed.
+              A faster round means less lead, and less sensitivity to whatever the target does between
+              fire command and intercept.
+            </p>
+            <div class="table-wrap" style="margin-top: var(--space-4);">
+              <table class="data" aria-label="Lead distance comparison at 300 m engagement range">
                 <thead>
-                  <tr><th>Configuration</th><th>Barrels</th><th>Coverage nodes</th><th>Gap angle</th><th>Application</th></tr>
+                  <tr><th>System</th><th>Projectile</th><th>Lead @ 30 m/s</th><th>Lead @ 300 m/s</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Baseline</td><td class="num">7 (6 + 1)</td><td>6 + center</td><td class="num">~60° between arms</td><td>Standard engagement</td></tr>
-                  <tr><td>Extended</td><td class="num">13 (12 + 1)</td><td>12 + center</td><td class="num">~30° between arms</td><td>High-maneuverability HGV</td></tr>
-                  <tr><td>Dense</td><td class="num">19 (18 + 1)</td><td>18 + center</td><td class="num">~20° between arms</td><td>Maximum coverage, ICBM terminal</td></tr>
+                  <tr><td>M2 .50 BMG</td><td class="num">930 m/s</td><td class="num">9.7 m</td><td class="num">96.8 m</td></tr>
+                  <tr><td>Phalanx CIWS</td><td class="num">1,100 m/s</td><td class="num">8.2 m</td><td class="num">81.8 m</td></tr>
+                  <tr><td><strong>HKDS LGG</strong></td><td class="num">5,000 m/s</td><td class="num ok">1.8 m</td><td class="num ok">18.0 m</td></tr>
+                  <tr><td><strong>HKDS LGG</strong></td><td class="num">7,000 m/s</td><td class="num ok">1.3 m</td><td class="num ok">12.9 m</td></tr>
                 </tbody>
               </table>
             </div>
-            <p style="margin-top: var(--space-3); font-size: var(--text-sm); color: var(--color-text-muted);">
-              Round-to-round velocity variation across the star is &lt; 0.2 % given identical bores and
-              sabot/penetrator masses — critical for holding the computed pattern geometry at range.
-              Azimuth slew 60°/s, elevation slew 45°/s, position accuracy ±0.05 mrad (≈ 5 cm at 1 km).
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- FLP -->
-      <section id="flp">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Pillar 3 — Photonic fire control</div>
-            <h2 class="section-title">ALTA Fiber Loop Photonics, in the optical domain</h2>
-            <p class="section-lead">
-              HKDS fire control is derived from the ALTA Fiber Loop Photonics (FLP) architecture developed by
-              Venus / Airbus ETIS. Fiber Bragg grating (FBG) sensors feed a photonic reservoir computer (PRC)
-              over an optical bus. Computation happens as interference patterns in the photonic medium — no
-              clock cycles, no ADC delay, no pipeline stages.
-            </p>
           </div>
 
-          <div class="grid-2">
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>FLP architecture</span></div>
-              <h3>Same compute, different application</h3>
-              <p>
-                The four-stage ALTA architecture maps directly onto fire-control requirements. The FLP isn't
-                being repurposed — it's doing the same time-series pattern-recognition computation in a
-                different physical domain.
-              </p>
-              <div class="table-wrap" style="margin-top: var(--space-3);">
-                <table class="data" aria-label="FLP architecture mapping">
-                  <thead>
-                    <tr><th>FLP stage</th><th>Spacecraft (original)</th><th>HKDS application</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td><strong>FBG sensing</strong></td><td>Thermal, vibration, structural monitoring</td><td>Optical/radar track ingestion, threat-position sensing</td></tr>
-                    <tr><td><strong>PRC processing</strong></td><td>Anomaly pattern detection</td><td>Ballistic solution, maneuver envelope modelling</td></tr>
-                    <tr><td><strong>Internal comms</strong></td><td>Subsystem coordination</td><td>Turret assignment, cross-node firing commands</td></tr>
-                    <tr><td><strong>External downlink</strong></td><td>Earth–space telemetry</td><td>Sensor perimeter integration, command reporting</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Latency advantage</span></div>
-              <h3>Electronic vs photonic fire control</h3>
-              <div class="table-wrap" style="margin-top: var(--space-3);">
-                <table class="data" aria-label="Electronic vs photonic fire control comparison">
-                  <thead>
-                    <tr><th>Parameter</th><th>Electronic FC</th><th>FLP photonic FC</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Processing paradigm</td><td>Digital sequential</td><td>Analog photonic parallel</td></tr>
-                    <tr><td>Sensor-to-solution latency</td><td class="num hot">50–100 ms (Phalanx)</td><td class="num ok">&lt; 1 ms</td></tr>
-                    <tr><td>Target tracking update</td><td class="num">~50 Hz</td><td class="num ok">&gt; 10 kHz effective</td></tr>
-                    <tr><td>Multi-target simultaneous</td><td>Sequential time-division</td><td>True parallel, all targets</td></tr>
-                    <tr><td>EMP vulnerability</td><td class="hot">High — semiconductor logic</td><td class="ok">None — optical medium</td></tr>
-                    <tr><td>Plasma sheath tracking</td><td class="hot">Degraded (RF blackout)</td><td class="ok">Unaffected (optical)</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="callout">
-                <p>
-                  Against a 4,000 m/s HGV detected at 10 km, FLP recovers ~90 ms of additional lead time over
-                  electronic fire control — equivalent to <strong>360 m less target travel</strong> before the
-                  round is in the air.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PERIMETER -->
-      <section id="perimeter">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Sensor perimeter</div>
-            <h2 class="section-title">A 10 km layered sensor mesh — not a wall</h2>
-            <p class="section-lead">
-              The perimeter transforms HKDS from a reactive point defense into a proactive kill-solution
-              system. Detection at 10 km provides time to build a high-confidence firing solution before any
-              target reaches engagement range. Multiple overlapping passive and active modalities ensure no
-              threat profile passes undetected.
-            </p>
-          </div>
-
-          <div class="grid-2-asym">
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Defense zones</span></div>
-              <h3>Detection → Preparation → Kill</h3>
-              <div class="diagram" aria-label="HKDS defense zones plan view">  HKDS DEFENSE ZONES — PLAN VIEW
-
-  ╔══════════════════════════════════════════╗
-  ║ <span class="em">10 km DETECTION RING</span>                      ║  ← Tracking begins
-  ║   ┌──────────────────────────────────┐   ║  ← FLP builds firing solution
-  ║   │ <span class="ac">5 km PREPARATION RING</span>             │   ║
-  ║   │   ┌──────────────────────────┐   │   ║  ← Solutions finalized
-  ║   │   │ <span class="wn">2 km KILL RING</span>            │   │   ║  ← Turrets pre-slewed
-  ║   │   │                          │   │   ║
-  ║   │   │         [BASE]           │   │   ║  ← Fire authority active
-  ║   │   │                          │   │   ║
-  ║   │   └──────────────────────────┘   │   ║
-  ║   └──────────────────────────────────┘   ║
-  ╚══════════════════════════════════════════╝
-              </div>
-
-              <ul class="list" style="margin-top: var(--space-3);">
-                <li class="list-item">
-                  <div class="list-bullet"></div>
-                  <div class="list-content">
-                    <h4>Detection ring (10 km)</h4>
-                    <p>All sensors active. Target detected, classified, handed to FLP. Trajectory model and maneuver envelope construction begin immediately.</p>
-                  </div>
-                </li>
-                <li class="list-item">
-                  <div class="list-bullet"></div>
-                  <div class="list-content">
-                    <h4>Preparation ring (5 km)</h4>
-                    <p>Firing solution approaches confidence threshold. Turrets pre-slew, belt rounds index, classification locked, weapon assignment set.</p>
-                  </div>
-                </li>
-                <li class="list-item">
-                  <div class="list-bullet"></div>
-                  <div class="list-content">
-                    <h4>Kill ring (2 km)</h4>
-                    <p>Fire authority active. At 5 km/s muzzle velocity, a threat at 2 km is struck in under 0.4 s of flight.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Sensor stack</span></div>
-              <h3>Defense in depth against countermeasures</h3>
-              <div class="table-wrap" style="margin-top: var(--space-3);">
-                <table class="data" aria-label="Sensor layer stack">
-                  <thead>
-                    <tr><th>Sensor</th><th>Range</th><th>Strengths</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Passive radar (CDAA)</td><td class="num">10–30 km</td><td>No emissions, hard to locate/jam</td></tr>
-                    <tr><td>Active radar (sparse)</td><td class="num">50–200 km</td><td>Long range, all-weather</td></tr>
-                    <tr><td>Acoustic array</td><td class="num">1–5 km</td><td>Zero emissions, propulsion signatures</td></tr>
-                    <tr><td>Fiber seismic cable</td><td class="num">0–500 m</td><td>Buried, passive, tamper-detect</td></tr>
-                    <tr><td>IR tripwire (FBG)</td><td class="num">0–2 km LOS</td><td>Passive optical, jam-proof</td></tr>
-                    <tr><td>Space-based IR (SBIRS feed)</td><td>Global</td><td>Boost phase detection</td></tr>
-                    <tr><td>Long-range radar feed</td><td class="num">500–3,000 km</td><td>Ballistic / HGV early detection</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <p style="margin-top: var(--space-3); font-size: var(--text-sm);">
-                FBG data feeds directly into the same PRC processing layer that drives fire control. No
-                inter-system handoff, no protocol translation. Detection, tracking, and fire control are a
-                single continuous photonic computation from the moment a target enters sensor range.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- DISTRIBUTED BATTERY -->
-      <section id="battery">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Distributed battery</div>
-            <h2 class="section-title">Corner nodes, cross-engagement, graceful degradation</h2>
-            <p class="section-lead">
-              Turret nodes deploy at the corners of the defended perimeter, not in a centralized cluster.
-              Spatial distribution gives overlapping fire coverage, cross-engagement geometry,
-              parallax-enhanced tracking, and resilience against targeted suppression.
-            </p>
-          </div>
-
-          <div class="grid-2-asym">
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Installation plan</span></div>
-              <h3>Four-corner baseline</h3>
-              <div class="diagram" aria-label="Distributed battery layout">  DISTRIBUTED BATTERY — BASE INSTALLATION (PLAN VIEW)
-
-   <span class="em">[NW NODE]</span> ←———— 2–4 km ————→ <span class="em">[NE NODE]</span>
-       ↑                                     ↑
-       │   ┌─────────────────────────────┐   │
-       │   │                             │   │
-     2–4 km│      <span class="ac">[BASE CORE]</span>            │ 2–4 km
-       │   │   <span class="ac">[FLP CENTER NODE]</span>         │   │
-       │   │     <span class="ac">[BURIED C2]</span>             │   │
-       │   └─────────────────────────────┘   │
-       ↓                                     ↓
-   <span class="em">[SW NODE]</span> ←———— 2–4 km ————→ <span class="em">[SE NODE]</span>
-
-  Each corner: 1–3 star turrets + helium supply
-              + FLP sub-node + FBG sensor array
-              </div>
-              <p style="margin-top: var(--space-3); font-size: var(--text-sm);">
-                From any corner, the turret envelope covers the full interior and extends outward.
-                Against any approach vector, at least two corner nodes — typically three — have a favorable
-                engagement angle. Redundancy is geometric, not coordinated.
-              </p>
-            </div>
-
-            <div>
-              <div class="card">
-                <div class="badge"><span class="badge-dot"></span><span>Cross-engagement doctrine</span></div>
-                <h3>Each node defends its neighbour</h3>
-                <p>
-                  When an adversary fires suppression rounds at the corner nodes, the HKDS doctrine assigns
-                  each node to engage the threat targeting its <em>neighbour</em>, not the threat targeting
-                  itself. NW engages threats inbound on NE; NE engages threats inbound on NW; and so on.
-                </p>
-                <p style="margin-top: var(--space-3);">
-                  This creates a geometric problem for the attacker: any suppression round must first survive
-                  cross-fire from another node before it can destroy its target. The attacker cannot suppress
-                  the defense without first defeating the defense.
-                </p>
-              </div>
-
-              <div class="card">
-                <div class="badge"><span class="badge-dot"></span><span>Graceful degradation</span></div>
-                <h3>Designed to degrade, not collapse</h3>
-                <ul class="list">
-                  <li class="list-item">
-                    <div class="list-bullet"></div>
-                    <div class="list-content">
-                      <h4>1 of 4 nodes lost — 75 % capacity</h4>
-                      <p>All approach vectors retain at least one favorable engagement angle. Cross-engagement partially preserved.</p>
-                    </div>
-                  </li>
-                  <li class="list-item">
-                    <div class="list-bullet"></div>
-                    <div class="list-content">
-                      <h4>2 of 4 nodes lost — 50 % capacity</h4>
-                      <p>Coverage gaps appear on specific vectors. Functional defense against primary threat axes maintained.</p>
-                    </div>
-                  </li>
-                  <li class="list-item">
-                    <div class="list-bullet"></div>
-                    <div class="list-content">
-                      <h4>FLP center lost</h4>
-                      <p>Corner nodes fall back to autonomous operation via local FLP sub-nodes. Reduced coordination, continued independent engagement.</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="callout" style="margin-top: var(--space-6);">
-            <p>
-              <strong>Helium infrastructure.</strong> A networked installation justifies shared helium
-              infrastructure: central underground storage, buried supply lines pre-warmed against
-              Joule-Thomson cooling, and a closed-loop recovery system targeting 70–80 % per shot.
-              Beyond economics, recovery is a strategic supply-chain resilience measure — helium reserves
-              are geopolitically concentrated and finite.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- SATURATION SCENARIO -->
-      <section id="scenario">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Saturation-attack scenario</div>
-            <h2 class="section-title">29 mixed threats, &lt; $1,000 to defeat</h2>
-            <p class="section-lead">
-              Adversary launches a coordinated salvo: 3 HGVs + 4 cruise missiles + 20 FPV drones + 2 Shahed
-              loitering munitions. FLP classifies all 29 targets in &lt; 1 ms, routes each to the most
-              cost-effective weapon, and orchestrates the response across the four-corner battery.
-            </p>
-          </div>
-
-          <div class="scenario" aria-label="Saturation attack timeline">
-            <div class="t">T − 300 s</div>
-            <div class="e">Space-based IR (SBIRS) detects HGV boost phase. Feed to HKDS central FLP node begins.</div>
-            <div class="t">T − 60 s</div>
-            <div class="e">Theater radar detects cruise missiles at 30 km. FLP begins solution building.</div>
-            <div class="t">T − 20 s</div>
-            <div class="e">10 km perimeter detects all 29 targets. FLP classifies all simultaneously. Weapon assignment complete in &lt; 1 ms.</div>
-            <div class="t">T − 15 s</div>
-            <div class="e">3 HGVs: full-battery cross-engagement activated. Star arms adjusted to computed maneuver envelopes. All 4 corner nodes assigned.</div>
-            <div class="t">T − 12 s</div>
-            <div class="e">4 cruise missiles: LGG star configurations assigned. 2 nodes per missile, overlapping coverage.</div>
-            <div class="t">T − 10 s</div>
-            <div class="e">22 drones/munitions: conventional weapons spun up. Jammers active against RF-guided subset. Autocannon queued.</div>
-            <div class="t">T − 8 s</div>
-            <div class="e">HGVs enter 5 km preparation ring. Turrets pre-slewed. Belt indexed. Solutions finalized.</div>
-            <div class="t">T − 5 s</div>
-            <div class="e">All LGG turrets hold: solutions locked, waiting for 2 km kill ring boundary crossing.</div>
-            <div class="t">T − 2.5 s</div>
-            <div class="e">HGVs cross 2 km ring. Full battery fires simultaneously — 28 rounds in air (4 nodes × 7 barrels).</div>
-            <div class="t">T − 1.5 s</div>
-            <div class="e">Cruise missiles cross 2 km ring. 8 LGG rounds fired (2 nodes × 4 engagements).</div>
-            <div class="t">T 0 → +60 s</div>
-            <div class="e">Drone swarm engaged by conventional layer. Jammers, autocannon, M134.</div>
-            <div class="t">T + 3 s</div>
-            <div class="e">FLP kill assessment: HGV confirms 3 / 3. Cruise missile confirms 3 / 4. 1 re-engagement queued.</div>
-            <div class="t">T + 6 s</div>
-            <div class="e">Missed cruise missile re-engaged. Piston reset complete. Second engagement fired.</div>
-            <div class="t">T + 60 s</div>
-            <div class="e">All 29 threats neutralized. Total LGG expended: ~42 rounds. Conventional: ~800–2,000 rounds.</div>
-          </div>
-
-          <div class="grid-2" style="margin-top: var(--space-6);">
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Defender cost</span></div>
-              <h3>Under $1,000 in expendable material</h3>
-              <div class="table-wrap" style="margin-top: var(--space-3);">
-                <table class="data" aria-label="Defender cost analysis">
-                  <thead>
-                    <tr><th>Engagement</th><th>Quantity</th><th>Rounds</th><th>Cost</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>HGV intercept</td><td class="num">3</td><td class="num">28 LGG</td><td class="num">$140</td></tr>
-                    <tr><td>Cruise intercept</td><td class="num">5 (incl. re-engage)</td><td class="num">~10 LGG</td><td class="num">$50</td></tr>
-                    <tr><td>Drone suppression</td><td class="num">22</td><td class="num">~1,200 conv.</td><td class="num">$120–600</td></tr>
-                    <tr><td><strong>Total</strong></td><td class="num">29 targets</td><td>—</td><td class="num ok"><strong>~$310–790</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Attacker cost</span></div>
-              <h3>$160M+ to deliver the salvo</h3>
-              <p>
-                Conservative attacker package: 3 HGVs ($50–200M each) + 4 cruise missiles ($1–5M each) + 22
-                low-cost munitions. The current air-defense asymmetry — defenders spending more per intercept
-                than attackers per threat — is reversed by approximately
-                <strong style="color: var(--color-primary);">five orders of magnitude</strong>.
-              </p>
-              <div class="stat-grid" style="grid-template-columns: 1fr 1fr;">
-                <div class="stat">
-                  <div class="stat-label">Attacker</div>
-                  <div class="stat-value">$160M+</div>
-                  <div class="stat-desc">Per salvo, conservative.</div>
-                </div>
-                <div class="stat">
-                  <div class="stat-label">Defender</div>
-                  <div class="stat-value">&lt; $1k</div>
-                  <div class="stat-desc">In expendable material.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- HYPERSONIC -->
-      <section id="hypersonic">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Hypersonic engagement</div>
-            <h2 class="section-title">Competitive velocity, not chasing</h2>
-            <p class="section-lead">
-              HKDS does not claim to perfectly solve hypersonic defense. It proposes a kinetic terminal defense
-              architecture that is more physically plausible than any currently deployed system. HKDS fires
-              <em>into</em> an HGV's path — fundamentally different from missile interceptors that must chase.
-            </p>
-          </div>
-
-          <div class="grid-2-asym">
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Velocity relationship</span></div>
-              <h3>Closing speed at the kill ring</h3>
-              <div class="table-wrap" style="margin-top: var(--space-3);">
-                <table class="data" aria-label="HGV vs HKDS velocity relationship">
-                  <thead>
-                    <tr><th>HGV speed</th><th>HKDS projectile</th><th>Closing speed</th><th>Feasibility</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td class="num">Mach 5 (1,700 m/s)</td><td class="num">5,000–7,000 m/s</td><td class="num">6,700–8,700 m/s</td><td class="ok">Favorable</td></tr>
-                    <tr><td class="num">Mach 10 (3,400 m/s)</td><td class="num">5,000–7,000 m/s</td><td class="num">8,400–10,400 m/s</td><td class="ok">Favorable</td></tr>
-                    <tr><td class="num">Mach 15 (5,100 m/s)</td><td class="num">5,000–7,000 m/s</td><td class="num">10,100–12,100 m/s</td><td class="hot">Marginal</td></tr>
-                    <tr><td class="num">Mach 20 (6,800 m/s)</td><td class="num">5,000–7,000 m/s</td><td class="num">11,800–13,800 m/s</td><td class="crit">Challenging</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div>
-              <div class="card">
-                <div class="badge"><span class="badge-dot"></span><span>Atmospheric drag</span></div>
-                <h3>FLP solves the trajectory, not as a correction</h3>
-                <p>
-                  Below ~20 km, aerodynamic drag is significant for a 5 km/s round. FLP computes the ballistic
-                  trajectory with the full atmospheric model included — not as a perturbation. Engaging HGVs
-                  at high elevation angles (above 45°) reduces drag losses by routing the round through
-                  thinner atmosphere for more of its flight; the star turret's 85° elevation range
-                  accommodates this geometry.
-                </p>
-              </div>
-
-              <div class="card">
-                <div class="badge"><span class="badge-dot"></span><span>Plasma sheath</span></div>
-                <h3>Optical sensing through RF blackout</h3>
-                <p>
-                  Hypersonic threats generate plasma sheaths that degrade RF tracking during the terminal
-                  phase — when conventional fire control most needs it. HKDS FBG sensors and the photonic
-                  processing chain are optical and immune to plasma RF effects. This is an unplanned but
-                  significant advantage at the highest threat tier.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- DEFENSIVE DOCTRINE -->
-      <section id="defensive">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Doctrine</div>
-            <h2 class="section-title">Defensive only, by architecture and by intent</h2>
-            <p class="section-lead">
-              HKDS is explicitly designed as a defensive, terminal area-denial system. Its geometry,
-              emplacement, and engagement logic all enforce a defensive role rather than offensive power
-              projection.
-            </p>
-          </div>
-
-          <div class="defensive-panel">
-            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-2);">What HKDS is</h3>
-            <p style="color: var(--color-text-muted); font-size: var(--text-sm);">
-              A fixed, autonomous, multi-threat terminal defense layer that engages incoming aerial objects
-              only after they enter a defined defended airspace. An anti-access / area-denial shield that
-              protects bases, cities, and critical infrastructure from above.
-            </p>
-            <ul class="list" style="margin-top: var(--space-4);">
+          <div class="card">
+            <span class="badge"><span class="badge-dot"></span>Operational regimes</span>
+            <h3>Three regimes, one system</h3>
+            <ul class="list">
               <li class="list-item">
                 <div class="list-bullet"></div>
                 <div class="list-content">
-                  <h4>Fixed-site architecture</h4>
-                  <p>Corner-mounted turrets and buried sensor rings tie HKDS to the asset it protects; it is not a mobile artillery piece.</p>
+                  <h4>Lower-tier (FPV, loitering)</h4>
+                  <p>Tens to hundreds of seconds of warning. Engaged primarily by conventional weapons routed through FLP, preserving hypervelocity capacity.</p>
                 </div>
               </li>
               <li class="list-item">
                 <div class="list-bullet"></div>
                 <div class="list-content">
-                  <h4>Incoming-only engagement</h4>
-                  <p>Rules of engagement restrict HKDS to positively identified, inbound aerial threats within the defended volume.</p>
+                  <h4>Cruise missiles</h4>
+                  <p>Warning compresses to 10–40 s. HKDS combines hypervelocity rounds with photonic lead calculation to keep intercept windows open.</p>
                 </div>
               </li>
               <li class="list-item">
                 <div class="list-bullet"></div>
                 <div class="list-content">
-                  <h4>Purely kinetic payloads</h4>
-                  <p>Rounds carry no explosive warheads or guidance seekers — just tungsten rods driven to hypervelocity.</p>
-                </div>
-              </li>
-              <li class="list-item">
-                <div class="list-bullet"></div>
-                <div class="list-content">
-                  <h4>Phalanx-precedent autonomy</h4>
-                  <p>Campaign-level authorization with engagement-level autonomy follows the precedent of existing close-in weapon systems.</p>
+                  <h4>Hypersonic &amp; ballistic terminal</h4>
+                  <p>1.4–6.7 s windows. FLP delivers thousands of decision cycles inside the terminal trajectory.</p>
                 </div>
               </li>
             </ul>
           </div>
         </div>
-      </section>
-
-      <!-- CHALLENGES -->
-      <section id="challenges">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Engineering challenges</div>
-            <h2 class="section-title">Honest about the hard parts</h2>
-            <p class="section-lead">
-              The HKDS engineering challenge is integration, not invention. Light gas guns are established
-              research tools; belt-fed weapons are mature; FBG sensing is space-qualified; photonic reservoir
-              computing has been demonstrated in lab settings by Duport et al. (2012) and Wang et al. (2024).
-            </p>
-          </div>
-
-          <div class="table-wrap">
-            <table class="data" aria-label="Primary engineering challenges">
-              <thead>
-                <tr><th>Challenge</th><th>Severity</th><th>Status</th><th>Primary mitigation</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Barrel erosion at sustained fire rate</td><td class="hot">Medium</td><td class="ok">Solvable</td><td>Modular throat inserts, Cr lining, field-replaceable barrel modules</td></tr>
-                <tr><td>Helium supply-chain dependency</td><td class="hot">Medium</td><td class="ok">Managed</td><td>Closed-loop recovery (70–80 %), neon hybrid for lower tiers</td></tr>
-                <tr><td>FLP system TRL gap</td><td class="crit">High</td><td>Development path exists</td><td>ALTA spacecraft program covers Years 1–10; defense adaptation follows</td></tr>
-                <tr><td>HGV aerodynamic chaos at intercept</td><td class="hot">Medium</td><td>Partially mitigated</td><td>Tungsten penetrator ablation resistance, near-miss shockwave kill radius</td></tr>
-                <tr><td>Plasma sheath terminal tracking</td><td class="ok">Low</td><td class="ok">Advantage</td><td>FBG optical sensing immune to RF plasma effects</td></tr>
-                <tr><td>Star pattern dead zones</td><td>Low–medium</td><td class="ok">Solvable</td><td>12-arm extended config, adaptive FLP arm placement per engagement</td></tr>
-                <tr><td>Counter-targeting of fixed nodes</td><td class="hot">Medium</td><td>Partially mitigated</td><td>Hardened revetments, cross-engagement doctrine, mobile reserve nodes</td></tr>
-                <tr><td>Atmospheric drag on projectile</td><td>Low–medium</td><td class="ok">Solvable</td><td>FLP incorporates full atmospheric model in ballistic solution</td></tr>
-                <tr><td>Autonomous lethal engagement legality</td><td class="crit">High</td><td>Requires policy framework</td><td>Campaign-level authorization, engagement-level autonomy (Phalanx precedent)</td></tr>
-                <tr><td>Coordinated suppression of all nodes</td><td class="hot">Medium</td><td>Mitigated by geometry</td><td>Simultaneous destruction of all nodes requires attacker to pre-reveal full strike package</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="callout">
-            <p>
-              <strong>The FLP TRL gap is the biggest single risk.</strong> The HKDS application needs TRL 7–8
-              with military-grade qualification. Positive read: the ALTA spacecraft qualification program is
-              arguably <em>more</em> demanding than ground-based defense in several respects (radiation
-              hardening, launch vibration, orbital thermal cycling). The development paths are parallel and
-              mutually reinforcing, not sequential dependencies.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ROADMAP -->
-      <section id="roadmap">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Development path</div>
-            <h2 class="section-title">Years 0–15 — concept to production</h2>
-            <p class="section-lead">
-              HKDS is designed as a co-development partner to ALTA's FLP program. The same photonic core that
-              enables spacecraft autonomy can underpin terminal hypersonic defense on the ground.
-            </p>
-          </div>
-
-          <div class="timeline" aria-label="Development roadmap">
-            <div class="timeline-item">
-              <div class="timeline-title">Phase 0 — Concept validation</div>
-              <div class="timeline-meta">Years 0–1 · €500K–1M</div>
-              <div class="timeline-text">Single-barrel LGG proof, FLP sensing demonstration in the lab. Concept-level integration risk identification.</div>
-              <span class="timeline-tag">Lab</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-title">Phase 1 — MVP &amp; lab validation</div>
-              <div class="timeline-meta">Years 1–2 · €375K (ALTA) + €500K LGG</div>
-              <div class="timeline-text">Integrated FLP + single LGG barrel. FLP fire-control demonstrator hits &gt; 95 % solution accuracy against synthetic and recorded trajectories.</div>
-              <span class="timeline-tag">Hardware-in-the-loop</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-title">Phase 2 — Single-node prototype</div>
-              <div class="timeline-meta">Years 2–4 · €5–15M</div>
-              <div class="timeline-text">7-barrel star turret with belt feed and FLP control. Live-fire validation of cyclic rate and solution accuracy against representative aerial surrogates.</div>
-              <span class="timeline-tag">Proving ground</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-title">Phase 3 — On-orbit FLP qualification</div>
-              <div class="timeline-meta">Years 3–5 · €10–20M (ALTA, parallel track)</div>
-              <div class="timeline-text">Space qualification (ALTA Phase 2). TRL 6–7 FLP, radiation and vibration hardened. Most of the hardening work needed for HKDS comes free.</div>
-              <span class="timeline-tag">Parallel</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-title">Phase 4 — Node integration</div>
-              <div class="timeline-meta">Years 4–6 · €20–50M</div>
-              <div class="timeline-text">Full corner node with sensor perimeter. 4-node installation prototype, cross-engagement exercise on test range.</div>
-              <span class="timeline-tag">Full stack</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-title">Phase 5 — FLP defense qualification</div>
-              <div class="timeline-meta">Years 5–7 · €5–15M</div>
-              <div class="timeline-text">MIL-STD qualified FLP fire control. MTBF validation for critical defense infrastructure (target: 10,000+ hours).</div>
-              <span class="timeline-tag">Qualification</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-title">Phase 6 — Pilot installation</div>
-              <div class="timeline-meta">Years 7–10 · €50–150M</div>
-              <div class="timeline-text">First operational HKDS battery. 4-corner installation with hybrid weapon integration. Live-threat test against representative targets.</div>
-              <span class="timeline-tag">Operational</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-title">Phase 7 — Production</div>
-              <div class="timeline-meta">Years 10–15 · Program-dependent</div>
-              <div class="timeline-text">Manufacturing scale-up, export qualification, allied-nation deployment as the terminal layer in layered air-defense stacks.</div>
-              <span class="timeline-tag">Production</span>
-            </div>
-          </div>
-
-          <div class="callout">
-            <p>
-              <strong>Critical-path dependencies.</strong> FLP PRC accuracy on dynamic trajectory prediction
-              must hit &lt; 0.5 m error at 1 km before Phase 2 funding. Belt-feed cycling must reach 20 rpm
-              before Phase 4 integration. Helium recovery efficiency must hit 70 % before the Phase 6 pilot.
-              Star-arm separation actuators must respond in &lt; 100 ms for adaptive engagement geometry.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- SPECS -->
-      <section id="specs">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">System specifications</div>
-            <h2 class="section-title">HKDS node — at a glance</h2>
-            <p class="section-lead">
-              Baseline configuration is a 7-barrel star turret with helium closed-loop recovery and FLP fire
-              control. Extended 13- and 19-barrel variants are available for HGV-class engagements.
-            </p>
-          </div>
-
-          <div class="four-col" style="margin-bottom: var(--space-6);">
-            <div class="metric-card">
-              <div class="metric-label">Muzzle velocity</div>
-              <div class="metric-value">3.5–7 km/s</div>
-              <div class="metric-note">Payload-dependent</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Cyclic rate (4-node battery)</div>
-              <div class="metric-value">80–160 rpm</div>
-              <div class="metric-note">Coordinated assignment</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Engagement range</div>
-              <div class="metric-value">200 m – 5 km</div>
-              <div class="metric-note">Velocity-dependent at range</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Detection range</div>
-              <div class="metric-value">10 km +</div>
-              <div class="metric-note">200 km+ with upper-layer integration</div>
-            </div>
-          </div>
-
-          <div class="grid-2">
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Node specifications</span></div>
-              <h3>Baseline 7-barrel node</h3>
-              <div class="table-wrap" style="margin-top: var(--space-3);">
-                <table class="data" aria-label="HKDS node specifications">
-                  <tbody>
-                    <tr><td>Turret configuration</td><td>7-barrel baseline (13 / 19 extended)</td></tr>
-                    <tr><td>Propellant</td><td>Helium 99.9 %, closed-loop recovery</td></tr>
-                    <tr><td>Penetrator material</td><td>Tungsten alloy (W-Ni-Fe), L/D 10:1</td></tr>
-                    <tr><td>Penetrator masses</td><td class="num">5 / 10 / 20 / 50 g</td></tr>
-                    <tr><td>Kinetic energy range</td><td class="num">25 kJ – 220 kJ</td></tr>
-                    <tr><td>Cyclic rate (single node)</td><td class="num">20–40 rpm</td></tr>
-                    <tr><td>Azimuth coverage</td><td class="num">360°</td></tr>
-                    <tr><td>Elevation range</td><td class="num">−10° to +85°</td></tr>
-                    <tr><td>Slew rate (az / el)</td><td class="num">60° / 45° per second</td></tr>
-                    <tr><td>Fire-control latency</td><td class="num ok">&lt; 1 ms sensor-to-fire-command</td></tr>
-                    <tr><td>Cost per round</td><td class="num ok">$2.55 – $4.45</td></tr>
-                    <tr><td>Node cost (ex-FLP)</td><td class="num">$50,000 – $150,000</td></tr>
-                    <tr><td>4-node battery installed</td><td class="num">$1.5M – $3M</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Incumbent comparison</span></div>
-              <h3>HKDS vs current air-defense systems</h3>
-              <div class="table-wrap" style="margin-top: var(--space-3);">
-                <table class="data" aria-label="HKDS vs incumbent comparison">
-                  <thead>
-                    <tr><th>Metric</th><th>HKDS</th><th>Phalanx CIWS</th><th>Iron Dome</th><th>Patriot PAC-3</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Projectile velocity</td><td class="num ok">3,500–7,000 m/s</td><td class="num">1,100 m/s</td><td class="num">~1,000 m/s</td><td class="num">~1,500 m/s</td></tr>
-                    <tr><td>Cost per intercept</td><td class="num ok">$3–8</td><td class="num">$27</td><td class="num hot">$50k–100k</td><td class="num crit">$3–4M</td></tr>
-                    <tr><td>FC latency</td><td class="num ok">&lt; 1 ms</td><td class="num">50–100 ms</td><td class="num">~200 ms</td><td class="num">~300 ms</td></tr>
-                    <tr><td>Max threat speed</td><td class="num ok">~7,000 m/s</td><td class="num">~600 m/s</td><td class="num">~500 m/s</td><td class="num">~2,000 m/s</td></tr>
-                    <tr><td>EMP vulnerability</td><td class="ok">None</td><td class="hot">Moderate</td><td class="crit">High</td><td class="crit">High</td></tr>
-                    <tr><td>Plasma-sheath tracking</td><td class="ok">Unaffected</td><td>Degraded</td><td>Degraded</td><td>Degraded</td></tr>
-                    <tr><td>Installed cost</td><td class="num ok">$1.5–3M</td><td class="num">$5.6M</td><td class="num">$50M+</td><td class="num">$1B+ (battery)</td></tr>
-                    <tr><td>HGV engagement</td><td class="ok">Yes (probabilistic)</td><td class="crit">No</td><td class="crit">No</td><td class="hot">Marginal</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONCLUSION -->
-      <section id="conclusion">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Conclusion</div>
-            <h2 class="section-title">A new category of air defense</h2>
-            <p class="section-lead">
-              HKDS represents a coherent, physically grounded proposal for a new category of air defense —
-              filling the specific gap between expensive guided missiles and inadequate conventional kinetics,
-              at a cost per engagement that reverses the economic asymmetry that currently favors aerial
-              attackers.
-            </p>
-          </div>
-
-          <div class="three-col">
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Claim 1 — Velocity</span></div>
-              <h3>3.5–7 km/s muzzle velocity</h3>
-              <p>HKDS projectiles are the first kinetic intercept mechanism capable of engaging hypersonic glide vehicles on competitive velocity terms. No current deployed kinetic system approaches this velocity class.</p>
-            </div>
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Claim 2 — Latency</span></div>
-              <h3>&lt; 1 ms fire control</h3>
-              <p>FLP photonic fire control delivers sensor-to-fire latency 50–100× faster than current electronic fire control. Against hypersonic threats where engagement time is measured in seconds, the latency advantage is mission-critical.</p>
-            </div>
-            <div class="card">
-              <div class="badge"><span class="badge-dot"></span><span>Claim 3 — Cost</span></div>
-              <h3>$3–8 per round</h3>
-              <p>HKDS inverts the attacker–defender cost asymmetry. An adversary spending $50–200M per HGV faces interception by a $5–8 round. A 29-target saturation attack defeated for under $1,000 in expendables.</p>
-            </div>
-          </div>
-
-          <div class="callout" style="margin-top: var(--space-6);">
-            <p>
-              <strong>The concept is technically sound, the development path exists, and the strategic need
-              is acute.</strong> Hypersonic defense is the primary unresolved capability gap in Western air
-              defense architecture. HKDS offers a credible physics-based approach to terminal hypersonic
-              defense at a cost profile that makes large-scale deployment economically viable.
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="container footer-inner">
-        <span>HKDS — Hypervelocity Kinetic Defense System · Revision 1.0 · Defensive-only concept</span>
-        <span>
-          Developed in collaboration with ALTA by Venus (Bushra Alzadjali &amp; Marko Alagic) — Airbus ETIS.
-          Built for discussion, not for field deployment.
-        </span>
       </div>
-    </footer>
-  </div>
+    </section>
+
+    <!-- ALTA CALLOUT -->
+    <section id="alta">
+      <div class="container">
+        <div class="grid-2-asym">
+          <div>
+            <div class="section-eyebrow">Powered by ALTA</div>
+            <h2 class="section-title" style="margin-bottom: var(--space-5);">Intelligence that emerges from light.</h2>
+            <p class="section-lead" style="margin-bottom: var(--space-5);">
+              HKDS fire control is the defense application of the ALTA Fiber Loop Photonics platform —
+              an ITAR-free, sovereign-EU photonic stack that fuses sensing, processing, and communication
+              into a continuous optical pipeline. The same architecture that enables SmallSat autonomy on
+              orbit drives terminal hypersonic defense on the ground.
+            </p>
+            <div class="stat-grid">
+              <div class="stat">
+                <div class="stat-label">Energy scaling</div>
+                <div class="stat-value">O(1)</div>
+                <div class="stat-desc">vs O(N²) digital — Wang et al. (2025)</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Signal chain</div>
+                <div class="stat-value">Zero A/D</div>
+                <div class="stat-desc">Fully analogue end-to-end — Duport et al. (2016)</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">EM vulnerability</div>
+                <div class="stat-value">None</div>
+                <div class="stat-desc">Optical medium, immune to EMP &amp; jamming</div>
+              </div>
+            </div>
+            <p style="margin-top: var(--space-6);">
+              <a href="science.html" class="btn btn-primary">See the science →</a>
+            </p>
+          </div>
+
+          <figure class="svg-fig" aria-label="FLP four-stage architecture">
+            <svg viewBox="0 0 480 360" role="img" aria-label="FLP four-stage optical pipeline">
+              <defs>
+                <linearGradient id="gflp" x1="0" x2="1">
+                  <stop offset="0" stop-color="#38bdf8" stop-opacity="0.8"/>
+                  <stop offset="1" stop-color="#22c55e" stop-opacity="0.8"/>
+                </linearGradient>
+                <filter id="glow"><feGaussianBlur stdDeviation="2.5"/></filter>
+              </defs>
+
+              <!-- Connection line -->
+              <line x1="60" y1="180" x2="420" y2="180" stroke="url(#gflp)" stroke-width="3" stroke-linecap="round"/>
+              <line x1="60" y1="180" x2="420" y2="180" stroke="url(#gflp)" stroke-width="6" stroke-linecap="round" opacity="0.4" filter="url(#glow)"/>
+
+              <!-- Stage circles -->
+              <g font-family="Work Sans" font-size="11" fill="#94a3b8" text-anchor="middle">
+                <!-- 1 -->
+                <circle cx="60" cy="180" r="32" fill="#0a0f17" stroke="#22c55e" stroke-width="2"/>
+                <text x="60" y="184" font-size="14" fill="#22c55e" font-weight="600">01</text>
+                <text x="60" y="230" fill="#f3f4f6" font-size="11" font-weight="600">SENSING</text>
+                <text x="60" y="246" fill="#64748b">FBG arrays</text>
+                <text x="60" y="262" fill="#22c55e" font-size="10">TRL 9</text>
+
+                <!-- 2 -->
+                <circle cx="180" cy="180" r="32" fill="#0a0f17" stroke="#f59e0b" stroke-width="2"/>
+                <text x="180" y="184" font-size="14" fill="#f59e0b" font-weight="600">02</text>
+                <text x="180" y="230" fill="#f3f4f6" font-size="11" font-weight="600">PROCESSING</text>
+                <text x="180" y="246" fill="#64748b">Reservoir compute</text>
+                <text x="180" y="262" fill="#f59e0b" font-size="10">TRL 4–5</text>
+
+                <!-- 3 -->
+                <circle cx="300" cy="180" r="32" fill="#0a0f17" stroke="#38bdf8" stroke-width="2"/>
+                <text x="300" y="184" font-size="14" fill="#38bdf8" font-weight="600">03</text>
+                <text x="300" y="230" fill="#f3f4f6" font-size="11" font-weight="600">INTERNAL COMMS</text>
+                <text x="300" y="246" fill="#64748b">Fiber backbone</text>
+                <text x="300" y="262" fill="#38bdf8" font-size="10">TRL 6 · 100 Gbps</text>
+
+                <!-- 4 -->
+                <circle cx="420" cy="180" r="32" fill="#0a0f17" stroke="#38bdf8" stroke-width="2"/>
+                <text x="420" y="184" font-size="14" fill="#38bdf8" font-weight="600">04</text>
+                <text x="420" y="230" fill="#f3f4f6" font-size="11" font-weight="600">EXTERNAL LINK</text>
+                <text x="420" y="246" fill="#64748b">Laser terminal</text>
+                <text x="420" y="262" fill="#38bdf8" font-size="10">TRL 6–7 · 10 Gbps</text>
+              </g>
+
+              <!-- Header -->
+              <g font-family="Instrument Serif" text-anchor="middle">
+                <text x="240" y="55" font-size="22" fill="#f3f4f6">Fiber Loop Photonics</text>
+                <text x="240" y="78" font-size="12" fill="#94a3b8" font-family="Work Sans" letter-spacing="2">A 4-STEP OPTICAL PIPELINE</text>
+              </g>
+
+              <!-- Bottom note -->
+              <text x="240" y="320" font-family="Work Sans" font-size="10" fill="#64748b" text-anchor="middle">
+                Sensor → decision in &lt; 1 ms · no A/D conversion · no EMI · O(1) energy
+              </text>
+            </svg>
+            <figcaption>ALTA · 4-stage Fiber Loop Photonics</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="next">
+      <div class="container">
+        <div class="defensive-panel">
+          <div class="section-eyebrow">Defensive only · by architecture and by intent</div>
+          <h2 class="section-title">A new category of air defense</h2>
+          <p class="section-lead">
+            HKDS represents a coherent, physically grounded proposal that fills the specific gap between
+            expensive guided missiles and inadequate conventional kinetics, at a cost per engagement
+            that reverses the economic asymmetry favoring aerial attackers.
+          </p>
+
+          <div class="section-index">
+            <a href="technology.html">Light gas gun</a>
+            <a href="technology.html#rounds">Belt-fed rounds</a>
+            <a href="technology.html#star">Star turret</a>
+            <a href="technology.html#flp">FLP fire control</a>
+            <a href="science.html">Scientific foundation</a>
+            <a href="doctrine.html#perimeter">Sensor perimeter</a>
+            <a href="doctrine.html#battery">Distributed battery</a>
+            <a href="doctrine.html#scenario">Saturation scenario</a>
+            <a href="doctrine.html#hypersonic">Hypersonic engagement</a>
+            <a href="program.html#challenges">Engineering challenges</a>
+            <a href="program.html#roadmap">Development roadmap</a>
+            <a href="program.html#specs">System specifications</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo-lockup" style="margin-bottom: var(--space-4);">
+          <div class="logo-mark" aria-hidden="true"></div>
+          <div class="logo-text">
+            <span class="eyebrow">Defensive only · Rev 1.0</span>
+            <span class="brand">HKDS</span>
+          </div>
+        </div>
+        <p style="color: var(--color-text-muted); font-size: var(--text-sm); max-width: 42ch;">
+          Hypervelocity Kinetic Defense System — a defensive terminal area-denial concept built on
+          ALTA Fiber Loop Photonics. Concept document, not a fielded system.
+        </p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="science.html">Scientific foundation</a></li>
+          <li><a href="doctrine.html">Doctrine &amp; scenario</a></li>
+          <li><a href="program.html">Program &amp; specs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ALTA platform</h4>
+        <ul>
+          <li><a href="science.html">Fiber Loop Photonics</a></li>
+          <li><a href="mailto:hello@alta.space">hello@alta.space</a></li>
+          <li><span style="color: var(--color-text-faint);">Sovereign-EU · ITAR-free</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 · HKDS Technical Concept · Developed in collaboration with ALTA by Venus (Bushra Alzadjali &amp; Marko Alagić) — EIIS / Airbus Space Challenge</span>
+        <span>Built for discussion, not for field deployment.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Mobile menu toggle (lightweight)
+  const t = document.querySelector('.menu-toggle');
+  const l = document.querySelector('.nav-links');
+  if (t && l) t.addEventListener('click', () => l.classList.toggle('is-open'));
+</script>
 </body>
 </html>
