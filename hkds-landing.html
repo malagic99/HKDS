@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HKDS — Hypervelocity Kinetic Defense System</title>
+  <meta name="description" content="HKDS is a defensive hypervelocity kinetic air-defense battery with photonic fire control, designed to stop threats from FPV drones to hypersonic glide vehicles." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Design tokens */
+    :root, [data-theme="light"] {
+      /* Type scale */
+      --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+      --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+      --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw, 3.5rem);
+
+      /* Spacing */
+      --space-1:  0.25rem;
+      --space-2:  0.5rem;
+      --space-3:  0.75rem;
+      --space-4:  1rem;
+      --space-5:  1.25rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+
+      /* Colors — dark, defence-leaning */
+      --color-bg:             #05070b;
+      --color-surface:        #0b111a;
+      --color-surface-2:      #111923;
+      --color-surface-offset: #151f2b;
+      --color-surface-offset-2:#1a2533;
+      --color-divider:        #1f2a38;
+      --color-border:         #223042;
+
+      --color-text:           #f3f4f6;
+      --color-text-muted:     #9ca3af;
+      --color-text-faint:     #6b7280;
+      --color-text-inverse:   #05070b;
+
+      --color-primary:        #38bdf8; /* icy blue */
+      --color-primary-hover:  #0ea5e9;
+      --color-primary-active: #0284c7;
+
+      --color-accent:         #22c55e; /* defensive green */
+
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+      --shadow-md: 0 6px 20px rgba(0,0,0,0.35);
+      --shadow-lg: 0 18px 45px rgba(0,0,0,0.5);
+
+      --content-narrow: 640px;
+      --content-default: 960px;
+      --content-wide: 1200px;
+
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+      --font-body: 'Work Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-display: 'Instrument Serif', 'Georgia', serif;
+    }
+
+    [data-theme="dark"] {
+      /* reuse same tokens; page is dark-first */
+    }
+
+    /* Base styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--space-16);
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background: radial-gradient(circle at top left, #1f2933 0, #05070b 55%);
+    }
+
+    img, picture, svg { display: block; max-width: 100%; height: auto; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-interactive),
+                  background var(--transition-interactive),
+                  border-color var(--transition-interactive),
+                  box-shadow var(--transition-interactive);
+    }
+
+    a:hover {
+      color: var(--color-primary);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      line-height: 1.1;
+      text-wrap: balance;
+    }
+
+    p { text-wrap: pretty; max-width: 75ch; }
+
+    .page-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--content-wide);
+      margin: 0 auto;
+      padding-inline: var(--space-4);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(5,7,11,0.96), rgba(5,7,11,0.85));
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: var(--space-3);
+      gap: var(--space-4);
+    }
+
+    .logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 30% 70% 60% 40% / 40% 45% 55% 60%;
+      background: radial-gradient(circle at 30% 20%, #e5f9ff 0, #38bdf8 32%, #0f172a 75%);
+      box-shadow: 0 0 30px rgba(56,189,248,0.45);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      inset: 25%;
+      border-radius: inherit;
+      border: 1px solid rgba(15,23,42,0.6);
+      box-shadow: 0 0 18px rgba(15,23,42,0.8) inset;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-text span:first-child {
+      font-size: var(--text-sm);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .logo-text span:last-child {
+      font-size: var(--text-lg);
+      font-family: var(--font-display);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      font-size: var(--text-sm);
+    }
+
+    .nav-links a {
+      color: var(--color-text-muted);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--color-primary);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 0.18rem 0.7rem;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--color-text-muted);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #bbf7d0 0, #22c55e 35%, #052e16 90%);
+      box-shadow: 0 0 10px rgba(34,197,94,0.8);
+    }
+
+    .hero {
+      padding-block: var(--space-12);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: var(--space-10);
+      align-items: center;
+    }
+
+    .hero-kicker {
+      margin-bottom: var(--space-4);
+    }
+
+    .hero-title {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-subtitle {
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-6);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-full);
+      background: linear-gradient(to right, #0ea5e9, #22c55e);
+      color: var(--color-text-inverse);
+      border: none;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      background: rgba(15,23,42,0.7);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .hero-aside {
+      background: radial-gradient(circle at top, rgba(15,118,210,0.25), transparent 55%),
+                  radial-gradient(circle at bottom, rgba(22,163,74,0.2), transparent 60%),
+                  var(--color-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(30,64,175,0.5);
+      box-shadow: var(--shadow-lg);
+      padding: var(--space-5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-aside::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 0, rgba(148,163,184,0.12), transparent 60%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-aside h2 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-3);
+    }
+
+    .hero-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-3);
+    }
+
+    .metric-card {
+      padding: var(--space-3);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(148,163,184,0.45);
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.8), rgba(15,23,42,0.95));
+    }
+
+    .metric-label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-text-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .metric-value {
+      font-size: var(--text-lg);
+      font-weight: 600;
+    }
+
+    .metric-note {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      margin-top: 0.2rem;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    section {
+      padding-block: var(--space-12);
+      border-top: 1px solid rgba(15,23,42,0.9);
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.3), transparent 60%);
+    }
+
+    section:nth-of-type(even) {
+      background: radial-gradient(circle at top right, rgba(15,23,42,0.4), transparent 60%);
+    }
+
+    .section-header {
+      margin-bottom: var(--space-6);
+      max-width: var(--content-narrow);
+    }
+
+    .section-eyebrow {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .section-title {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-3);
+    }
+
+    .section-lead {
+      color: var(--color-text-muted);
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
+    }
+
+    .card {
+      padding: var(--space-5);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31,41,55,0.9);
+      background: linear-gradient(to bottom right, rgba(15,23,42,0.95), rgba(15,23,42,0.8));
+      box-shadow: var(--shadow-md);
+    }
+
+    .card h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-2);
+    }
+
+    .card p {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(56,189,248,0.4);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: var(--space-2);
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #38bdf8;
+      box-shadow: 0 0 8px rgba(56,189,248,0.8);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: var(--space-8);
+      align-items: flex-start;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+    }
+
+    .list-item {
+      display: flex;
+      gap: var(--space-3);
+      align-items: flex-start;
+    }
+
+    .list-bullet {
+      width: 11px;
+      height: 11px;
+      margin-top: 0.25rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #fee2e2 0, #f97316 32%, #7c2d12 90%);
+      box-shadow: 0 0 12px rgba(249,115,22,0.8);
+    }
+
+    .list-content h4 {
+      font-size: var(--text-sm);
+      margin-bottom: 0.1rem;
+    }
+
+    .list-content p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+
+    .stat {
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: rgba(15,23,42,0.9);
+    }
+
+    .stat-label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-value {
+      font-size: var(--text-lg);
+      font-weight: 600;
+    }
+
+    .stat-desc {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      margin-top: 0.2rem;
+    }
+
+    .timeline {
+      border-left: 1px solid var(--color-divider);
+      margin-top: var(--space-4);
+      padding-left: var(--space-5);
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -2.15rem;
+      top: 0.35rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: #38bdf8;
+      box-shadow: 0 0 10px rgba(56,189,248,0.8);
+    }
+
+    .timeline-title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-meta {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-text {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .defensive-panel {
+      padding: var(--space-5);
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(34,197,94,0.5);
+      background: linear-gradient(to right, rgba(22,163,74,0.15), rgba(15,23,42,0.9));
+      margin-top: var(--space-4);
+    }
+
+    footer {
+      border-top: 1px solid var(--color-divider);
+      background: #020617;
+      padding-block: var(--space-4);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .footer-inner a {
+      color: var(--color-text-faint);
+    }
+
+    .footer-inner a:hover {
+      color: var(--color-primary);
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .three-col,
+      .grid-2,
+      .stat-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-block: var(--space-10);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: var(--text-xl);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-aside {
+        margin-top: var(--space-4);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="container nav">
+        <div class="logo-lockup">
+          <div class="logo-mark" aria-hidden="true"></div>
+          <div class="logo-text">
+            <span>Defensive only</span>
+            <span>HKDS</span>
+          </div>
+        </div>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#concept">Concept</a>
+          <a href="#threat">Threats</a>
+          <a href="#technology">Technology</a>
+          <a href="#defensive">Defensive role</a>
+          <a href="#roadmap">Roadmap</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="container hero-grid">
+          <div>
+            <div class="hero-kicker">
+              <div class="pill">
+                <span class="pill-dot" aria-hidden="true"></span>
+                <span>Terminal hypersonic defense</span>
+              </div>
+            </div>
+            <h1 class="hero-title">
+              <span>Hypervelocity Kinetic Defense System</span>
+              <span style="font-size: var(--text-lg); font-weight: 400; color: var(--color-text-muted); margin-top: 0.5rem;">Sub-millisecond photonic fire control. Single-digit dollars per shot.</span>
+            </h1>
+            <p class="hero-subtitle">
+              HKDS is a fixed, defensive area-denial battery that uses light-gas hypervelocity rounds and
+              photonic fire control to stop threats from low-cost FPV drones to hypersonic glide vehicles,
+              without relying on multi-million-dollar missile interceptors.
+            </p>
+            <div class="hero-actions">
+              <a href="#concept" class="btn-primary">Explore the concept</a>
+              <a href="#defensive" class="btn-ghost">Defensive-only doctrine</a>
+            </div>
+          </div>
+
+          <aside class="hero-aside" aria-label="HKDS performance snapshot">
+            <h2>Designed around three hard constraints</h2>
+            <p style="color: var(--color-text-muted); font-size: var(--text-sm);">
+              Velocity to meet hypersonic threats, latency to decide in seconds, and a cost per engagement
+              low enough to survive saturation attacks.
+            </p>
+            <div class="hero-metric-grid">
+              <div class="metric-card">
+                <div class="metric-label">Projectile velocity</div>
+                <div class="metric-value">4–8 km/s</div>
+                <div class="metric-note">5–8× conventional guns; competitive with hypersonic terminal speeds.</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-label">Fire-control latency</div>
+                <div class="metric-value">&lt; 1 ms</div>
+                <div class="metric-note">Photonic FLP fire control using reservoir computing.</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-label">Cost per shot</div>
+                <div class="metric-value">$3–8</div>
+                <div class="metric-note">Helium capsule + sabot + tungsten, no seeker or explosive.</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-label">Threat coverage</div>
+                <div class="metric-value">FPV → HGV</div>
+                <div class="metric-note">From cheap drones to maneuvering reentry vehicles.</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="concept">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Concept</div>
+            <h2 class="section-title">A third path between guns and missiles</h2>
+            <p class="section-lead">
+              Today, air defenses either fire slow conventional guns or expensive guided missiles. HKDS proposes
+              a third category: hypervelocity kinetic rounds guided by photonic fire control, delivering missile-class
+              terminal performance with gun-like simplicity and cost.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <div class="card">
+                <div class="badge"><span class="badge-dot"></span><span>System overview</span></div>
+                <h3>Distributed, autonomous, defensive battery</h3>
+                <p>
+                  HKDS surrounds a defended site with corner-mounted turret nodes and a 10+ km sensor perimeter.
+                  A central Fiber Loop Photonics (FLP) node ingests radar, optical, and fiber sensor data, computes
+                  lead solutions via photonic reservoir computing, and pushes fire/no-fire commands back to the
+                  turrets in under a millisecond.
+                </p>
+                <ul class="list">
+                  <li class="list-item">
+                    <div class="list-bullet" aria-hidden="true"></div>
+                    <div class="list-content">
+                      <h4>Fixed-site only</h4>
+                      <p>Installed as a permanent or semi-permanent area-denial shield around bases and critical assets.</p>
+                    </div>
+                  </li>
+                  <li class="list-item">
+                    <div class="list-bullet" aria-hidden="true"></div>
+                    <div class="list-content">
+                      <h4>Multi-threat coverage</h4>
+                      <p>Designed for FPV drones, loitering munitions, cruise missiles, hypersonic glide vehicles, and terminal ballistic threats.</p>
+                    </div>
+                  </li>
+                  <li class="list-item">
+                    <div class="list-bullet" aria-hidden="true"></div>
+                    <div class="list-content">
+                      <h4>Photonic intelligence core</h4>
+                      <p>FLP-based fire control continuously processes time-series sensor data and issues firing decisions with sub-millisecond latency.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="card">
+                <div class="badge"><span class="badge-dot"></span><span>Design drivers</span></div>
+                <h3>Three constraints that shape every design choice</h3>
+                <p>
+                  The HKDS architecture is driven by the intersection of three demands that no current system meets simultaneously.
+                </p>
+                <div class="stat-grid">
+                  <div class="stat">
+                    <div class="stat-label">Velocity</div>
+                    <div class="stat-value">Match the threat</div>
+                    <div class="stat-desc">Projectile speed must be competitive with hypersonic terminal velocities to keep lead distances manageable.</div>
+                  </div>
+                  <div class="stat">
+                    <div class="stat-label">Latency</div>
+                    <div class="stat-value">Decide in ms</div>
+                    <div class="stat-desc">Fire control must compute a valid solution within seconds of warning time, not tens of seconds.</div>
+                  </div>
+                  <div class="stat">
+                    <div class="stat-label">Cost</div>
+                    <div class="stat-value">Fight saturation</div>
+                    <div class="stat-desc">Cost per engagement must stay low enough to withstand mixed-salvo and saturation attacks.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="threat">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Threat spectrum</div>
+            <h2 class="section-title">From hobby drones to hypersonic glide vehicles</h2>
+            <p class="section-lead">
+              HKDS is specified against a tiered threat spectrum, from low-cost FPV drones with minutes of warning time
+              to hypersonic and ballistic terminal threats where the window shrinks to a few seconds.
+            </p>
+          </div>
+
+          <div class="three-col">
+            <div class="card">
+              <h3>Lower-tier threats</h3>
+              <p>
+                FPV drones and loitering munitions approach at tens to hundreds of meters per second, with tens
+                to hundreds of seconds of warning at 10 km. HKDS can engage these cost-effectively with smaller
+                rounds and hybrid conventional layers, preserving hypervelocity capacity for harder targets.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Cruise missiles</h3>
+              <p>
+                Subsonic and supersonic cruise missiles reduce warning times to roughly 10–40 seconds at 10 km.
+                Conventional guns struggle with lead error and fire-control latency in this regime; HKDS combines
+                higher projectile velocity with photonic lead calculation to keep intercept windows open.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Hypersonic & ballistic terminal</h3>
+              <p>
+                Hypersonic cruise, hypersonic glide vehicles, and ballistic reentry vehicles can compress warning
+                time to 1.4–6.7 seconds. HKDS is optimized for this regime: hypervelocity kinetics cut required lead
+                distance and FLP fire control delivers multiple decision cycles inside the terminal trajectory.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="technology">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Technology pillars</div>
+            <h2 class="section-title">Hypervelocity kinetics, belt-fed rounds, photonic fire control</h2>
+            <p class="section-lead">
+              HKDS integrates three core innovations: helium light gas guns for velocity, star-configuration multi-barrel
+              turrets for maneuver coverage, and FLP photonic fire control for latency.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <div class="card" style="margin-bottom: var(--space-6);">
+                <div class="badge"><span class="badge-dot"></span><span>Light gas gun</span></div>
+                <h3>Helium-propelled hypervelocity</h3>
+                <p>
+                  A two-stage, electrically-driven light gas gun uses helium compressed to hundreds of megapascals to
+                  accelerate slender tungsten penetrators to 4–8 km/s. Helium offers a safe, inert propellant with an
+                  acoustic velocity high enough to reach the velocities needed for hypersonic intercepts, without the
+                  operational risks of hydrogen.
+                </p>
+              </div>
+
+              <div class="card">
+                <div class="badge"><span class="badge-dot"></span><span>Star turret & belt feed</span></div>
+                <h3>Multi-barrel spread, self-contained rounds</h3>
+                <p>
+                  The turret is a star of launch tubes around a central axis. When commanded, multiple barrels fire
+                  simultaneously in a controlled spread, covering the full maneuver envelope of the target instead of
+                  betting on a single perfect intercept point.
+                </p>
+                <p style="margin-top: var(--space-3);">
+                  Rounds are belt-fed, self-contained units with a pre-pressurized helium capsule, a sacrificial polymer
+                  sabot that protects the barrel, and a dense tungsten penetrator. Cyclic rates of 20–40 rounds per
+                  minute per barrel are achievable with electrically reset pistons.
+                </p>
+              </div>
+            </div>
+            <div>
+              <div class="card">
+                <div class="badge"><span class="badge-dot"></span><span>Photonic fire control</span></div>
+                <h3>Fiber Loop Photonics (FLP) fire-control core</h3>
+                <p>
+                  HKDS uses a photonic fire-control module derived from the ALTA Fiber Loop Photonics architecture.
+                  Sensor data from the perimeter is encoded onto light and processed through a photonic reservoir
+                  computer, which excels at time-series prediction and anomaly detection.
+                </p>
+                <p style="margin-top: var(--space-3);">
+                  Recent integrated next-generation reservoir computing engines demonstrate over 100 TOPS per
+                  square millimetre at tens of gigabaud, with energy scaling that is effectively O(1) with respect to
+                  reservoir size. Against that backdrop, HKDS's &lt;1 ms fire-control requirement is conservative, not
+                  optimistic.
+                </p>
+                <p style="margin-top: var(--space-3); font-size: var(--text-sm); color: var(--color-text-muted);">
+                  The end result: sensor-to-fire commands in sub-millisecond cycles, turning seconds of warning time
+                  into dozens of full decision loops.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="defensive">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Doctrine</div>
+            <h2 class="section-title">Defensive only, by architecture and by intent</h2>
+            <p class="section-lead">
+              HKDS is explicitly designed as a defensive, terminal area-denial system. Its geometry, emplacement, and
+              engagement logic all enforce a defensive role rather than offensive power projection.
+            </p>
+          </div>
+
+          <div class="defensive-panel">
+            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-2);">What HKDS is</h3>
+            <p style="color: var(--color-text-muted); font-size: var(--text-sm);">
+              A fixed, autonomous, multi-threat terminal defense layer that engages incoming aerial objects only after they
+              enter a defined defended airspace. It is an anti-access / area-denial shield that protects bases, cities, and
+              critical infrastructure from above.
+            </p>
+            <ul class="list" style="margin-top: var(--space-4);">
+              <li class="list-item">
+                <div class="list-bullet" aria-hidden="true"></div>
+                <div class="list-content">
+                  <h4>Fixed-site architecture</h4>
+                  <p>Corner-mounted turrets and buried sensor rings tie HKDS to the asset it protects; it is not a mobile artillery piece.</p>
+                </div>
+              </li>
+              <li class="list-item">
+                <div class="list-bullet" aria-hidden="true"></div>
+                <div class="list-content">
+                  <h4>Incoming-only engagement</h4>
+                  <p>Rules of engagement restrict HKDS to positively identified, inbound aerial threats within the defended volume.</p>
+                </div>
+              </li>
+              <li class="list-item">
+                <div class="list-bullet" aria-hidden="true"></div>
+                <div class="list-content">
+                  <h4>Purely kinetic payloads</h4>
+                  <p>Rounds have no explosive warheads or guidance seekers; they are simple tungsten rods driven to hypervelocity.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="roadmap">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Development path</div>
+            <h2 class="section-title">From concept to range-proven battery</h2>
+            <p class="section-lead">
+              HKDS is designed as a co-development partner to ALTA's FLP program. The same photonic core that enables
+              spacecraft autonomy can underpin terminal hypersonic defense on the ground.
+            </p>
+          </div>
+
+          <div class="timeline" aria-label="Development roadmap">
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 1 — FLP ground demonstrator</div>
+              <div class="timeline-meta">Lab / hardware-in-the-loop</div>
+              <div class="timeline-text">
+                Build and exercise an FLP fire-control prototype against synthetic and recorded threat trajectories.
+                Demonstrate end-to-end sensor-to-fire loop latency under one millisecond in a ground environment.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 2 — LGG & turret prototype</div>
+              <div class="timeline-meta">Proving ground</div>
+              <div class="timeline-text">
+                Develop a single-barrel light gas gun and star-configuration turret demonstrator. Conduct live-fire tests
+                against representative aerial surrogates to validate muzzle velocity, barrel life, and spread patterns.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 3 — Integrated node</div>
+              <div class="timeline-meta">Full-stack node at test range</div>
+              <div class="timeline-text">
+                Integrate perimeter sensors, FLP node, and a turret into a single HKDS node defending a sector of a test
+                range. Exercise the full chain under mixed-threat scenarios.
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-title">Phase 4 — Operational battery</div>
+              <div class="timeline-meta">Layered national defense architecture</div>
+              <div class="timeline-text">
+                Deploy a multi-node HKDS battery as the terminal layer in a layered air defense stack, complementing
+                long-range missile interceptors and conventional short-range systems.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>HKDS — Hypervelocity Kinetic Defense System · Defensive-only concept</span>
+        <span>
+          Concept developed in collaboration with ALTA Fiber Loop Photonics. Built for discussion, not for field deployment.
+        </span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
