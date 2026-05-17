@@ -378,6 +378,10 @@ section:first-of-type { border-top: none; }
   background: linear-gradient(160deg, rgba(17,25,35,0.85), rgba(10,15,23,0.85));
   box-shadow: var(--shadow-md);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
 }
 .card h3 {
   font-size: var(--text-lg);
@@ -392,6 +396,13 @@ section:first-of-type { border-top: none; }
 }
 .card p + p { margin-top: var(--space-3); }
 .card + .card { margin-top: var(--space-5); }
+
+/* When the card has trailing callout/list/table, allow them to push to bottom
+   for visual rhythm in a grid row */
+.card > .callout:last-child,
+.card > .table-wrap:last-child {
+  margin-top: auto;
+}
 
 .card-feature {
   background:
@@ -483,8 +494,10 @@ section:first-of-type { border-top: none; }
 }
 table.data {
   width: 100%; border-collapse: collapse;
-  font-size: var(--text-sm); min-width: 540px;
+  font-size: var(--text-sm);
 }
+/* Tables with wide multi-column data opt into a min-width via .data-wide */
+table.data.data-wide { min-width: 540px; }
 table.data th, table.data td {
   padding: 0.65rem 0.9rem;
   border-bottom: 1px solid var(--color-divider);
@@ -1059,14 +1072,27 @@ footer.site-footer {
   align-items: start;
 }
 
-/* Inside a .layout main column (with TOC), keep things readable: collapse
-   2-column asymmetric grids when the available column shrinks. */
-.layout main .grid-2-asym {
+/* Inside a .layout main column (with TOC), keep tables/cards readable:
+   always collapse 2-column asymmetric grids — the column space remaining
+   after the TOC is not wide enough for a side-by-side asymmetric pattern
+   without crushing tables. */
+.layout main .grid-2-asym,
+.layout main .grid-2-asym.r {
+  grid-template-columns: 1fr;
+}
+
+/* Balanced 2-up grids stay 2-up if the column has room */
+.layout main .grid-2 {
   grid-template-columns: 1fr;
 }
 @media (min-width: 1280px) {
-  .layout main .grid-2-asym       { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
-  .layout main .grid-2-asym.r     { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .layout main .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.layout main .grid-3 {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 1280px) {
+  .layout main .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* Roomier inner-page layout */
