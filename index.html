@@ -36,8 +36,8 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
+      <div class="container">
+        <div class="hero-stack">
           <div class="hero-kicker">
             <span class="pill">
               <span class="pill-dot" aria-hidden="true"></span>
@@ -52,56 +52,40 @@
             rounds and photonic fire control to engage threats from FPV drones to maneuvering hypersonic
             glide vehicles — without relying on multi-million-dollar missile interceptors.
           </p>
-          <p class="hero-sub" style="font-size: var(--text-sm);">
-            Three pillars: <strong style="color:var(--color-text);">light-gas-gun kinetics</strong> for velocity,
-            <strong style="color:var(--color-text);">star-configuration multi-barrel turrets</strong> for
-            geometric coverage, and <strong style="color:var(--color-text);">ALTA Fiber Loop Photonics</strong>
-            for fire-control latency under one millisecond.
-          </p>
           <div class="hero-actions">
             <a href="technology.html" class="btn btn-primary">Explore the technology →</a>
             <a href="doctrine.html#scenario" class="btn btn-ghost">Saturation-attack scenario</a>
           </div>
         </div>
 
-        <aside class="hero-aside" aria-label="HKDS performance snapshot">
-          <h2>Three hard constraints, met simultaneously</h2>
-          <p>
-            Velocity to meet hypersonic threats, latency to decide in milliseconds, and a cost per
-            engagement low enough to survive saturation attacks.
-          </p>
-          <div class="metric-grid">
-            <div class="metric-card">
-              <div class="metric-label">Projectile velocity</div>
-              <div class="metric-value">4–8 km/s</div>
-              <div class="metric-note">5–8× conventional guns</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Fire-control latency</div>
-              <div class="metric-value">&lt; 1 ms</div>
-              <div class="metric-note">Photonic, in-domain</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Cost per shot</div>
-              <div class="metric-value">$3–8</div>
-              <div class="metric-note">No seeker. No warhead.</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-label">Threat coverage</div>
-              <div class="metric-value">FPV → HGV</div>
-              <div class="metric-note">Drones to reentry vehicles</div>
-            </div>
+        <div class="alta-stats hero-stats" aria-label="HKDS performance snapshot">
+          <div class="alta-stat cyan">
+            <div class="alta-stat-value cyan">4–8 <em>km/s</em></div>
+            <p class="alta-stat-label"><span class="lead">p</span>rojectile velocity — 5–8× conventional guns.</p>
           </div>
-        </aside>
+          <div class="alta-stat amber">
+            <div class="alta-stat-value amber">&lt; 1 <em>ms</em></div>
+            <p class="alta-stat-label"><span class="lead">f</span>ire-control latency — photonic, in-domain.</p>
+          </div>
+          <div class="alta-stat green">
+            <div class="alta-stat-value green">$3–8</div>
+            <p class="alta-stat-label"><span class="lead">c</span>ost per shot — no seeker, no warhead.</p>
+          </div>
+          <div class="alta-stat magenta">
+            <div class="alta-stat-value magenta">FPV → HGV</div>
+            <p class="alta-stat-label"><span class="lead">t</span>hreat coverage — drones to reentry vehicles.</p>
+          </div>
+        </div>
       </div>
 
       <div class="container">
         <div class="logo-strip" aria-label="Supply chain partners">
-          <span>Exail</span>
-          <span>LioniX International</span>
-          <span>TOPTICA Photonics</span>
-          <span>Thales Alenia Space</span>
-          <span>STMicroelectronics</span>
+          <div class="logo-strip-label">European-sourceable across fiber, PICs, lasers, qualification &amp; silicon — ITAR-free</div>
+          <span class="partner-pill">Exail</span>
+          <span class="partner-pill">LioniX International</span>
+          <span class="partner-pill">TOPTICA Photonics</span>
+          <span class="partner-pill">Thales Alenia Space</span>
+          <span class="partner-pill">STMicroelectronics</span>
         </div>
       </div>
     </section>
@@ -197,13 +181,16 @@
     <section id="pillars">
       <div class="container">
         <div class="section-header">
-          <div class="section-eyebrow">Three technology pillars</div>
+          <div class="dot-label">Three technology pillars</div>
           <h2 class="section-title">Velocity. Coverage. Latency.</h2>
           <p class="section-lead">
             Each HKDS pillar individually exists in adjacent fields. Light gas guns are established
             research tools; belt-fed weapons are mature; FBG sensing is space-qualified; photonic
-            reservoir computing has been demonstrated end-to-end by Duport et al. (2012, 2016) and
-            Wang et al. (2025). The HKDS engineering challenge is integration, not invention.
+            reservoir computing has been demonstrated end-to-end by
+            <a href="science.html#duport2012" class="cite">Duport et al. (2012)</a>,
+            <a href="science.html#duport2016" class="cite">Duport et al. (2016)</a> and
+            <a href="science.html#wang2025" class="cite">Wang et al. (2025)</a>. The HKDS engineering
+            challenge is integration, not invention.
           </p>
         </div>
 
@@ -275,6 +262,36 @@
             <p style="margin-top: var(--space-4);">
               <a href="technology.html#flp" class="btn btn-ghost" style="padding:0.5rem 1rem;">Details →</a>
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY NOW -->
+    <section id="why-now">
+      <div class="container">
+        <div class="section-header">
+          <div class="dot-label">Why now</div>
+          <h2 class="section-title">Three trends converge.</h2>
+          <p class="section-lead">
+            Hypersonic threats have moved from frontier research to active deployment; missile-based
+            air defense scales linearly in cost while threats scale exponentially in volume; and the
+            photonic substrate that makes sub-millisecond fire control viable has just crossed the
+            line from laboratory demo to telecom-grade supply chain.
+          </p>
+        </div>
+        <div class="why-grid">
+          <div class="why-item">
+            <h4>Hypersonic deployment is here, not coming.</h4>
+            <p>HGVs and maneuvering reentry vehicles are now fielded by multiple nation-state actors. No deployed Western kinetic system engages them at competitive velocity.</p>
+          </div>
+          <div class="why-item">
+            <h4>Missile-based defense doesn't scale.</h4>
+            <p>$3–4M Patriot rounds against $20k loitering munitions is a losing economic war. Cost asymmetry is the structural problem — and it inverts when intercept material drops below $10.</p>
+          </div>
+          <div class="why-item">
+            <h4>Photonic fire control is manufacturable.</h4>
+            <p>All FLP components are telecom-qualified or space-qualified today. A sovereign-EU supply chain (Exail, LioniX, TOPTICA, Thales Alenia, ST) covers the full stack — ITAR-free.</p>
           </div>
         </div>
       </div>
@@ -377,32 +394,31 @@
       <div class="container">
         <div class="grid-2-asym">
           <div>
-            <div class="section-eyebrow">Powered by ALTA</div>
+            <div class="dot-label">Powered by ALTA</div>
             <h2 class="section-title" style="margin-bottom: var(--space-5);">Intelligence that emerges from light.</h2>
-            <p class="section-lead" style="margin-bottom: var(--space-5);">
+            <p class="section-lead" style="margin-bottom: var(--space-6);">
               HKDS fire control is the defense application of the ALTA Fiber Loop Photonics platform —
               an ITAR-free, sovereign-EU photonic stack that fuses sensing, processing, and communication
               into a continuous optical pipeline. The same architecture that enables SmallSat autonomy on
               orbit drives terminal hypersonic defense on the ground.
             </p>
-            <div class="stat-grid">
-              <div class="stat">
-                <div class="stat-label">Energy scaling</div>
-                <div class="stat-value">O(1)</div>
-                <div class="stat-desc">vs O(N²) digital — Wang et al. (2025)</div>
+
+            <div class="alta-stats">
+              <div class="alta-stat amber">
+                <div class="alta-stat-value amber">O(1)</div>
+                <p class="alta-stat-label"><span class="lead">e</span>nergy scaling vs O(N²) digital — <a href="science.html#wang2025" class="cite">Wang et al. (2025)</a></p>
               </div>
-              <div class="stat">
-                <div class="stat-label">Signal chain</div>
-                <div class="stat-value">Zero A/D</div>
-                <div class="stat-desc">Fully analogue end-to-end — Duport et al. (2016)</div>
+              <div class="alta-stat magenta">
+                <div class="alta-stat-value magenta">Zero <em>A/D</em></div>
+                <p class="alta-stat-label"><span class="lead">c</span>onversion — fully analogue signal chain — <a href="science.html#duport2016" class="cite">Duport et al. (2016)</a></p>
               </div>
-              <div class="stat">
-                <div class="stat-label">EM vulnerability</div>
-                <div class="stat-value">None</div>
-                <div class="stat-desc">Optical medium, immune to EMP &amp; jamming</div>
+              <div class="alta-stat rust">
+                <div class="alta-stat-value rust">None</div>
+                <p class="alta-stat-label"><span class="lead">E</span>M vulnerability — optical medium, immune to EMP and RF jamming.</p>
               </div>
             </div>
-            <p style="margin-top: var(--space-6);">
+
+            <p style="margin-top: var(--space-8);">
               <a href="science.html" class="btn btn-primary">See the science →</a>
             </p>
           </div>

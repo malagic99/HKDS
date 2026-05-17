@@ -265,17 +265,21 @@ header.site-header {
 }
 .hero > .container { position: relative; z-index: 1; }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
+.hero-stack {
+  max-width: 56ch;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.hero-stats {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--color-divider);
 }
 .hero-kicker { margin-bottom: var(--space-5); }
 .hero-title {
   font-size: var(--text-3xl);
   margin-bottom: var(--space-5);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  max-width: 18ch;
 }
 .hero-title em {
   font-style: italic;
@@ -340,21 +344,28 @@ header.site-header {
 main { flex: 1 0 auto; }
 
 section {
-  padding-block: clamp(3rem, 7vw, 6rem);
+  padding-block: clamp(4rem, 9vw, 8rem);
   border-top: 1px solid var(--color-divider);
   position: relative;
 }
 section:first-of-type { border-top: none; }
 
 .section-header {
-  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
   max-width: 80ch;
 }
 .section-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono);
   font-size: var(--text-2xs);
   text-transform: uppercase; letter-spacing: 0.22em;
-  color: var(--color-primary); margin-bottom: var(--space-3);
+  color: var(--color-primary); margin-bottom: var(--space-4);
   font-weight: 500;
+}
+.section-eyebrow::before {
+  content: "●";
+  font-size: 0.6em;
+  color: inherit;
 }
 .section-title { font-size: var(--text-xl); margin-bottom: var(--space-3); letter-spacing: -0.01em; }
 .section-lead { color: var(--color-text-muted); max-width: 70ch; }
@@ -808,20 +819,262 @@ footer.site-footer {
   .menu-toggle { display: inline-flex; }
 }
 
-/* Logo strip (partners) */
+/* Logo strip (partners) — ALTA-style pill chips */
 .logo-strip {
-  display: flex; flex-wrap: wrap; gap: var(--space-6) var(--space-8);
+  display: flex; flex-wrap: wrap; gap: var(--space-3);
   align-items: center; justify-content: center;
-  padding: var(--space-5) 0;
-  border-top: 1px solid var(--color-divider);
-  border-bottom: 1px solid var(--color-divider);
+  margin-top: var(--space-8);
+}
+.logo-strip-label {
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-4);
+}
+.logo-strip span.partner-pill {
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: rgba(10, 15, 23, 0.7);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  letter-spacing: 0.01em;
+  transition: border-color var(--transition-interactive),
+              color var(--transition-interactive);
+}
+.logo-strip span.partner-pill:hover {
+  border-color: rgba(245, 158, 11, 0.55);
+  color: var(--color-text);
+}
+
+/* ============================================================
+   ALTA design language — large stats, dot labels, citations
+   ============================================================ */
+
+/* Dot-prefix section label (ALTA "● WHY NOW" style) */
+.dot-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-warn);
+  margin-bottom: var(--space-4);
+}
+.dot-label::before {
+  content: "●";
+  font-size: 0.6em;
+  color: var(--color-warn);
+}
+.dot-label.cyan, .dot-label.cyan::before { color: var(--color-primary); }
+.dot-label.green, .dot-label.green::before { color: var(--color-accent); }
+.dot-label.magenta, .dot-label.magenta::before { color: var(--color-magenta); }
+
+/* Big serif stat with colored leading letter on label (ALTA hero block) */
+.alta-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
   margin-top: var(--space-6);
 }
-.logo-strip span {
-  color: var(--color-text-faint);
+.alta-stat { display: flex; flex-direction: column; gap: var(--space-2); }
+.alta-stat-value {
   font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  color: var(--color-text);
+}
+.alta-stat-value em { font-style: italic; }
+.alta-stat-value.amber   { color: var(--color-warn); }
+.alta-stat-value.magenta { color: var(--color-magenta); }
+.alta-stat-value.rust    { color: var(--color-danger); }
+.alta-stat-value.cyan    { color: var(--color-primary); }
+.alta-stat-value.green   { color: var(--color-accent); }
+.alta-stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  max-width: 26ch;
+}
+.alta-stat-label .lead { font-weight: 600; color: var(--color-text); }
+.alta-stat.amber   .alta-stat-label .lead { color: var(--color-warn); }
+.alta-stat.magenta .alta-stat-label .lead { color: var(--color-magenta); }
+.alta-stat.rust    .alta-stat-label .lead { color: var(--color-danger); }
+.alta-stat.cyan    .alta-stat-label .lead { color: var(--color-primary); }
+.alta-stat.green   .alta-stat-label .lead { color: var(--color-accent); }
+
+/* Inline citation link (ALTA's yellow underlined refs) */
+.cite, a.cite {
+  color: var(--color-warn);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(245, 158, 11, 0.45);
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+.cite:hover, a.cite:hover {
+  text-decoration-color: var(--color-warn);
+  color: var(--color-warn);
+}
+
+/* "Why now" pattern — 3-up, generous spacing, no card chrome */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
+  margin-top: var(--space-8);
+}
+.why-item h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--text-base);
-  letter-spacing: 0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+  line-height: 1.35;
+  max-width: 22ch;
+}
+.why-item p {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  max-width: 30ch;
+}
+
+/* ============================================================
+   Scenario phase cards — replaces dense T-table
+   ============================================================ */
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+.phase-card {
+  background: linear-gradient(160deg, rgba(17,25,35,0.85), rgba(10,15,23,0.85));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-5) var(--space-6);
+  display: flex; flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.phase-card::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--color-primary);
+}
+.phase-card.amber::before    { background: var(--color-warn); }
+.phase-card.magenta::before  { background: var(--color-magenta); }
+.phase-card.rust::before     { background: var(--color-danger); }
+.phase-card.green::before    { background: var(--color-accent); }
+
+.phase-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: var(--space-3); flex-wrap: wrap;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-divider);
+  margin-bottom: var(--space-4);
+}
+.phase-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-warn);
+}
+.phase-card.cyan .phase-num    { color: var(--color-primary); }
+.phase-card.magenta .phase-num { color: var(--color-magenta); }
+.phase-card.rust .phase-num    { color: var(--color-danger); }
+.phase-card.green .phase-num   { color: var(--color-accent); }
+
+.phase-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  flex: 1 1 auto;
+  line-height: 1.15;
+}
+.phase-window {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.16em;
+  color: var(--color-text-faint);
+  white-space: nowrap;
+}
+.phase-events {
+  list-style: none;
+  display: grid;
+  gap: var(--space-4);
+  margin: 0; padding: 0;
+}
+.phase-event {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: var(--space-3);
+}
+.phase-event-t {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding-top: 0.1rem;
+}
+.phase-card.amber .phase-event-t,
+.phase-card.magenta .phase-event-t,
+.phase-card.rust .phase-event-t,
+.phase-card.green .phase-event-t { color: var(--color-text); }
+.phase-event-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+.phase-event-text strong { color: var(--color-text); font-weight: 500; }
+
+/* Outcome summary row beneath phases */
+.outcome-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
+  margin-top: var(--space-10);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-divider);
+}
+.outcome-item .alta-stat-value { font-size: clamp(2rem, 4vw, 3rem); }
+
+/* ============================================================
+   Asymmetric grids — better behavior in narrow layouts
+   ============================================================ */
+.grid-2-asym, .grid-2-asym.r {
+  align-items: start;
+}
+
+/* Inside a .layout main column (with TOC), keep things readable: collapse
+   2-column asymmetric grids when the available column shrinks. */
+.layout main .grid-2-asym {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 1280px) {
+  .layout main .grid-2-asym       { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .layout main .grid-2-asym.r     { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+}
+
+/* Roomier inner-page layout */
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) 180px;
+    gap: clamp(2.5rem, 6vw, 5rem);
+  }
 }
 
 /* Section index for inner pages */

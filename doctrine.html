@@ -321,91 +321,144 @@
             </p>
           </div>
 
-          <div class="scenario" aria-label="Saturation attack timeline">
-            <div class="t">T − 300 s</div>
-            <div class="e">Space-based IR (SBIRS) detects HGV boost phase. Feed to HKDS central FLP node begins.</div>
+          <div class="phase-grid" aria-label="Saturation attack timeline phases">
 
-            <div class="t">T − 60 s</div>
-            <div class="e">Theater radar detects cruise missiles at 30 km. FLP begins solution building.</div>
+            <article class="phase-card cyan">
+              <header class="phase-head">
+                <div>
+                  <div class="phase-num">Phase 01</div>
+                  <h3 class="phase-title">Detect &amp; classify</h3>
+                </div>
+                <div class="phase-window">T −300 → T −15</div>
+              </header>
+              <ul class="phase-events">
+                <li class="phase-event">
+                  <span class="phase-event-t">−300 s</span>
+                  <span class="phase-event-text"><strong>SBIRS</strong> detects HGV boost phase. Feed into HKDS central FLP node begins.</span>
+                </li>
+                <li class="phase-event">
+                  <span class="phase-event-t">−60 s</span>
+                  <span class="phase-event-text">Theater radar detects cruise missiles at 30 km. FLP begins solution building.</span>
+                </li>
+                <li class="phase-event">
+                  <span class="phase-event-t">−20 s</span>
+                  <span class="phase-event-text">10 km perimeter detects all <strong>29 targets</strong>. FLP classifies simultaneously, weapon assignment complete in &lt; 1 ms.</span>
+                </li>
+                <li class="phase-event">
+                  <span class="phase-event-t">−15 s</span>
+                  <span class="phase-event-text">3 HGVs assigned full-battery cross-engagement. Star arms reshaped to computed envelopes.</span>
+                </li>
+              </ul>
+            </article>
 
-            <div class="t">T − 20 s</div>
-            <div class="e">10 km perimeter detects all 29 targets. FLP classifies all simultaneously. Weapon assignment complete in &lt; 1 ms.</div>
+            <article class="phase-card amber">
+              <header class="phase-head">
+                <div>
+                  <div class="phase-num">Phase 02</div>
+                  <h3 class="phase-title">Pre-engagement</h3>
+                </div>
+                <div class="phase-window">T −12 → T −5</div>
+              </header>
+              <ul class="phase-events">
+                <li class="phase-event">
+                  <span class="phase-event-t">−12 s</span>
+                  <span class="phase-event-text">4 cruise missiles assigned LGG star configurations. 2 nodes per missile, overlapping coverage.</span>
+                </li>
+                <li class="phase-event">
+                  <span class="phase-event-t">−10 s</span>
+                  <span class="phase-event-text">22 drones / loitering munitions: conventional weapons spun up. Jammers active against RF-guided subset.</span>
+                </li>
+                <li class="phase-event">
+                  <span class="phase-event-t">−8 s</span>
+                  <span class="phase-event-text">HGVs enter 5 km preparation ring. Turrets pre-slewed, belt indexed, solutions finalized.</span>
+                </li>
+                <li class="phase-event">
+                  <span class="phase-event-t">−5 s</span>
+                  <span class="phase-event-text">All LGG turrets hold: solutions locked, waiting for the 2 km kill-ring crossing.</span>
+                </li>
+              </ul>
+            </article>
 
-            <div class="t">T − 15 s</div>
-            <div class="e">3 HGVs: full-battery cross-engagement activated. Star arms adjusted to computed maneuver envelopes. All 4 corner nodes assigned.</div>
+            <article class="phase-card rust">
+              <header class="phase-head">
+                <div>
+                  <div class="phase-num">Phase 03</div>
+                  <h3 class="phase-title">Engagement</h3>
+                </div>
+                <div class="phase-window">T −2.5 → T +3</div>
+              </header>
+              <ul class="phase-events">
+                <li class="phase-event">
+                  <span class="phase-event-t">−2.5 s</span>
+                  <span class="phase-event-text">HGVs cross 2 km ring. Full battery fires simultaneously — <strong>28 rounds in air</strong> (4 nodes × 7 barrels).</span>
+                </li>
+                <li class="phase-event">
+                  <span class="phase-event-t">−1.5 s</span>
+                  <span class="phase-event-text">Cruise missiles cross 2 km ring. 8 LGG rounds fired across 2 nodes × 4 engagements.</span>
+                </li>
+                <li class="phase-event">
+                  <span class="phase-event-t">0 s</span>
+                  <span class="phase-event-text">Drone swarm enters conventional kill volume. Jammers, autocannon, M134 engage.</span>
+                </li>
+                <li class="phase-event">
+                  <span class="phase-event-t">+3 s</span>
+                  <span class="phase-event-text">FLP kill assessment: HGV 3 / 3. Cruise missile 3 / 4. One re-engagement queued.</span>
+                </li>
+              </ul>
+            </article>
 
-            <div class="t">T − 12 s</div>
-            <div class="e">4 cruise missiles: LGG star configurations assigned. 2 nodes per missile, overlapping coverage.</div>
+            <article class="phase-card green">
+              <header class="phase-head">
+                <div>
+                  <div class="phase-num">Phase 04</div>
+                  <h3 class="phase-title">Assess &amp; conclude</h3>
+                </div>
+                <div class="phase-window">T +6 → T +60</div>
+              </header>
+              <ul class="phase-events">
+                <li class="phase-event">
+                  <span class="phase-event-t">+6 s</span>
+                  <span class="phase-event-text">Missed cruise missile re-engaged. Piston reset complete, second engagement fires.</span>
+                </li>
+                <li class="phase-event">
+                  <span class="phase-event-t">+30 s</span>
+                  <span class="phase-event-text">Drone swarm thinning. Remaining loitering munitions tracked and individually engaged.</span>
+                </li>
+                <li class="phase-event">
+                  <span class="phase-event-t">+60 s</span>
+                  <span class="phase-event-text"><strong>All 29 threats neutralized.</strong> Total LGG expended ≈ 42 rounds. Conventional ≈ 800–2,000 rounds.</span>
+                </li>
+              </ul>
+            </article>
 
-            <div class="t">T − 10 s</div>
-            <div class="e">22 drones / munitions: conventional weapons spun up. Jammers active against RF-guided subset. Autocannon queued.</div>
-
-            <div class="t">T − 8 s</div>
-            <div class="e">HGVs enter 5 km preparation ring. Turrets pre-slewed. Belt indexed. Solutions finalized.</div>
-
-            <div class="t">T − 5 s</div>
-            <div class="e">All LGG turrets hold: solutions locked, waiting for 2 km kill-ring crossing.</div>
-
-            <div class="t">T − 2.5 s</div>
-            <div class="e">HGVs cross 2 km ring. Full battery fires simultaneously — 28 rounds in air (4 nodes × 7 barrels).</div>
-
-            <div class="t">T − 1.5 s</div>
-            <div class="e">Cruise missiles cross 2 km ring. 8 LGG rounds fired (2 nodes × 4 engagements).</div>
-
-            <div class="t">T 0 → +60 s</div>
-            <div class="e">Drone swarm engaged by conventional layer. Jammers, autocannon, M134.</div>
-
-            <div class="t">T + 3 s</div>
-            <div class="e">FLP kill assessment: HGV confirms 3 / 3. Cruise missile confirms 3 / 4. 1 re-engagement queued.</div>
-
-            <div class="t">T + 6 s</div>
-            <div class="e">Missed cruise missile re-engaged. Piston reset complete. Second engagement fired.</div>
-
-            <div class="t">T + 60 s</div>
-            <div class="e">All 29 threats neutralized. Total LGG expended: ~42 rounds. Conventional: ~800–2,000 rounds.</div>
           </div>
 
-          <div class="grid-2" style="margin-top: var(--space-6);">
-            <div class="card">
-              <span class="badge badge-accent"><span class="badge-dot"></span>Defender cost</span>
-              <h3>Under $1,000 in expendable material</h3>
-              <div class="table-wrap" style="margin-top: var(--space-3);">
-                <table class="data" aria-label="Defender cost analysis">
-                  <thead>
-                    <tr><th>Engagement</th><th>Quantity</th><th>Rounds</th><th>Cost</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>HGV intercept</td><td class="num">3</td><td class="num">28 LGG</td><td class="num">$140</td></tr>
-                    <tr><td>Cruise intercept</td><td class="num">5</td><td class="num">~10 LGG</td><td class="num">$50</td></tr>
-                    <tr><td>Drone suppression</td><td class="num">22</td><td class="num">~1,200 conv.</td><td class="num">$120–600</td></tr>
-                    <tr><td><strong>Total</strong></td><td class="num">29</td><td>—</td><td class="num ok"><strong>~$310–790</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
+          <div class="outcome-row" aria-label="Saturation outcome summary">
+            <div class="outcome-item alta-stat green">
+              <div class="alta-stat-value green">29 / 29</div>
+              <p class="alta-stat-label"><span class="lead">t</span>argets neutralized in 60 s of engagement.</p>
             </div>
+            <div class="outcome-item alta-stat amber">
+              <div class="alta-stat-value amber">&lt; $1k</div>
+              <p class="alta-stat-label"><span class="lead">d</span>efender cost in expendable material across the salvo.</p>
+            </div>
+            <div class="outcome-item alta-stat rust">
+              <div class="alta-stat-value rust">$160M+</div>
+              <p class="alta-stat-label"><span class="lead">a</span>ttacker package cost — 3 HGV + 4 cruise + 22 munitions.</p>
+            </div>
+            <div class="outcome-item alta-stat magenta">
+              <div class="alta-stat-value magenta">10⁵×</div>
+              <p class="alta-stat-label"><span class="lead">r</span>eversal of the air-defense cost asymmetry, conservative.</p>
+            </div>
+          </div>
 
-            <div class="card">
-              <span class="badge badge-warn"><span class="badge-dot"></span>Attacker cost</span>
-              <h3>$160M+ to deliver the salvo</h3>
-              <p>
-                Conservative attacker package: 3 HGVs ($50–200M each) + 4 cruise missiles ($1–5M each)
-                + 22 low-cost munitions. The current air-defense asymmetry — defenders spending more
-                per intercept than attackers per threat — is reversed by approximately
-                <strong style="color: var(--color-primary);">five orders of magnitude</strong>.
-              </p>
-              <div class="stat-grid">
-                <div class="stat">
-                  <div class="stat-label">Attacker</div>
-                  <div class="stat-value">$160M+</div>
-                  <div class="stat-desc">Per salvo · conservative.</div>
-                </div>
-                <div class="stat">
-                  <div class="stat-label">Defender</div>
-                  <div class="stat-value">&lt; $1k</div>
-                  <div class="stat-desc">In expendable material.</div>
-                </div>
-              </div>
-            </div>
+          <div class="callout" style="margin-top: var(--space-8);">
+            <p>
+              <strong>Cost breakdown.</strong> 28 LGG rounds against 3 HGVs ≈ $140 · ~10 LGG rounds
+              against cruise missiles ≈ $50 · ~1,200 conventional rounds against drones ≈ $120–600.
+              <strong style="color: var(--color-primary);">Total $310–790 in expendable material</strong>
+              against a conservatively-priced $160M+ attacker package.
+            </p>
           </div>
         </section>
 
