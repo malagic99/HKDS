@@ -588,6 +588,43 @@ table.data .mag  { color: var(--color-magenta); }
 .diagram .ac { color: var(--color-accent); }
 .diagram .wn { color: var(--color-warn); }
 
+/* Star-configuration toggle (technology page) */
+.star-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.star-toggle-buttons {
+  display: inline-flex;
+  align-self: flex-start;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  gap: 2px;
+  flex-wrap: wrap;
+}
+.star-toggle-btn {
+  background: none;
+  border: none;
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: color var(--transition-interactive),
+              background var(--transition-interactive);
+}
+.star-toggle-btn:hover { color: var(--color-text); }
+.star-toggle-btn[aria-selected="true"] {
+  background: rgba(56, 189, 248, 0.14);
+  color: var(--color-primary);
+}
+.star-toggle-panel[hidden] { display: none; }
+
 /* SVG figure wrapper */
 figure.svg-fig {
   margin: 0;

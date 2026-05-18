@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css?v=4">
+  <link rel="stylesheet" href="assets/styles.css?v=5">
 </head>
 <body>
 <div class="page-shell">
@@ -350,62 +350,97 @@
               <span class="badge"><span class="badge-dot"></span>Star geometry</span>
               <h3>7-barrel baseline, adaptive spread</h3>
 
-              <figure class="svg-fig" style="margin-top: var(--space-3);">
-                <svg viewBox="0 0 320 320" role="img" aria-label="Star turret barrel arrangement from muzzle">
-                  <!-- Outer ring -->
-                  <circle cx="160" cy="160" r="135" fill="none" stroke="#1f2a38" stroke-width="1" stroke-dasharray="3 4"/>
-                  <circle cx="160" cy="160" r="90" fill="none" stroke="#1f2a38" stroke-width="1" stroke-dasharray="3 4"/>
+              <div class="star-toggle" style="margin-top: var(--space-4);">
+                <div class="star-toggle-buttons" role="tablist" aria-label="Star configuration">
+                  <button type="button" class="star-toggle-btn" data-target="7"  aria-selected="true"  role="tab">7 · baseline</button>
+                  <button type="button" class="star-toggle-btn" data-target="13" aria-selected="false" role="tab">13 · extended</button>
+                  <button type="button" class="star-toggle-btn" data-target="19" aria-selected="false" role="tab">19 · dense</button>
+                </div>
 
-                  <!-- Center barrel -->
-                  <circle cx="160" cy="160" r="14" fill="#0a0f17" stroke="#22c55e" stroke-width="2"/>
-                  <circle cx="160" cy="160" r="5" fill="#22c55e"/>
-                  <text x="160" y="200" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#22c55e" letter-spacing="1">CENTER</text>
+                <!-- 7-barrel (6 outer + 1 center) -->
+                <figure class="svg-fig star-toggle-panel" data-panel="7" role="tabpanel">
+                  <svg viewBox="0 0 320 320" role="img" aria-label="7-barrel star configuration">
+                    <circle cx="160" cy="160" r="120" fill="none" stroke="#1f2a38" stroke-width="1" stroke-dasharray="3 4"/>
+                    <circle cx="160" cy="160" r="14" fill="#0a0c18" stroke="#22c55e" stroke-width="2"/>
+                    <circle cx="160" cy="160" r="5" fill="#22c55e"/>
+                    <g fill="#0a0c18" stroke="#38bdf8" stroke-width="2">
+                      <circle cx="280" cy="160" r="12"/><circle cx="220" cy="56"  r="12"/>
+                      <circle cx="100" cy="56"  r="12"/><circle cx="40"  cy="160" r="12"/>
+                      <circle cx="100" cy="264" r="12"/><circle cx="220" cy="264" r="12"/>
+                    </g>
+                    <g fill="#38bdf8">
+                      <circle cx="280" cy="160" r="4"/><circle cx="220" cy="56"  r="4"/>
+                      <circle cx="100" cy="56"  r="4"/><circle cx="40"  cy="160" r="4"/>
+                      <circle cx="100" cy="264" r="4"/><circle cx="220" cy="264" r="4"/>
+                    </g>
+                    <text x="160" y="200" text-anchor="middle" font-family="Inter" font-size="9" fill="#22c55e" letter-spacing="1">CENTER</text>
+                    <text x="160" y="308" text-anchor="middle" font-family="Inter" font-size="9" fill="#64748b" letter-spacing="1.4">6 OUTER · 60° GAP · STANDARD ENGAGEMENT</text>
+                  </svg>
+                  <figcaption>7-barrel baseline · 60° gap between arms · standard engagement</figcaption>
+                </figure>
 
-                  <!-- 6 arms -->
-                  <g font-family="Work Sans" font-size="9" fill="#38bdf8" letter-spacing="1">
-                    <!-- arm 2 (top, el+) -->
-                    <circle cx="160" cy="40" r="12" fill="#0a0f17" stroke="#38bdf8" stroke-width="2"/>
-                    <circle cx="160" cy="40" r="4" fill="#38bdf8"/>
-                    <text x="160" y="22" text-anchor="middle">ARM 2 · el+</text>
-                    <line x1="160" y1="52" x2="160" y2="146" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/>
+                <!-- 13-barrel (12 outer + 1 center) -->
+                <figure class="svg-fig star-toggle-panel" data-panel="13" role="tabpanel" hidden>
+                  <svg viewBox="0 0 320 320" role="img" aria-label="13-barrel star configuration">
+                    <circle cx="160" cy="160" r="120" fill="none" stroke="#1f2a38" stroke-width="1" stroke-dasharray="3 4"/>
+                    <circle cx="160" cy="160" r="14" fill="#0a0c18" stroke="#22c55e" stroke-width="2"/>
+                    <circle cx="160" cy="160" r="5" fill="#22c55e"/>
+                    <g fill="#0a0c18" stroke="#38bdf8" stroke-width="2">
+                      <circle cx="280" cy="160" r="10"/><circle cx="264" cy="100" r="10"/>
+                      <circle cx="220" cy="56"  r="10"/><circle cx="160" cy="40"  r="10"/>
+                      <circle cx="100" cy="56"  r="10"/><circle cx="56"  cy="100" r="10"/>
+                      <circle cx="40"  cy="160" r="10"/><circle cx="56"  cy="220" r="10"/>
+                      <circle cx="100" cy="264" r="10"/><circle cx="160" cy="280" r="10"/>
+                      <circle cx="220" cy="264" r="10"/><circle cx="264" cy="220" r="10"/>
+                    </g>
+                    <g fill="#38bdf8">
+                      <circle cx="280" cy="160" r="3.2"/><circle cx="264" cy="100" r="3.2"/>
+                      <circle cx="220" cy="56"  r="3.2"/><circle cx="160" cy="40"  r="3.2"/>
+                      <circle cx="100" cy="56"  r="3.2"/><circle cx="56"  cy="100" r="3.2"/>
+                      <circle cx="40"  cy="160" r="3.2"/><circle cx="56"  cy="220" r="3.2"/>
+                      <circle cx="100" cy="264" r="3.2"/><circle cx="160" cy="280" r="3.2"/>
+                      <circle cx="220" cy="264" r="3.2"/><circle cx="264" cy="220" r="3.2"/>
+                    </g>
+                    <text x="160" y="200" text-anchor="middle" font-family="Inter" font-size="9" fill="#22c55e" letter-spacing="1">CENTER</text>
+                    <text x="160" y="308" text-anchor="middle" font-family="Inter" font-size="9" fill="#64748b" letter-spacing="1.4">12 OUTER · 30° GAP · HIGH-MANEUVER HGV</text>
+                  </svg>
+                  <figcaption>13-barrel extended · 30° gap · for high-maneuverability HGV envelopes</figcaption>
+                </figure>
 
-                    <!-- arm 1 (upper right) -->
-                    <circle cx="263" cy="100" r="12" fill="#0a0f17" stroke="#38bdf8" stroke-width="2"/>
-                    <circle cx="263" cy="100" r="4" fill="#38bdf8"/>
-                    <text x="280" y="98" text-anchor="start">ARM 1</text>
-                    <line x1="253" y1="106" x2="172" y2="152" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/>
-
-                    <!-- arm 6 (lower right) -->
-                    <circle cx="263" cy="220" r="12" fill="#0a0f17" stroke="#38bdf8" stroke-width="2"/>
-                    <circle cx="263" cy="220" r="4" fill="#38bdf8"/>
-                    <text x="280" y="224" text-anchor="start">ARM 6</text>
-                    <line x1="253" y1="214" x2="172" y2="168" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/>
-
-                    <!-- arm 5 (bottom, el-) -->
-                    <circle cx="160" cy="280" r="12" fill="#0a0f17" stroke="#38bdf8" stroke-width="2"/>
-                    <circle cx="160" cy="280" r="4" fill="#38bdf8"/>
-                    <text x="160" y="305" text-anchor="middle">ARM 5 · el−</text>
-                    <line x1="160" y1="268" x2="160" y2="174" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/>
-
-                    <!-- arm 4 (lower left) -->
-                    <circle cx="57" cy="220" r="12" fill="#0a0f17" stroke="#38bdf8" stroke-width="2"/>
-                    <circle cx="57" cy="220" r="4" fill="#38bdf8"/>
-                    <text x="40" y="224" text-anchor="end">ARM 4</text>
-                    <line x1="67" y1="214" x2="148" y2="168" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/>
-
-                    <!-- arm 3 (upper left) -->
-                    <circle cx="57" cy="100" r="12" fill="#0a0f17" stroke="#38bdf8" stroke-width="2"/>
-                    <circle cx="57" cy="100" r="4" fill="#38bdf8"/>
-                    <text x="40" y="98" text-anchor="end">ARM 3</text>
-                    <line x1="67" y1="106" x2="148" y2="152" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2 3" opacity="0.5"/>
-                  </g>
-
-                  <!-- Az +/- -->
-                  <text x="305" y="160" text-anchor="end" font-family="Work Sans" font-size="9" fill="#64748b">az +</text>
-                  <text x="15" y="160" text-anchor="start" font-family="Work Sans" font-size="9" fill="#64748b">az −</text>
-                </svg>
-                <figcaption>7-barrel star · viewed from muzzle · arm separation 1.5–3° (set by FLP)</figcaption>
-              </figure>
+                <!-- 19-barrel (18 outer + 1 center) -->
+                <figure class="svg-fig star-toggle-panel" data-panel="19" role="tabpanel" hidden>
+                  <svg viewBox="0 0 320 320" role="img" aria-label="19-barrel star configuration">
+                    <circle cx="160" cy="160" r="120" fill="none" stroke="#1f2a38" stroke-width="1" stroke-dasharray="3 4"/>
+                    <circle cx="160" cy="160" r="14" fill="#0a0c18" stroke="#22c55e" stroke-width="2"/>
+                    <circle cx="160" cy="160" r="5" fill="#22c55e"/>
+                    <g fill="#0a0c18" stroke="#38bdf8" stroke-width="1.8">
+                      <circle cx="280" cy="160" r="8"/><circle cx="273" cy="119" r="8"/>
+                      <circle cx="252" cy="83"  r="8"/><circle cx="220" cy="56"  r="8"/>
+                      <circle cx="181" cy="42"  r="8"/><circle cx="139" cy="42"  r="8"/>
+                      <circle cx="100" cy="56"  r="8"/><circle cx="68"  cy="83"  r="8"/>
+                      <circle cx="47"  cy="119" r="8"/><circle cx="40"  cy="160" r="8"/>
+                      <circle cx="47"  cy="201" r="8"/><circle cx="68"  cy="237" r="8"/>
+                      <circle cx="100" cy="264" r="8"/><circle cx="139" cy="278" r="8"/>
+                      <circle cx="181" cy="278" r="8"/><circle cx="220" cy="264" r="8"/>
+                      <circle cx="252" cy="237" r="8"/><circle cx="273" cy="201" r="8"/>
+                    </g>
+                    <g fill="#38bdf8">
+                      <circle cx="280" cy="160" r="2.6"/><circle cx="273" cy="119" r="2.6"/>
+                      <circle cx="252" cy="83"  r="2.6"/><circle cx="220" cy="56"  r="2.6"/>
+                      <circle cx="181" cy="42"  r="2.6"/><circle cx="139" cy="42"  r="2.6"/>
+                      <circle cx="100" cy="56"  r="2.6"/><circle cx="68"  cy="83"  r="2.6"/>
+                      <circle cx="47"  cy="119" r="2.6"/><circle cx="40"  cy="160" r="2.6"/>
+                      <circle cx="47"  cy="201" r="2.6"/><circle cx="68"  cy="237" r="2.6"/>
+                      <circle cx="100" cy="264" r="2.6"/><circle cx="139" cy="278" r="2.6"/>
+                      <circle cx="181" cy="278" r="2.6"/><circle cx="220" cy="264" r="2.6"/>
+                      <circle cx="252" cy="237" r="2.6"/><circle cx="273" cy="201" r="2.6"/>
+                    </g>
+                    <text x="160" y="200" text-anchor="middle" font-family="Inter" font-size="9" fill="#22c55e" letter-spacing="1">CENTER</text>
+                    <text x="160" y="308" text-anchor="middle" font-family="Inter" font-size="9" fill="#64748b" letter-spacing="1.4">18 OUTER · 20° GAP · MAX COVERAGE / ICBM</text>
+                  </svg>
+                  <figcaption>19-barrel dense · 20° gap · max coverage envelope for ICBM terminal reentry</figcaption>
+                </figure>
+              </div>
 
               <p style="margin-top: var(--space-3);">
                 Arm separation is not fixed at manufacture. Mechanical actuators on each arm let FLP
@@ -620,5 +655,20 @@
   </footer>
 
 </div>
+<script>
+  document.querySelectorAll('.star-toggle').forEach(group => {
+    group.addEventListener('click', e => {
+      const btn = e.target.closest('.star-toggle-btn');
+      if (!btn) return;
+      const target = btn.dataset.target;
+      group.querySelectorAll('.star-toggle-btn').forEach(b => {
+        b.setAttribute('aria-selected', b.dataset.target === target ? 'true' : 'false');
+      });
+      group.querySelectorAll('.star-toggle-panel').forEach(p => {
+        p.hidden = p.dataset.panel !== target;
+      });
+    });
+  });
+</script>
 </body>
 </html>
