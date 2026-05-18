@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css?v=6">
+  <link rel="stylesheet" href="assets/styles.css?v=7">
 </head>
 <body>
 <div class="page-shell">
@@ -75,10 +75,10 @@
                 <circle cx="180" cy="180" r="92"  fill="rgba(34,197,94,0.05)" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="6 4"/>
                 <circle cx="180" cy="180" r="46"  fill="rgba(245,158,11,0.08)" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 3"/>
 
-                <!-- Ring labels placed in the band between rings, well clear of any stroke -->
-                <text x="180" y="64" text-anchor="middle" font-family="Inter" font-size="9" fill="#38bdf8" letter-spacing="1.6">10 KM · DETECTION RING</text>
-                <text x="180" y="112" text-anchor="middle" font-family="Inter" font-size="9" fill="#22c55e" letter-spacing="1.6">5 KM · PREPARATION</text>
-                <text x="180" y="158" text-anchor="middle" font-family="Inter" font-size="9" fill="#f59e0b" letter-spacing="1.6">2 KM · KILL</text>
+                <!-- Ring labels: above each ring's top arc so the dashed stroke never sweeps through the text width -->
+                <text x="180" y="20"  text-anchor="middle" font-family="Inter" font-size="9" fill="#38bdf8" letter-spacing="0.8">10 KM · DETECTION</text>
+                <text x="180" y="60"  text-anchor="middle" font-family="Inter" font-size="9" fill="#22c55e" letter-spacing="0.8">5 KM · PREPARATION</text>
+                <text x="180" y="104" text-anchor="middle" font-family="Inter" font-size="9" fill="#f59e0b" letter-spacing="0.8">2 KM · KILL</text>
 
                 <!-- Base -->
                 <rect x="160" y="172" width="40" height="18" fill="#0a0c18" stroke="#f2f0ea" stroke-width="1.5" rx="2"/>
