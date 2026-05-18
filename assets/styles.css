@@ -1,33 +1,34 @@
-/* HKDS — shared styles */
+/* HKDS — shared styles · type & spacing aligned with ALTA platform */
 
 :root {
-  /* Type scale */
-  --text-2xs:  clamp(0.65rem,  0.6rem  + 0.2vw, 0.75rem);
-  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
-  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
-  --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
-  --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
-  --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
-  --text-2xl:  clamp(2rem,     1.4rem  + 2.5vw, 3.25rem);
-  --text-3xl:  clamp(2.5rem,   1.5rem  + 3.5vw, 4.5rem);
+  /* Type scale — fixed sizes per ALTA, no aggressive clamp scaling */
+  --text-2xs:  11px;
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 16px;
+  --text-md:   18px;
+  --text-lg:   20px;
+  --text-xl:   26px;
+  --text-2xl:  clamp(28px, 3.6vw, 44px);
+  --text-3xl:  clamp(40px, 6vw, 72px);
 
-  --space-1:  0.25rem;  --space-2: 0.5rem;  --space-3: 0.75rem;
-  --space-4:  1rem;     --space-5: 1.25rem; --space-6: 1.5rem;
-  --space-8:  2rem;     --space-10: 2.5rem; --space-12: 3rem;
-  --space-16: 4rem;     --space-20: 5rem;   --space-24: 6rem;
+  --space-1:  4px;   --space-2: 8px;   --space-3: 12px;
+  --space-4:  16px;  --space-5: 20px;  --space-6: 24px;
+  --space-8:  32px;  --space-10: 40px; --space-12: 48px;
+  --space-16: 64px;  --space-20: 80px; --space-24: 96px;
 
-  --color-bg:             #04060a;
-  --color-surface:        #0a0f17;
-  --color-surface-2:      #111923;
-  --color-surface-3:      #161f2c;
-  --color-divider:        rgba(56, 89, 138, 0.18);
-  --color-border:         rgba(56, 89, 138, 0.32);
-  --color-border-strong:  rgba(56, 89, 138, 0.55);
+  --color-bg:             #04050d;
+  --color-surface:        #0a0c18;
+  --color-surface-2:      #0f1322;
+  --color-surface-3:      #141a2b;
+  --color-divider:        rgba(255, 255, 255, 0.08);
+  --color-border:         rgba(255, 255, 255, 0.12);
+  --color-border-strong:  rgba(255, 255, 255, 0.22);
 
-  --color-text:           #f3f4f6;
-  --color-text-muted:     #94a3b8;
-  --color-text-faint:     #64748b;
-  --color-text-inverse:   #04060a;
+  --color-text:           #f2f0ea;
+  --color-text-muted:     #a4a2b6;
+  --color-text-faint:     #6f6d83;
+  --color-text-inverse:   #04050d;
 
   --color-primary:        #38bdf8;
   --color-primary-soft:   #7dd3fc;
@@ -38,25 +39,25 @@
   --color-danger:         #ef4444;
   --color-magenta:        #c084fc;
 
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.875rem;
-  --radius-xl: 1.25rem;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
   --radius-full: 9999px;
 
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-md: 0 6px 20px rgba(0,0,0,0.35);
-  --shadow-lg: 0 18px 45px rgba(0,0,0,0.5);
+  --shadow-md: 0 6px 22px -6px rgba(0,0,0,0.45);
+  --shadow-lg: 0 18px 45px -6px rgba(0,0,0,0.55);
 
-  --content-narrow: 680px;
-  --content-default: 960px;
-  --content-wide: 1240px;
+  --content-default: 1180px;
+  --content-wide:    1180px;
+  --content-narrow:  720px;
 
-  --transition-interactive: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-interactive: 240ms cubic-bezier(0.16, 1, 0.3, 1);
 
-  --font-body: 'Work Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display: 'Instrument Serif', 'Georgia', serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+  --font-body:    'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -72,13 +73,35 @@ body {
   min-height: 100vh;
   font-family: var(--font-body);
   font-size: var(--text-base);
-  line-height: 1.65;
+  line-height: 1.6;
   color: var(--color-text);
   background:
-    radial-gradient(ellipse at top, rgba(56,189,248,0.06), transparent 50%),
+    radial-gradient(ellipse at top, rgba(56,189,248,0.05), transparent 50%),
     radial-gradient(ellipse at bottom right, rgba(34,197,94,0.04), transparent 50%),
     var(--color-bg);
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  font-weight: 600;
+  text-wrap: balance;
+}
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-lg); }
+h4 {
+  font-size: var(--text-base);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+  max-width: 68ch;
 }
 
 img, picture, svg { display: block; max-width: 100%; height: auto; }
@@ -94,14 +117,7 @@ a {
 }
 a:hover { color: var(--color-primary); }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  line-height: 1.1;
-  text-wrap: balance;
-  font-weight: 400;
-}
-
-p { text-wrap: pretty; max-width: 72ch; }
+/* legacy heading reset — overridden above */
 
 ::selection {
   background: rgba(56,189,248,0.35);
@@ -266,19 +282,20 @@ header.site-header {
 .hero > .container { position: relative; z-index: 1; }
 
 .hero-stack {
-  max-width: 56ch;
-  margin-bottom: clamp(3rem, 6vw, 5rem);
+  max-width: 640px;
+  margin-bottom: 48px;
 }
 .hero-stats {
-  margin-top: clamp(3rem, 6vw, 5rem);
-  padding-top: clamp(2rem, 4vw, 3rem);
+  margin-top: 48px;
+  padding-top: 32px;
   border-top: 1px solid var(--color-divider);
 }
-.hero-kicker { margin-bottom: var(--space-5); }
+.hero-kicker { margin-bottom: 20px; }
 .hero-title {
   font-size: var(--text-3xl);
-  margin-bottom: var(--space-5);
+  margin-bottom: 22px;
   letter-spacing: -0.015em;
+  line-height: 1.1;
   max-width: 18ch;
 }
 .hero-title em {
@@ -290,9 +307,10 @@ header.site-header {
 }
 .hero-sub {
   color: var(--color-text-muted);
-  font-size: var(--text-base);
-  margin-bottom: var(--space-4);
+  font-size: var(--text-md);
+  margin-bottom: 16px;
   max-width: 56ch;
+  line-height: 1.55;
 }
 .hero-actions {
   display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center;
@@ -344,16 +362,18 @@ header.site-header {
 main { flex: 1 0 auto; }
 
 section {
-  padding-block: clamp(4rem, 9vw, 8rem);
+  padding-block: clamp(48px, 6vw, 80px);
   border-top: 1px solid var(--color-divider);
   position: relative;
 }
 section:first-of-type { border-top: none; }
 
 .section-header {
-  margin-bottom: clamp(2rem, 4vw, 3.5rem);
-  max-width: 80ch;
+  margin-bottom: 48px;
+  max-width: 760px;
 }
+.section-title { font-size: var(--text-2xl); margin-bottom: 16px; }
+.section-lead  { font-size: var(--text-md); color: var(--color-text-muted); }
 .section-eyebrow {
   display: inline-flex; align-items: center; gap: 0.5rem;
   font-family: var(--font-mono);
@@ -367,40 +387,49 @@ section:first-of-type { border-top: none; }
   font-size: 0.6em;
   color: inherit;
 }
-.section-title { font-size: var(--text-xl); margin-bottom: var(--space-3); letter-spacing: -0.01em; }
-.section-lead { color: var(--color-text-muted); max-width: 70ch; }
+/* legacy section-title/lead rules — overridden above */
 
-/* Cards */
+/* Cards — ALTA .step pattern */
 .card {
-  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  padding: 28px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
-  background: linear-gradient(160deg, rgba(17,25,35,0.85), rgba(10,15,23,0.85));
-  box-shadow: var(--shadow-md);
+  background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.005));
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
   height: 100%;
+  transition: transform var(--transition-interactive),
+              border-color var(--transition-interactive),
+              box-shadow var(--transition-interactive);
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-border-strong);
 }
 .card h3 {
   font-size: var(--text-lg);
-  margin-bottom: var(--space-3);
+  margin-bottom: 12px;
 }
 .card h3.h-lg {
-  font-size: clamp(1.5rem, 2vw, 1.85rem);
+  font-size: var(--text-xl);
+  margin-bottom: 14px;
 }
 .card p {
   color: var(--color-text-muted);
   font-size: var(--text-sm);
+  line-height: 1.55;
+  max-width: none;
 }
-.card p + p { margin-top: var(--space-3); }
-.card + .card { margin-top: var(--space-5); }
+.card p + p { margin-top: 12px; }
+.card + .card { margin-top: 20px; }
 
-/* When the card has trailing callout/list/table, allow them to push to bottom
-   for visual rhythm in a grid row */
+/* Trailing CTA / callout / table-wrap pushes to the bottom so cards
+   in the same grid row line up their footers. */
 .card > .callout:last-child,
-.card > .table-wrap:last-child {
+.card > .table-wrap:last-child,
+.card > p:last-child:has(.btn) {
   margin-top: auto;
 }
 
@@ -434,11 +463,27 @@ section:first-of-type { border-top: none; }
 .badge-warn   .badge-dot { background: #f59e0b; box-shadow: 0 0 8px rgba(245,158,11,0.8); }
 
 /* Grids */
-.grid-2  { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); align-items: stretch; }
-.grid-2-asym { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-6); align-items: stretch; }
-.grid-2-asym.r { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-.grid-3  { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
-.grid-4  { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+/* Grid utilities — explicit breakpoints, never produce orphan rows */
+.grid-2, .grid-2-asym, .grid-2-asym.r, .grid-3, .grid-4 {
+  display: grid;
+  gap: 20px;
+  align-items: stretch;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .grid-2       { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-2-asym  { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .grid-2-asym.r{ grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+}
+@media (min-width: 900px) {
+  .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 600px) {
+  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 
 .stack { display: grid; gap: var(--space-5); }
 .stack-sm { display: grid; gap: var(--space-3); }
@@ -543,6 +588,43 @@ table.data .mag  { color: var(--color-magenta); }
 .diagram .ac { color: var(--color-accent); }
 .diagram .wn { color: var(--color-warn); }
 
+/* Star-configuration toggle (technology page) */
+.star-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.star-toggle-buttons {
+  display: inline-flex;
+  align-self: flex-start;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  gap: 2px;
+  flex-wrap: wrap;
+}
+.star-toggle-btn {
+  background: none;
+  border: none;
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: color var(--transition-interactive),
+              background var(--transition-interactive);
+}
+.star-toggle-btn:hover { color: var(--color-text); }
+.star-toggle-btn[aria-selected="true"] {
+  background: rgba(56, 189, 248, 0.14);
+  color: var(--color-primary);
+}
+.star-toggle-panel[hidden] { display: none; }
+
 /* SVG figure wrapper */
 figure.svg-fig {
   margin: 0;
@@ -551,10 +633,17 @@ figure.svg-fig {
   background:
     radial-gradient(ellipse at center, rgba(56,189,248,0.06), transparent 70%),
     rgba(4, 6, 10, 0.5);
-  padding: clamp(0.75rem, 2vw, 1.5rem);
+  padding: 20px;
   overflow: hidden;
+  text-align: center;
 }
-figure.svg-fig svg { width: 100%; height: auto; }
+figure.svg-fig svg {
+  width: 100%;
+  height: auto;
+  max-width: 560px;
+  margin: 0 auto;
+  display: block;
+}
 figure.svg-fig figcaption {
   margin-top: var(--space-3);
   font-size: var(--text-2xs);
@@ -796,24 +885,20 @@ footer.site-footer {
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
+/* Grid responsive collapses live with each grid utility above so they
+   are explicit (1 → 2 → 4, etc.) and never produce orphan rows. */
+
 @media (max-width: 860px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .grid-2, .grid-2-asym, .grid-2-asym.r { grid-template-columns: 1fr; }
-  .grid-3 { grid-template-columns: 1fr; }
-  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
   .nav-links { display: none; }
   .nav-links.is-open { display: flex; flex-basis: 100%; flex-direction: column; align-items: flex-start; gap: var(--space-2); padding-top: var(--space-3); }
-  .grid-4 { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .hero-actions .btn { width: 100%; }
   .stat-grid { grid-template-columns: 1fr; }
-  .scenario { font-size: var(--text-2xs); padding: var(--space-3); }
-  table.data { min-width: 480px; }
-  .timeline-item { padding: var(--space-4); }
+  .timeline-item { padding: 18px; }
 }
 
 /* Mobile menu toggle */
@@ -888,24 +973,36 @@ footer.site-footer {
 .dot-label.green, .dot-label.green::before { color: var(--color-accent); }
 .dot-label.magenta, .dot-label.magenta::before { color: var(--color-magenta); }
 
-/* Big serif stat with colored leading letter on label (ALTA hero block) */
+/* Big stat block — Space Grotesk number + mono label, ALTA pattern */
 .alta-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: 1fr;
+  gap: 28px;
   align-items: start;
-  margin-top: var(--space-6);
+  margin-top: 32px;
 }
-.alta-stat { display: flex; flex-direction: column; gap: var(--space-2); }
+@media (min-width: 700px) {
+  .alta-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  .alta-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+/* 3-up variant: skip the 2-col stage so we never get a 2+1 orphan */
+.alta-stats--3 { grid-template-columns: 1fr; }
+@media (min-width: 900px) {
+  .alta-stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.alta-stat { display: flex; flex-direction: column; gap: 6px; }
 .alta-stat-value {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-weight: 400;
+  font-size: var(--text-xl);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  font-weight: 600;
   color: var(--color-text);
 }
-.alta-stat-value em { font-style: italic; }
+.alta-stat-value em { font-style: normal; }
 .alta-stat-value.amber   { color: var(--color-warn); }
 .alta-stat-value.magenta { color: var(--color-magenta); }
 .alta-stat-value.rust    { color: var(--color-danger); }
@@ -913,17 +1010,24 @@ footer.site-footer {
 .alta-stat-value.green   { color: var(--color-accent); }
 .alta-stat-label {
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: 12px;
   color: var(--color-text-muted);
-  line-height: 1.45;
+  line-height: 1.4;
   letter-spacing: 0.01em;
-  max-width: 26ch;
+  max-width: 28ch;
 }
+/* ALTA-style colored leading letter — works whether or not .lead span is present */
+.alta-stat-label::first-letter,
 .alta-stat-label .lead { font-weight: 600; color: var(--color-text); }
+.alta-stat.amber   .alta-stat-label::first-letter,
 .alta-stat.amber   .alta-stat-label .lead { color: var(--color-warn); }
+.alta-stat.magenta .alta-stat-label::first-letter,
 .alta-stat.magenta .alta-stat-label .lead { color: var(--color-magenta); }
+.alta-stat.rust    .alta-stat-label::first-letter,
 .alta-stat.rust    .alta-stat-label .lead { color: var(--color-danger); }
+.alta-stat.cyan    .alta-stat-label::first-letter,
 .alta-stat.cyan    .alta-stat-label .lead { color: var(--color-primary); }
+.alta-stat.green   .alta-stat-label::first-letter,
 .alta-stat.green   .alta-stat-label .lead { color: var(--color-accent); }
 
 /* Inline citation link (ALTA's yellow underlined refs) */
@@ -944,9 +1048,12 @@ footer.site-footer {
 /* "Why now" pattern — 3-up, generous spacing, no card chrome */
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
-  margin-top: var(--space-8);
+  grid-template-columns: 1fr;
+  gap: 36px 32px;
+  margin-top: 32px;
+}
+@media (min-width: 900px) {
+  .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 .why-item h4 {
   font-family: var(--font-body);
@@ -969,9 +1076,15 @@ footer.site-footer {
    ============================================================ */
 .phase-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-5);
-  margin-top: var(--space-6);
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 32px;
+}
+@media (min-width: 720px) {
+  .phase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1180px) {
+  .phase-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 .phase-card {
   background: linear-gradient(160deg, rgba(17,25,35,0.85), rgba(10,15,23,0.85));
@@ -1057,13 +1170,19 @@ footer.site-footer {
 /* Outcome summary row beneath phases */
 .outcome-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: clamp(2rem, 4vw, 3rem);
-  margin-top: var(--space-10);
-  padding-top: var(--space-8);
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: 40px;
+  padding-top: 32px;
   border-top: 1px solid var(--color-divider);
 }
-.outcome-item .alta-stat-value { font-size: clamp(2rem, 4vw, 3rem); }
+@media (min-width: 700px) {
+  .outcome-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) {
+  .outcome-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.outcome-item .alta-stat-value { font-size: var(--text-xl); }
 
 /* ============================================================
    Asymmetric grids — better behavior in narrow layouts
@@ -1099,7 +1218,7 @@ footer.site-footer {
 @media (min-width: 1024px) {
   .layout {
     grid-template-columns: minmax(0, 1fr) 180px;
-    gap: clamp(2.5rem, 6vw, 5rem);
+    gap: 48px;
   }
 }
 

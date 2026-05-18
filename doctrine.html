@@ -7,8 +7,8 @@
   <meta name="description" content="HKDS doctrine: layered sensor perimeter, distributed corner-node battery, cross-engagement, saturation-attack response, hypersonic engagement, and defensive-only architecture." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css?v=5">
 </head>
 <body>
 <div class="page-shell">
@@ -70,46 +70,43 @@
           <div class="grid-2-asym">
             <figure class="svg-fig">
               <svg viewBox="0 0 360 360" role="img" aria-label="HKDS defense zones plan view">
-                <!-- 10km detection ring -->
-                <circle cx="180" cy="180" r="160" fill="rgba(56,189,248,0.04)" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6 4"/>
-                <text x="180" y="32" text-anchor="middle" font-family="Work Sans" font-size="11" fill="#38bdf8" letter-spacing="2">10 KM · DETECTION RING</text>
+                <!-- Rings (smaller so labels can sit clearly inside the donut bands) -->
+                <circle cx="180" cy="180" r="140" fill="rgba(56,189,248,0.04)" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6 4"/>
+                <circle cx="180" cy="180" r="92"  fill="rgba(34,197,94,0.05)" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="6 4"/>
+                <circle cx="180" cy="180" r="46"  fill="rgba(245,158,11,0.08)" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 3"/>
 
-                <!-- 5km prep ring -->
-                <circle cx="180" cy="180" r="105" fill="rgba(34,197,94,0.06)" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="6 4"/>
-                <text x="180" y="89" text-anchor="middle" font-family="Work Sans" font-size="10" fill="#22c55e" letter-spacing="2">5 KM · PREPARATION</text>
-
-                <!-- 2km kill ring -->
-                <circle cx="180" cy="180" r="55" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 3"/>
-                <text x="180" y="138" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#f59e0b" letter-spacing="2">2 KM · KILL</text>
+                <!-- Ring labels placed in the band between rings, well clear of any stroke -->
+                <text x="180" y="64" text-anchor="middle" font-family="Inter" font-size="9" fill="#38bdf8" letter-spacing="1.6">10 KM · DETECTION RING</text>
+                <text x="180" y="112" text-anchor="middle" font-family="Inter" font-size="9" fill="#22c55e" letter-spacing="1.6">5 KM · PREPARATION</text>
+                <text x="180" y="158" text-anchor="middle" font-family="Inter" font-size="9" fill="#f59e0b" letter-spacing="1.6">2 KM · KILL</text>
 
                 <!-- Base -->
-                <rect x="158" y="170" width="44" height="20" fill="#0a0f17" stroke="#f3f4f6" stroke-width="1.5" rx="2"/>
-                <text x="180" y="184" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#f3f4f6">BASE</text>
+                <rect x="160" y="172" width="40" height="18" fill="#0a0c18" stroke="#f2f0ea" stroke-width="1.5" rx="2"/>
+                <text x="180" y="184" text-anchor="middle" font-family="Inter" font-size="8" fill="#f2f0ea" letter-spacing="0.6">BASE</text>
 
                 <!-- Corner nodes -->
-                <g>
-                  <rect x="40" y="40" width="22" height="22" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
-                  <circle cx="51" cy="51" r="3" fill="#38bdf8"/>
-                  <text x="51" y="35" text-anchor="middle" font-family="Work Sans" font-size="8" fill="#94a3b8">NW</text>
+                <g font-family="Inter" font-size="8" fill="#a4a2b6">
+                  <rect x="22" y="22" width="22" height="22" fill="#0a0c18" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
+                  <circle cx="33" cy="33" r="3" fill="#38bdf8"/>
+                  <text x="33" y="17" text-anchor="middle">NW</text>
 
-                  <rect x="298" y="40" width="22" height="22" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
-                  <circle cx="309" cy="51" r="3" fill="#38bdf8"/>
-                  <text x="309" y="35" text-anchor="middle" font-family="Work Sans" font-size="8" fill="#94a3b8">NE</text>
+                  <rect x="316" y="22" width="22" height="22" fill="#0a0c18" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
+                  <circle cx="327" cy="33" r="3" fill="#38bdf8"/>
+                  <text x="327" y="17" text-anchor="middle">NE</text>
 
-                  <rect x="40" y="298" width="22" height="22" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
-                  <circle cx="51" cy="309" r="3" fill="#38bdf8"/>
-                  <text x="51" y="338" text-anchor="middle" font-family="Work Sans" font-size="8" fill="#94a3b8">SW</text>
+                  <rect x="22" y="316" width="22" height="22" fill="#0a0c18" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
+                  <circle cx="33" cy="327" r="3" fill="#38bdf8"/>
+                  <text x="33" y="354" text-anchor="middle">SW</text>
 
-                  <rect x="298" y="298" width="22" height="22" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
-                  <circle cx="309" cy="309" r="3" fill="#38bdf8"/>
-                  <text x="309" y="338" text-anchor="middle" font-family="Work Sans" font-size="8" fill="#94a3b8">SE</text>
+                  <rect x="316" y="316" width="22" height="22" fill="#0a0c18" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
+                  <circle cx="327" cy="327" r="3" fill="#38bdf8"/>
+                  <text x="327" y="354" text-anchor="middle">SE</text>
                 </g>
 
                 <!-- Inbound threat -->
                 <g>
-                  <polygon points="340,180 348,176 348,184" fill="#ef4444"/>
-                  <line x1="200" y1="180" x2="340" y2="180" stroke="#ef4444" stroke-width="1" stroke-dasharray="4 3"/>
-                  <text x="350" y="183" text-anchor="start" font-family="Work Sans" font-size="9" fill="#ef4444">→</text>
+                  <polygon points="338,180 346,176 346,184" fill="#ef4444"/>
+                  <line x1="200" y1="180" x2="338" y2="180" stroke="#ef4444" stroke-width="1" stroke-dasharray="4 3"/>
                 </g>
               </svg>
               <figcaption>Plan view · concentric defense zones with corner nodes</figcaption>
