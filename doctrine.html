@@ -42,4 +42,377 @@
     </div>
   </header>
 
-  __USE_LOCAL_FILE_CONTENT__
+  <section class="page-intro">
+    <div class="container">
+      <div class="section-eyebrow">Doctrine</div>
+      <h1>Layered detection. Distributed fire. Defensive by design.</h1>
+      <p class="page-lead">
+        HKDS is a fixed terminal-defense layer. Its geometry, sensor architecture and engagement
+        doctrine all enforce a defensive role — and turn the attacker's economic calculus on its head.
+      </p>
+      <div class="section-index">
+        <a href="#perimeter">Sensor perimeter</a>
+        <a href="#battery">Distributed battery</a>
+        <a href="#scenario">Saturation scenario</a>
+        <a href="#hypersonic">Hypersonic engagement</a>
+        <a href="#defensive">Defensive-only</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="layout">
+      <main>
+
+        <!-- PERIMETER -->
+        <section id="perimeter">
+          <div class="section-header">
+            <div class="section-eyebrow">Sensor perimeter</div>
+            <h2 class="section-title">A 10 km layered sensor mesh — not a wall</h2>
+            <p class="section-lead">
+              The perimeter transforms HKDS from a reactive point defense into a proactive
+              kill-solution system. Detection at 10 km provides time to build a high-confidence firing
+              solution before any target reaches engagement range. Multiple overlapping passive and
+              active modalities ensure no threat profile passes undetected.
+            </p>
+          </div>
+
+          <div class="grid-2-asym">
+            <figure class="svg-fig">
+              <svg viewBox="0 0 360 360" role="img" aria-label="HKDS defense zones plan view">
+                <circle cx="180" cy="180" r="140" fill="rgba(56,189,248,0.04)" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6 4"/>
+                <circle cx="180" cy="180" r="92"  fill="rgba(34,197,94,0.05)" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="6 4"/>
+                <circle cx="180" cy="180" r="46"  fill="rgba(245,158,11,0.08)" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+                <text x="180" y="30"  text-anchor="middle" font-family="Inter" font-size="9" fill="#38bdf8" letter-spacing="0.8">10 KM · DETECTION</text>
+                <text x="180" y="68"  text-anchor="middle" font-family="Inter" font-size="9" fill="#22c55e" letter-spacing="0.8">5 KM · PREPARATION</text>
+                <text x="180" y="112" text-anchor="middle" font-family="Inter" font-size="9" fill="#f59e0b" letter-spacing="0.8">2 KM · KILL</text>
+
+                <rect x="160" y="172" width="40" height="18" fill="#0a0c18" stroke="#f2f0ea" stroke-width="1.5" rx="2"/>
+                <text x="180" y="184" text-anchor="middle" font-family="Inter" font-size="8" fill="#f2f0ea" letter-spacing="0.6">BASE</text>
+
+                <g font-family="Inter" font-size="8" fill="#a4a2b6">
+                  <rect x="22" y="22" width="22" height="22" fill="#0a0c18" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
+                  <circle cx="33" cy="33" r="3" fill="#38bdf8"/>
+                  <text x="33" y="17" text-anchor="middle">NW</text>
+                  <rect x="316" y="22" width="22" height="22" fill="#0a0c18" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
+                  <circle cx="327" cy="33" r="3" fill="#38bdf8"/>
+                  <text x="327" y="17" text-anchor="middle">NE</text>
+                  <rect x="22" y="316" width="22" height="22" fill="#0a0c18" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
+                  <circle cx="33" cy="327" r="3" fill="#38bdf8"/>
+                  <text x="33" y="354" text-anchor="middle">SW</text>
+                  <rect x="316" y="316" width="22" height="22" fill="#0a0c18" stroke="#38bdf8" stroke-width="1.5" rx="2"/>
+                  <circle cx="327" cy="327" r="3" fill="#38bdf8"/>
+                  <text x="327" y="354" text-anchor="middle">SE</text>
+                </g>
+
+                <g>
+                  <polygon points="338,180 346,176 346,184" fill="#ef4444"/>
+                  <line x1="200" y1="180" x2="338" y2="180" stroke="#ef4444" stroke-width="1" stroke-dasharray="4 3"/>
+                  <polygon points="190,194 184,200 192,202" fill="#c084fc"/>
+                  <line x1="330" y1="60" x2="190" y2="194" stroke="#c084fc" stroke-width="1" stroke-dasharray="4 3"/>
+                  <text x="282" y="98" text-anchor="middle" font-family="Inter" font-size="8" fill="#c084fc" letter-spacing="0.6">non-radial</text>
+                </g>
+              </svg>
+              <figcaption>Plan view · concentric defense zones with corner nodes</figcaption>
+            </figure>
+
+            <div class="card">
+              <span class="badge"><span class="badge-dot"></span>Zone functions</span>
+              <h3>Detection → Preparation → Kill</h3>
+              <ul class="list">
+                <li class="list-item"><div class="list-bullet"></div><div class="list-content"><h4>Detection ring · 10 km</h4><p>All sensors active. Target detected, classified, handed to FLP. Trajectory model and maneuver envelope begin immediately.</p></div></li>
+                <li class="list-item"><div class="list-bullet"></div><div class="list-content"><h4>Preparation ring · 5 km</h4><p>Firing solution approaches confidence threshold. Turrets pre-slew, belt rounds index, classification and weapon assignment lock.</p></div></li>
+                <li class="list-item"><div class="list-bullet"></div><div class="list-content"><h4>Kill ring · 2 km</h4><p>Fire authority active. At 5 km/s muzzle velocity, a threat at 2 km is struck in under 0.4 s of flight.</p></div></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout callout-warn" style="margin-top: var(--space-6);">
+            <p>
+              <strong>3-zone model assumes radial approach.</strong> A target tracking directly toward
+              the defended base passes Detection → Preparation → Kill in sequence. For non-radial
+              vectors (lateral overflight, depressed trajectory, oblique HGV terminal) the rings still
+              detect, but the time inside each band shrinks and 10 km detection depends on
+              <em>external feeds</em> (long-range radar, SBIRS, allied tracking). The 500 m seismic
+              and 1 km acoustic floor between the IR tripwire and the kill ring is covered
+              operationally by the conventional weapon layer.
+            </p>
+          </div>
+
+          <div class="card" style="margin-top: var(--space-6);">
+            <span class="badge"><span class="badge-dot"></span>Sensor stack</span>
+            <h3>Defense in depth against countermeasures</h3>
+            <div class="table-wrap" style="margin-top: var(--space-3);">
+              <table class="data" aria-label="Sensor layer stack">
+                <thead><tr><th>Sensor</th><th>Range</th><th>Strengths</th><th>Limitations</th></tr></thead>
+                <tbody>
+                  <tr><td>Passive radar (PCL)</td><td class="num">10–30 km</td><td>No emissions, jam-resistant; FM / DVB-T as opportunistic illuminators</td><td>Requires sufficient ambient RF</td></tr>
+                  <tr><td>Active radar (sparse)</td><td class="num">50–200 km</td><td>Long range, all-weather</td><td>Emits, locatable</td></tr>
+                  <tr><td>Acoustic array</td><td class="num">1–5 km</td><td>Zero emissions</td><td>Wind &amp; combat-noise degrade range in active engagement</td></tr>
+                  <tr><td>Fiber seismic cable</td><td class="num">0–500 m</td><td>Buried, tamper-detect</td><td>Ground vibration only</td></tr>
+                  <tr><td>IR tripwire (FBG)</td><td class="num">0–2 km LOS</td><td>Optical, jam-proof</td><td>LOS required</td></tr>
+                  <tr><td>Space-based IR (SBIRS)</td><td>Global</td><td>Boost-phase detection</td><td>National integration</td></tr>
+                  <tr><td>Long-range radar feed</td><td class="num">500–3,000 km</td><td>HGV early detection</td><td>National integration</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout">
+              <p>FBG sensor data feeds <strong>directly</strong> into the same PRC layer that drives fire control. No protocol translation, no analogue-to-digital conversion step. Detection, tracking and fire control are a single continuous photonic computation from the moment a target enters sensor range.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BATTERY -->
+        <section id="battery">
+          <div class="section-header">
+            <div class="section-eyebrow">Distributed battery</div>
+            <h2 class="section-title">Corner nodes, cross-engagement, graceful degradation</h2>
+            <p class="section-lead">Turret nodes deploy at the corners of the defended perimeter, not in a centralized cluster. Spatial distribution provides overlapping fire coverage, cross-engagement geometry, parallax-enhanced tracking and resilience against targeted suppression.</p>
+          </div>
+
+          <div class="grid-2-asym">
+            <figure class="svg-fig">
+              <svg viewBox="0 0 380 380" role="img" aria-label="Distributed battery layout with cross-engagement">
+                <g stroke="#1f2a38" stroke-width="1" stroke-dasharray="3 3">
+                  <line x1="60" y1="60" x2="60" y2="320"/>
+                  <line x1="60" y1="60" x2="320" y2="60"/>
+                  <line x1="320" y1="60" x2="320" y2="320"/>
+                  <line x1="60" y1="320" x2="320" y2="320"/>
+                </g>
+                <g stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7">
+                  <line x1="76" y1="76" x2="304" y2="304" marker-end="url(#a1)"/>
+                  <line x1="304" y1="76" x2="76" y2="304" marker-end="url(#a1)"/>
+                </g>
+                <defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#22c55e"/></marker></defs>
+                <text x="190" y="50" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#64748b">2–4 km</text>
+                <text x="50" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#64748b" transform="rotate(-90 50 195)">2–4 km</text>
+                <rect x="135" y="155" width="110" height="70" fill="#0a0f17" stroke="#22c55e" stroke-width="1.5" rx="4"/>
+                <text x="190" y="180" text-anchor="middle" font-family="Work Sans" font-size="10" fill="#f3f4f6" font-weight="600">BASE CORE</text>
+                <text x="190" y="196" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#22c55e">FLP CENTER NODE</text>
+                <text x="190" y="210" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#94a3b8">buried C2</text>
+                <g font-family="Work Sans" font-size="9" fill="#94a3b8">
+                  <rect x="40" y="40" width="40" height="40" fill="#0a0f17" stroke="#38bdf8" stroke-width="2" rx="4"/><circle cx="60" cy="60" r="8" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5"/><circle cx="60" cy="60" r="3" fill="#38bdf8"/><text x="60" y="100" text-anchor="middle" fill="#38bdf8" font-weight="600">NW NODE</text>
+                  <rect x="300" y="40" width="40" height="40" fill="#0a0f17" stroke="#38bdf8" stroke-width="2" rx="4"/><circle cx="320" cy="60" r="8" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5"/><circle cx="320" cy="60" r="3" fill="#38bdf8"/><text x="320" y="100" text-anchor="middle" fill="#38bdf8" font-weight="600">NE NODE</text>
+                  <rect x="40" y="300" width="40" height="40" fill="#0a0f17" stroke="#38bdf8" stroke-width="2" rx="4"/><circle cx="60" cy="320" r="8" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5"/><circle cx="60" cy="320" r="3" fill="#38bdf8"/><text x="60" y="295" text-anchor="middle" fill="#38bdf8" font-weight="600">SW NODE</text>
+                  <rect x="300" y="300" width="40" height="40" fill="#0a0f17" stroke="#38bdf8" stroke-width="2" rx="4"/><circle cx="320" cy="320" r="8" fill="#0a0f17" stroke="#38bdf8" stroke-width="1.5"/><circle cx="320" cy="320" r="3" fill="#38bdf8"/><text x="320" y="295" text-anchor="middle" fill="#38bdf8" font-weight="600">SE NODE</text>
+                </g>
+                <text x="190" y="370" text-anchor="middle" font-family="Work Sans" font-size="9" fill="#22c55e">─ ─ cross-engagement vectors</text>
+              </svg>
+              <figcaption>4-corner battery · each node engages threats targeting its diagonal neighbour</figcaption>
+            </figure>
+
+            <div>
+              <div class="card">
+                <span class="badge"><span class="badge-dot"></span>Cross-engagement doctrine</span>
+                <h3>Each node defends its neighbour</h3>
+                <p>When an adversary fires suppression rounds at the corner nodes, HKDS assigns each node to engage the threat targeting its <em>neighbour</em>, not the one targeting itself. NW engages threats inbound on NE; NE engages threats inbound on NW.</p>
+                <p>This is a geometric problem for the attacker: any suppression round must first survive cross-fire from another node before it can destroy its target. The attacker cannot suppress the defense without first defeating it.</p>
+              </div>
+              <div class="card">
+                <span class="badge"><span class="badge-dot"></span>Graceful degradation</span>
+                <h3>Designed to degrade, not collapse</h3>
+                <ul class="list">
+                  <li class="list-item"><div class="list-bullet"></div><div class="list-content"><h4>1 of 4 lost — 75 % capacity</h4><p>All approach vectors retain ≥ 1 favorable engagement angle. Cross-engagement partially preserved.</p></div></li>
+                  <li class="list-item"><div class="list-bullet"></div><div class="list-content"><h4>2 of 4 lost — 50 % capacity</h4><p>Coverage gaps appear on specific vectors. Functional defense against primary threat axes maintained.</p></div></li>
+                  <li class="list-item"><div class="list-bullet"></div><div class="list-content"><h4>FLP center lost</h4><p>Corner nodes fall back to autonomous operation via local FLP sub-nodes. Reduced coordination quality, continued engagement capability.</p></div></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top: var(--space-6);">
+            <p><strong>Helium infrastructure.</strong> A networked installation justifies shared helium infrastructure: central underground storage, buried supply lines pre-warmed against Joule-Thomson cooling, and a closed-loop recovery system targeting 70–80 % per shot. Beyond economics, recovery is a strategic supply-chain resilience measure — helium reserves are geopolitically concentrated and finite.</p>
+          </div>
+        </section>
+
+        <!-- SATURATION -->
+        <section id="scenario">
+          <div class="section-header">
+            <div class="section-eyebrow">Saturation-attack scenario</div>
+            <h2 class="section-title">29 mixed threats, &lt; $1,000 to defeat</h2>
+            <p class="section-lead">Adversary launches a coordinated salvo: 3 HGVs + 4 cruise missiles + 20 FPV drones + 2 Shahed loitering munitions. FLP classifies all 29 targets in &lt; 1 ms, routes each to the most cost-effective weapon, and orchestrates the response across the four-corner battery.</p>
+          </div>
+
+          <div class="phase-grid" aria-label="Saturation attack timeline phases">
+            <article class="phase-card cyan">
+              <header class="phase-head"><div><div class="phase-num">Phase 01</div><h3 class="phase-title">Detect &amp; classify</h3></div><div class="phase-window">T −300 → T −15</div></header>
+              <ul class="phase-events">
+                <li class="phase-event"><span class="phase-event-t">−300 s</span><span class="phase-event-text"><strong>SBIRS</strong> detects HGV boost phase. Feed into HKDS central FLP node begins.</span></li>
+                <li class="phase-event"><span class="phase-event-t">−60 s</span><span class="phase-event-text">Theater radar detects cruise missiles at 30 km. FLP begins solution building.</span></li>
+                <li class="phase-event"><span class="phase-event-t">−20 s</span><span class="phase-event-text">10 km perimeter detects all <strong>29 targets</strong>. FLP classifies simultaneously, weapon assignment complete in &lt; 1 ms.</span></li>
+                <li class="phase-event"><span class="phase-event-t">−15 s</span><span class="phase-event-text">3 HGVs assigned full-battery cross-engagement. Star arms reshaped to computed envelopes.</span></li>
+              </ul>
+            </article>
+            <article class="phase-card amber">
+              <header class="phase-head"><div><div class="phase-num">Phase 02</div><h3 class="phase-title">Pre-engagement</h3></div><div class="phase-window">T −12 → T −5</div></header>
+              <ul class="phase-events">
+                <li class="phase-event"><span class="phase-event-t">−12 s</span><span class="phase-event-text">4 cruise missiles assigned LGG star configurations. 2 nodes per missile, overlapping coverage.</span></li>
+                <li class="phase-event"><span class="phase-event-t">−10 s</span><span class="phase-event-text">22 drones / loitering munitions: conventional weapons spun up. Jammers active against RF-guided subset.</span></li>
+                <li class="phase-event"><span class="phase-event-t">−8 s</span><span class="phase-event-text">HGVs enter 5 km preparation ring. Turrets pre-slewed, belt indexed, solutions finalized.</span></li>
+                <li class="phase-event"><span class="phase-event-t">−5 s</span><span class="phase-event-text">All LGG turrets hold: solutions locked, waiting for the 2 km kill-ring crossing.</span></li>
+              </ul>
+            </article>
+            <article class="phase-card rust">
+              <header class="phase-head"><div><div class="phase-num">Phase 03</div><h3 class="phase-title">Engagement</h3></div><div class="phase-window">T −2.5 → T +3</div></header>
+              <ul class="phase-events">
+                <li class="phase-event"><span class="phase-event-t">−2.5 s</span><span class="phase-event-text">HGVs cross 2 km ring. Full battery fires simultaneously — <strong>28 rounds in air</strong> (4 nodes × 7 barrels).</span></li>
+                <li class="phase-event"><span class="phase-event-t">−1.5 s</span><span class="phase-event-text">Cruise missiles cross 2 km ring. 8 LGG rounds fired across 2 nodes × 4 engagements.</span></li>
+                <li class="phase-event"><span class="phase-event-t">0 s</span><span class="phase-event-text">Drone swarm enters conventional kill volume. Jammers, autocannon, M134 engage.</span></li>
+                <li class="phase-event"><span class="phase-event-t">+3 s</span><span class="phase-event-text">FLP kill assessment: HGV 3 / 3. Cruise missile 3 / 4. One re-engagement queued.</span></li>
+              </ul>
+            </article>
+            <article class="phase-card green">
+              <header class="phase-head"><div><div class="phase-num">Phase 04</div><h3 class="phase-title">Assess &amp; conclude</h3></div><div class="phase-window">T +6 → T +60</div></header>
+              <ul class="phase-events">
+                <li class="phase-event"><span class="phase-event-t">+6 s</span><span class="phase-event-text">Missed cruise missile re-engaged. Piston reset complete, second engagement fires.</span></li>
+                <li class="phase-event"><span class="phase-event-t">+30 s</span><span class="phase-event-text">Drone swarm thinning. Remaining loitering munitions tracked and individually engaged.</span></li>
+                <li class="phase-event"><span class="phase-event-t">+60 s</span><span class="phase-event-text"><strong>All 29 threats neutralized.</strong> Total LGG expended ≈ 42 rounds. Conventional ≈ 800–2,000 rounds.</span></li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="outcome-row" aria-label="Saturation outcome summary">
+            <div class="outcome-item alta-stat green"><div class="alta-stat-value green">29 / 29</div><p class="alta-stat-label"><span class="lead">t</span>argets neutralized in 60 s of engagement.</p></div>
+            <div class="outcome-item alta-stat amber"><div class="alta-stat-value amber">&lt; $1k</div><p class="alta-stat-label"><span class="lead">d</span>efender cost — expendable material only, across the full salvo.</p></div>
+            <div class="outcome-item alta-stat rust"><div class="alta-stat-value rust">$160M+</div><p class="alta-stat-label"><span class="lead">a</span>ttacker package cost — 3 HGV + 4 cruise + 22 munitions.</p></div>
+            <div class="outcome-item alta-stat magenta"><div class="alta-stat-value magenta">10⁵×</div><p class="alta-stat-label"><span class="lead">r</span>eversal of the air-defense cost asymmetry, conservative.</p></div>
+          </div>
+
+          <div class="callout" style="margin-top: var(--space-8);">
+            <p><strong>Cost breakdown.</strong> 28 LGG rounds against 3 HGVs ≈ $140 · ~10 LGG rounds against cruise missiles ≈ $50 · ~1,200 conventional rounds against drones ≈ $120–600. <strong style="color: var(--color-primary);">Total $310–790 in expendable material</strong> against a conservatively-priced $160M+ attacker package.</p>
+          </div>
+        </section>
+
+        <!-- HYPERSONIC -->
+        <section id="hypersonic">
+          <div class="section-header">
+            <div class="section-eyebrow">Hypersonic engagement</div>
+            <h2 class="section-title">Competitive velocity — not chasing</h2>
+            <p class="section-lead">HKDS does not claim to perfectly solve hypersonic defense. It proposes a kinetic terminal defense architecture more physically plausible than any currently deployed system. HKDS fires <em>into</em> an HGV's path — fundamentally different from missile interceptors that must chase.</p>
+          </div>
+
+          <div class="grid-2-asym">
+            <div class="card">
+              <span class="badge"><span class="badge-dot"></span>Velocity relationship</span>
+              <h3>Closing speed at the kill ring</h3>
+              <div class="table-wrap" style="margin-top: var(--space-3);">
+                <table class="data" aria-label="HGV vs HKDS velocity relationship">
+                  <thead><tr><th>HGV speed</th><th>HKDS</th><th>Closing</th><th>Feasibility</th></tr></thead>
+                  <tbody>
+                    <tr><td class="num">Mach 5 (1.7 km/s)</td><td class="num">5–7 km/s</td><td class="num">6.7–8.7 km/s</td><td class="ok">Favorable</td></tr>
+                    <tr><td class="num">Mach 10 (3.4 km/s)</td><td class="num">5–7 km/s</td><td class="num">8.4–10.4 km/s</td><td class="ok">Favorable</td></tr>
+                    <tr><td class="num">Mach 15 (5.1 km/s)</td><td class="num">5–7 km/s</td><td class="num">10.1–12.1 km/s</td><td class="hot">Marginal</td></tr>
+                    <tr><td class="num">Mach 20 (6.8 km/s)</td><td class="num">5–7 km/s</td><td class="num">11.8–13.8 km/s</td><td class="crit">Challenging</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div>
+              <div class="card">
+                <span class="badge"><span class="badge-dot"></span>Atmospheric drag</span>
+                <h3>FLP solves the trajectory, not a correction</h3>
+                <p>Below ~20 km, aerodynamic drag is significant for a 5 km/s round. FLP computes the ballistic trajectory with the full atmospheric model included — not as a perturbation. Engaging HGVs at high elevation (above 45°) routes the round through thinner atmosphere; the star turret's 85° elevation range accommodates this.</p>
+              </div>
+              <div class="card">
+                <span class="badge badge-accent"><span class="badge-dot"></span>Plasma sheath</span>
+                <h3>Optical sensing through RF blackout</h3>
+                <p>Hypersonic threats generate plasma sheaths that degrade RF tracking during the terminal phase — when conventional fire control most needs it. FBG sensors and the photonic processing chain are optical, immune to RF plasma effects. An unplanned but significant advantage at the highest threat tier.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- DEFENSIVE -->
+        <section id="defensive">
+          <div class="section-header">
+            <div class="section-eyebrow">Doctrine</div>
+            <h2 class="section-title">Defensive only, by architecture and by intent</h2>
+            <p class="section-lead">HKDS is explicitly designed as a defensive, terminal area-denial system. Its geometry, emplacement and engagement logic all enforce a defensive role rather than offensive power projection.</p>
+          </div>
+
+          <div class="defensive-panel">
+            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-2);">What HKDS is</h3>
+            <p style="color: var(--color-text-muted); font-size: var(--text-sm); max-width: 64ch;">A fixed, autonomous, multi-threat terminal defense layer that engages incoming aerial objects only after they enter a defined defended airspace. An anti-access / area-denial shield protecting bases, cities and critical infrastructure from above.</p>
+            <ul class="list" style="margin-top: var(--space-5);">
+              <li class="list-item"><div class="list-bullet"></div><div class="list-content"><h4>Fixed-site architecture</h4><p>Corner turrets and buried sensor rings tie HKDS to the asset it protects; it is not a mobile artillery piece.</p></div></li>
+              <li class="list-item"><div class="list-bullet"></div><div class="list-content"><h4>Incoming-only engagement</h4><p>Rules of engagement restrict HKDS to positively identified, inbound aerial threats within the defended volume.</p></div></li>
+              <li class="list-item"><div class="list-bullet"></div><div class="list-content"><h4>Purely kinetic payloads</h4><p>No explosive warheads, no guidance seekers — just tungsten rods driven to hypervelocity.</p></div></li>
+              <li class="list-item"><div class="list-bullet"></div><div class="list-content"><h4>Phalanx-precedent autonomy</h4><p>Campaign-level authorization with engagement-level autonomy follows the precedent of existing close-in weapon systems.</p></div></li>
+            </ul>
+
+            <div class="callout" style="margin-top: var(--space-6);">
+              <p><strong>Physical vs. operational constraint.</strong> The "defensive only" property is enforced by <em>two</em> independent layers. <strong>Physical</strong>: turret geometry, fixed emplacement, the 2–5 km kill volume, and the lack of any guidance or seeker in the round itself make HKDS architecturally incapable of offensive projection — there is no platform to attack <em>from</em>, and no round that can reach a target outside its volume. <strong>Operational</strong>: rules-of-engagement gating, target classification, and the Phalanx-CIWS autonomy precedent constrain when the system may fire on a positively classified inbound. The two layers fail independently — a misconfigured ROE cannot make the system offensive, and a destroyed sensor cannot bypass physical fire limits.</p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <aside class="toc" aria-label="On this page">
+        <div class="toc-label">On this page</div>
+        <a href="#perimeter">Sensor perimeter</a>
+        <a href="#battery">Distributed battery</a>
+        <a href="#scenario">Saturation scenario</a>
+        <a href="#hypersonic">Hypersonic engagement</a>
+        <a href="#defensive">Defensive-only</a>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo-lockup" style="margin-bottom: var(--space-4);"><div class="logo-mark" aria-hidden="true"></div><div class="logo-text"><span class="eyebrow">Defensive only · Rev 1.0</span><span class="brand">HKDS</span></div></div>
+        <p style="color: var(--color-text-muted); font-size: var(--text-sm); max-width: 42ch;">Hypervelocity Kinetic Defense System — a defensive terminal area-denial concept built on ALTA Fiber Loop Photonics.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="doctrine.html">Doctrine &amp; scenario</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="science.html">Scientific foundation</a></li>
+          <li><a href="program.html">Program &amp; specs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ALTA platform</h4>
+        <ul>
+          <li><a href="science.html">Fiber Loop Photonics</a></li>
+          <li><a href="mailto:hello@alta.space">hello@alta.space</a></li>
+          <li><span style="color: var(--color-text-faint);">Sovereign-EU · ITAR-free</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 · HKDS Technical Concept · Developed with ALTA by Venus — EIIS / Airbus Space Challenge</span>
+        <span>Concept-stage · Rev 1.0</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script>
+  (() => {
+    const btn  = document.querySelector('.menu-toggle');
+    const list = document.querySelector('.nav-links');
+    if (!btn || !list) return;
+    list.id = list.id || 'primary-nav';
+    btn.addEventListener('click', () => {
+      const open = list.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.classList.toggle('is-open', open);
+    });
+    list.addEventListener('click', e => {
+      if (e.target.closest('a')) {
+        list.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+</body>
+</html>
