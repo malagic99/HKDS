@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css?v=9">
+  <link rel="stylesheet" href="assets/styles.css?v=12">
 </head>
 <body>
 <div class="page-shell">
@@ -24,9 +24,9 @@
       </a>
       <nav class="nav-links" id="primary-nav" aria-label="Primary">
         <a href="index.html" aria-current="page">Overview</a>
+        <a href="doctrine.html">Doctrine</a>
         <a href="technology.html">Technology</a>
         <a href="science.html">Science</a>
-        <a href="doctrine.html">Doctrine</a>
         <a href="program.html">Program</a>
       </nav>
       <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle menu">
@@ -79,7 +79,7 @@
           </div>
           <div class="alta-stat green">
             <div class="alta-stat-value green">$3–8</div>
-            <p class="alta-stat-label"><span class="lead">c</span>ost per shot — no seeker, no warhead.</p>
+            <p class="alta-stat-label"><span class="lead">c</span>ost per shot — expendable material only, no seeker or warhead.</p>
           </div>
           <div class="alta-stat magenta">
             <div class="alta-stat-value magenta">FPV → HGV</div>
@@ -110,7 +110,7 @@
             Current air defense doctrine relies on expensive guided interceptors
             (Patriot PAC-3 at $4M per round, Iron Dome at $50–100k per intercept) or conventional kinetic
             systems whose velocity and fire-control latency are inadequate against modern hypersonic
-            threats. HKDS proposes a third category — hypervelocity kinetic rounds at $3–8 per shot,
+            threats. HKDS proposes a third category — hypervelocity kinetic rounds at $3–8 per shot (expendable material only),
             guided by sub-millisecond photonic fire control.
           </p>
         </div>
@@ -443,34 +443,28 @@
                 <filter id="glow"><feGaussianBlur stdDeviation="2.5"/></filter>
               </defs>
 
-              <!-- Connection line -->
               <line x1="60" y1="180" x2="420" y2="180" stroke="url(#gflp)" stroke-width="3" stroke-linecap="round"/>
               <line x1="60" y1="180" x2="420" y2="180" stroke="url(#gflp)" stroke-width="6" stroke-linecap="round" opacity="0.4" filter="url(#glow)"/>
 
-              <!-- Stage circles -->
               <g font-family="Work Sans" font-size="11" fill="#94a3b8" text-anchor="middle">
-                <!-- 1 -->
                 <circle cx="60" cy="180" r="32" fill="#0a0f17" stroke="#22c55e" stroke-width="2"/>
                 <text x="60" y="184" font-size="14" fill="#22c55e" font-weight="600">01</text>
                 <text x="60" y="230" fill="#f3f4f6" font-size="11" font-weight="600">SENSING</text>
                 <text x="60" y="246" fill="#64748b">FBG arrays</text>
                 <text x="60" y="262" fill="#22c55e" font-size="10">TRL 9</text>
 
-                <!-- 2 -->
                 <circle cx="180" cy="180" r="32" fill="#0a0f17" stroke="#f59e0b" stroke-width="2"/>
                 <text x="180" y="184" font-size="14" fill="#f59e0b" font-weight="600">02</text>
                 <text x="180" y="230" fill="#f3f4f6" font-size="11" font-weight="600">PROCESSING</text>
                 <text x="180" y="246" fill="#64748b">Reservoir compute</text>
                 <text x="180" y="262" fill="#f59e0b" font-size="10">TRL 4–5</text>
 
-                <!-- 3 -->
                 <circle cx="300" cy="180" r="32" fill="#0a0f17" stroke="#38bdf8" stroke-width="2"/>
                 <text x="300" y="184" font-size="14" fill="#38bdf8" font-weight="600">03</text>
                 <text x="300" y="230" fill="#f3f4f6" font-size="11" font-weight="600">INTERNAL COMMS</text>
                 <text x="300" y="246" fill="#64748b">Fiber backbone</text>
                 <text x="300" y="262" fill="#38bdf8" font-size="10">TRL 6 · 100 Gbps</text>
 
-                <!-- 4 -->
                 <circle cx="420" cy="180" r="32" fill="#0a0f17" stroke="#38bdf8" stroke-width="2"/>
                 <text x="420" y="184" font-size="14" fill="#38bdf8" font-weight="600">04</text>
                 <text x="420" y="230" fill="#f3f4f6" font-size="11" font-weight="600">EXTERNAL LINK</text>
@@ -478,13 +472,11 @@
                 <text x="420" y="262" fill="#38bdf8" font-size="10">TRL 6–7 · 10 Gbps</text>
               </g>
 
-              <!-- Header -->
               <g font-family="Instrument Serif" text-anchor="middle">
                 <text x="240" y="55" font-size="22" fill="#f3f4f6">Fiber Loop Photonics</text>
                 <text x="240" y="78" font-size="12" fill="#94a3b8" font-family="Work Sans" letter-spacing="2">A 4-STEP OPTICAL PIPELINE</text>
               </g>
 
-              <!-- Bottom note -->
               <text x="240" y="320" font-family="Work Sans" font-size="10" fill="#64748b" text-anchor="middle">
                 Sensor → decision in &lt; 1 ms · no A/D conversion · no EMI · O(1) energy
               </text>
@@ -546,9 +538,9 @@
         <h4>Pages</h4>
         <ul>
           <li><a href="index.html">Overview</a></li>
+          <li><a href="doctrine.html">Doctrine &amp; scenario</a></li>
           <li><a href="technology.html">Technology</a></li>
           <li><a href="science.html">Scientific foundation</a></li>
-          <li><a href="doctrine.html">Doctrine &amp; scenario</a></li>
           <li><a href="program.html">Program &amp; specs</a></li>
         </ul>
       </div>
@@ -564,7 +556,7 @@
     <div class="container">
       <div class="footer-bottom">
         <span>© 2026 · HKDS Technical Concept · Developed in collaboration with ALTA by Venus (Bushra Alzadjali &amp; Marko Alagić) — EIIS / Airbus Space Challenge</span>
-        <span>Built for discussion, not for field deployment.</span>
+        <span>Concept-stage · Rev 1.0</span>
       </div>
     </div>
   </footer>
